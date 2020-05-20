@@ -23,6 +23,7 @@ class Training extends React.Component{
 
     let chosen = Array(this.props.num_training).fill(0);
     let correct_ans = Array(this.props.num_training).fill(0);
+    let reaction_times = Array(this.props.num_training).fill().map(() => Array(2).fill(0));
 
     this.state = {
       tot_num_app: 3,
@@ -35,13 +36,14 @@ class Training extends React.Component{
       chosen:chosen,
       sum_passed:0,
       correct_ans:correct_ans,
+      reaction_times: reaction_times,
       };
   }
 
   render(){
 
     if (this.state.trial===0) {
-      console.log("1.fetch data training")
+      console.log("Fetch data training")
       this.fetchTraining(this.props.UserNo);
       return 0
       }
@@ -147,6 +149,8 @@ class Training extends React.Component{
 
   fetchTraining(user_no_){
 
+    var reaction_times = this.state.reaction_times;
+
     fetch(`${API_URL}/training/`+user_no_)
     .then(handleResponse)
     .then((data) => {
@@ -158,9 +162,12 @@ class Training extends React.Component{
           InitialSamplesSize  : data.InitialSamplesSize,
         }
 
+        reaction_times[0][0] = Math.round(performance.now());
+
         this.setState({
           training_info: training_info,
           trial: 1,
+          reaction_times: reaction_times,
         });
       })
   }
@@ -171,6 +178,7 @@ class Training extends React.Component{
     var NumTraining = this.props.num_training;
     var Chosen = this.state.chosen;
     var CorrectAns = this.state.correct_ans;
+    var ReactionTimes = this.state.reaction_times;
     var ChoicesSize = this.state.training_info.ChoicesSize.slice(0,NumTraining);
     var ChoicesCorrect = this.state.training_info.ChoicesCorrect.slice(0,NumTraining);
     var InitialSamplesSize = this.state.training_info.InitialSamplesSize.slice(0,NumTraining);
@@ -181,9 +189,10 @@ class Training extends React.Component{
                                 'InitialSamplesSize'  : InitialSamplesSize,
                                 'Chosen'              : Chosen,
                                 'CorrectAns'          : CorrectAns,
+                                'ReactionTimes'       : ReactionTimes,
                                 'NumTraining'         : NumTraining}
 
-    console.log("sendTraining") //, "training_behaviour", training_behaviour)
+    console.log("sendTraining", "training_behaviour", training_behaviour)
 
     fetch(`${API_URL}/training_behaviour/` + user_no_, {
        method: 'POST',
@@ -193,6 +202,27 @@ class Training extends React.Component{
        },
        body: JSON.stringify(training_behaviour)
      })
+  }
+
+  changeState(key_pressed, time_pressed){
+
+    var chosen = this.state.chosen;
+    var trial_ind = this.state.trial - 1;
+    var reaction_times = this.state.reaction_times;
+
+    reaction_times[trial_ind][1] = time_pressed;
+
+    if (this.state.trial < this.props.num_training){
+      reaction_times[trial_ind+1][0] = time_pressed+500;
+    }
+
+    chosen[trial_ind] = key_pressed;
+
+    this.setState({
+      chosen: chosen,
+      compute_fb: 1,
+    });
+
   }
 
   listenner(){
@@ -224,42 +254,28 @@ class Training extends React.Component{
 
   _handleKeyDownNumbers = (event) => {
 
-    var chosen = this.state.chosen;
-    var trial_ind = this.state.trial - 1;
+    var time_pressed;
 
     switch( event.keyCode ) {
         case 97:
-        chosen[trial_ind] = 1;
-            this.setState({
-              chosen: chosen,
-              compute_fb: 1,
-            });
+        time_pressed = Math.round(performance.now());
+        this.changeState(1, time_pressed)
             break;
         case 98:
-        chosen[trial_ind] = 2;
-            this.setState({
-              chosen: chosen,
-              compute_fb: 1,
-            });
+        time_pressed = Math.round(performance.now());
+        this.changeState(2, time_pressed)
             break;
         case 49:
-        chosen[trial_ind] = 1;
-            this.setState({
-              chosen: chosen,
-              compute_fb: 1,
-            });
+        time_pressed = Math.round(performance.now());
+        this.changeState(1, time_pressed)
             break;
         case 50:
-        chosen[trial_ind] = 2;
-            this.setState({
-              chosen: chosen,
-              compute_fb: 1,
-            });
+        time_pressed = Math.round(performance.now());
+        this.changeState(2, time_pressed)
             break;
         default:
       }
   }
-
 
 };
 

@@ -219,7 +219,7 @@ class Game extends React.Component{
       chosen_apple_size = Array(trial_per_block).fill().map(() => Array(6).fill(0));
       all_key_pressed = Array(trial_per_block).fill().map(() => Array(6).fill(0));
       reaction_times = Array(trial_per_block).fill().map(() => Array(7).fill(0));
-      reaction_times[0][0] = performance.now()+500;
+      reaction_times[0][0] = Math.round(performance.now())+500;
       BlockNo++;
     }
     else{
@@ -227,7 +227,7 @@ class Game extends React.Component{
       chosen_apple_size = this.state.chosen_apple_size;
       all_key_pressed = this.state.all_key_pressed;
       reaction_times = this.state.reaction_times;
-      reaction_times[trialinblock_index+1][0] = performance.now()+500;
+      reaction_times[trialinblock_index+1][0] = Math.round(performance.now())+500;
     }
 
     TrialNo++;
@@ -394,32 +394,32 @@ class Game extends React.Component{
     switch( event.keyCode ) {
         case 97:
           key_pressed = 1;
-          time_pressed = performance.now();
+          time_pressed = Math.round(performance.now());
           this.pick_apple(DisplayOrder[0], key_pressed, time_pressed);
           break;
         case 98:
           key_pressed = 2;
-          time_pressed = performance.now();
+          time_pressed = Math.round(performance.now());
           this.pick_apple(DisplayOrder[1], key_pressed, time_pressed);
           break;
         case 99:
           key_pressed = 3;
-          time_pressed = performance.now();
+          time_pressed = Math.round(performance.now());
           this.pick_apple(DisplayOrder[2], key_pressed, time_pressed);
           break;
         case 49:
           key_pressed = 1;
-          time_pressed = performance.now();
+          time_pressed = Math.round(performance.now());
           this.pick_apple(DisplayOrder[0], key_pressed, time_pressed);
           break;
         case 50:
           key_pressed = 2;
-          time_pressed = performance.now();
+          time_pressed = Math.round(performance.now());
           this.pick_apple(DisplayOrder[1], key_pressed, time_pressed);
           break;
         case 51:
           key_pressed = 3;
-          time_pressed = performance.now();
+          time_pressed = Math.round(performance.now());
           this.pick_apple(DisplayOrder[2], key_pressed, time_pressed);
           break;
         default:
@@ -434,7 +434,7 @@ class Game extends React.Component{
         var reaction_times = this.state.reaction_times;
         var SampleNo = this.state.SampleNo;
 
-        reaction_times[trialinblock_index][SampleNo] = performance.now();
+        reaction_times[trialinblock_index][SampleNo] = Math.round(performance.now());
 
           if (this.state.BlockNo>this.state.BlockNb) {
             this.props.nextTransition(1);
