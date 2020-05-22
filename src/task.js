@@ -10,7 +10,7 @@ class Task extends React.Component{
 
     this.state = {
       UserNo:1,
-      num_training:4,
+      num_training:1,
       slide: 19,
       transition:1,
       pass_training: 0.6, // percentage to pass the training

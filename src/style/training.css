@@ -1,0 +1,77 @@
+
+
+.apple{
+  position:relative;
+  background: url('../background/square.png');
+  border-width: thin;
+  border-color: black;
+  border-style: solid;
+  width: 55px;
+  height: 55px;
+  left: 47px;
+  margin-top: 638px;
+  margin-left: 7px;
+  float: left;
+  Display: flex;
+  Align-Items: center;
+  Justify-Content: center;
+}
+
+.appleSug{
+  position:relative;
+  background: url('../background/square.png');
+  border-width: thin;
+  border-color: black;
+  border-style: solid;
+  width: 55px;
+  height: 55px;
+  margin-top: 300px;
+  margin-left: 50px;
+  left: 179px;
+  float: left;
+  Display: flex;
+  Align-Items: center;
+  Justify-Content: center;
+}
+
+.feedback{
+  position:absolute;
+  left: -15px;
+  margin-top: 220px;
+}
+
+.training_1{
+  position:absolute;
+  background: url('../images_training/training_1.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.training_2{
+  position:absolute;
+  background: url('../images_training/training_2.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.training_3{
+  position:absolute;
+  background: url('../images_training/training_3.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.training_4{
+  position:absolute;
+  background: url('../images_training/training_4.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}

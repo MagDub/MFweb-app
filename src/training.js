@@ -1,4 +1,5 @@
 import React from 'react';
+import './style/training.css';
 import AppleTraining from './appleTraining';
 import AppleSug from './appleSug';
 import Feedback from './feedback.js';
@@ -54,13 +55,16 @@ class Training extends React.Component{
     if (this.state.trial<=this.props.num_training){
       return (
         <div className={this.state.training_bg[col-1]}>
-            {this.disp_boxes(col)}
+            <div className="TrainingText">
+              test
+              {this.disp_boxes(col)}
               <div className="suggestions">
                 {this.disp_suggestions(col)}
                 {this.compute_fb()}
                 {this.disp_fb()}
                 {this.listenner()}
-                </div>
+              </div>
+            </div>
         </div>
         );
       }

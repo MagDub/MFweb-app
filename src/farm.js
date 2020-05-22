@@ -1,4 +1,5 @@
 import React from 'react';
+import './style/farm.css';
 
 class Farm extends React.Component{
 

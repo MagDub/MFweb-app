@@ -1,4 +1,5 @@
 import React from 'react';
+import './style/slides.css';
 
 class Instructions extends React.Component{
 

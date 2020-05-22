@@ -1,0 +1,72 @@
+
+.finishblock_1{
+  position:absolute;
+  background: url('../general_images/finishblock_1.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.finishblock_2{
+  position:absolute;
+  background: url('../general_images/finishblock_2.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.finishblock_3{
+  position:absolute;
+  background: url('../general_images/finishblock_3.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.finishblock_4{
+  position:absolute;
+  background: url('../general_images/finishblock_4.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.startblock_1{
+  position:absolute;
+  background: url('../general_images/startblock_1.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.startblock_2{
+  position:absolute;
+  background: url('../general_images/startblock_2.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.startblock_3{
+  position:absolute;
+  background: url('../general_images/startblock_3.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.startblock_4{
+  position:absolute;
+  background: url('../general_images/startblock_4.jpg');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
