@@ -1,6 +1,7 @@
 import React from 'react';
 import TreeTraining from './treeTraining';
 
+
 class AppleSug extends React.Component{
 
 
@@ -12,6 +13,7 @@ class AppleSug extends React.Component{
       <TreeTraining value={this.props.value} col={this.props.col}/>
 
       </div>
+
 
     );
   }

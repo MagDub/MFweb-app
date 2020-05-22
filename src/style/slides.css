@@ -1,4 +1,19 @@
 
+.slide_text{
+  position:absolute;
+  margin-top: 100px;
+  margin-left: 90px;
+  font-size: 21px;
+  font-family: Arial;
+}
+
+.slide_text_after_training{
+  position:absolute;
+  margin-top: 90px;
+  margin-left: 90px;
+  font-size: 21px;
+  font-family: Arial;
+}
 
 .slide_0{
   position:absolute;
@@ -173,7 +188,7 @@
 
 .slide_19{
   position:absolute;
-  background: url('../instructions/slides/slide19.png');
+  background: url('../instructions/slides/slide_empty_2arrows.png');
   background-repeat: no-repeat;
   width: 1000px;
   height: 1000px;
@@ -182,7 +197,7 @@
 
 .slide_20{
   position:absolute;
-  background: url('../instructions/slides/slide20.png');
+  background: url('../instructions/slides/slide_empty_2arrows.png');
   background-repeat: no-repeat;
   width: 1000px;
   height: 1000px;
@@ -191,7 +206,16 @@
 
 .slide_21{
   position:absolute;
-  background: url('../instructions/slides/slide21.png');
+  background: url('../instructions/slides/slide_empty_1arrow.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+}
+
+.slide_22{
+  position:absolute;
+  background: url('../instructions/slides/slide_empty_1arrow.png');
   background-repeat: no-repeat;
   width: 1000px;
   height: 1000px;

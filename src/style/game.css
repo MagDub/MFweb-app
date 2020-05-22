@@ -1,0 +1,18 @@
+
+
+.appleTask{
+  position:relative;
+  background: url('../background/square.png');
+  border-width: thin;
+  border-color: black;
+  border-style: solid;
+  width: 55px;
+  height: 55px;
+  left: 57px;
+  margin-top: 635px;
+  margin-left: 7px;
+  float: left;
+  Display: flex;
+  Align-Items: center;
+  Justify-Content: center;
+}

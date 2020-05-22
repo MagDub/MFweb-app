@@ -36,7 +36,14 @@ class Task extends React.Component{
       console.log("task: transition 1 - instructions")
 
       /* listens to keyboard presses.*/
-      document.addEventListener("keydown", this._handleKeyDownArrows);
+      if (this.state.slide==21){
+        document.removeEventListener("keydown", this._handleKeyDownArrows);
+        document.addEventListener("keydown", this._handleKeyDownRightArrow);
+      }
+
+      else {
+        document.addEventListener("keydown", this._handleKeyDownArrows);
+        }
 
       return (
         <Instructions slide={this.state.slide}/>
@@ -60,10 +67,12 @@ class Task extends React.Component{
 
       document.removeEventListener("keydown", this._handleKeyDownNumbers);
       document.removeEventListener("keydown", this._handleKeyDownEnter);
-      document.addEventListener("keydown", this._handleKeyDownArrows);
+      document.removeEventListener("keydown", this._handleKeyDownArrows);
+      document.addEventListener("keydown", this._handleKeyDownRightArrow);
+
 
       return (
-        <Instructions slide={this.state.slide+1}/>
+        <Instructions slide={this.state.slide}/>
       );
     }
 
@@ -72,6 +81,8 @@ class Task extends React.Component{
       console.log("task: transition 4 - start game")
 
       document.removeEventListener("keydown", this._handleKeyDownArrows);
+      document.removeEventListener("keydown", this._handleKeyDownRightArrow);
+
       return <Game UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
     }
 
@@ -119,13 +130,41 @@ class Task extends React.Component{
         /* arrow right.*/
         case 39:
 
-            if(this.state.slide===20){
+            if(this.state.slide===21){
               this.setState({
                 slide: this.state.slide+1,
                 transition: this.state.transition+1,
               });
             }
-            else if(this.state.slide===21){
+            else if(this.state.slide===22){
+              this.setState({
+                transition: this.state.transition+1,
+              });
+            }
+            else {
+              this.setState({slide: this.state.slide+1});
+            }
+
+            break;
+
+        default:
+      }
+  }
+
+  _handleKeyDownRightArrow = (event) => {
+
+    switch( event.keyCode ) {
+
+        /* arrow right.*/
+        case 39:
+
+            if(this.state.slide===21){
+              this.setState({
+                slide: this.state.slide+1,
+                transition: this.state.transition+1,
+              });
+            }
+            else if(this.state.slide===22){
               this.setState({
                 transition: this.state.transition+1,
               });

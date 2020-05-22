@@ -55,8 +55,15 @@ class Training extends React.Component{
     if (this.state.trial<=this.props.num_training){
       return (
         <div className={this.state.training_bg[col-1]}>
-            <div className="TrainingText">
-              test
+            <div className="training_text">
+              <p>
+                Look at the  apples previously collected <br />
+                (on the wooden crate). Which apple is <br />
+                most likely to be picked next ? <br />
+                Remember: a tree always produces <br />
+                apples of similar sizes!
+              </p>
+              <p> &emsp; &emsp; &emsp; Press 1&emsp; &emsp; Press 2</p>
               {this.disp_boxes(col)}
               <div className="suggestions">
                 {this.disp_suggestions(col)}

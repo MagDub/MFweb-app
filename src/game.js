@@ -3,6 +3,7 @@ import Farm from './farm';
 import Apple from './apple';
 import Juice from './juice';
 import Block from './block';
+import './style/game.css';
 import { API_URL } from './config';
 import { handleResponse } from './helpers'; // imports json
 

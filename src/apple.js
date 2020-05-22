@@ -6,7 +6,7 @@ class Apple extends React.Component{
   render(){
     return (
 
-      <div className="apple">
+      <div className="appleTask">
 
       <Tree value={this.props.value} tree={this.props.tree} col={this.props.col}/>
 
