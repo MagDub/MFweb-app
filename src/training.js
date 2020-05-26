@@ -46,7 +46,7 @@ class Training extends React.Component{
     if (this.state.trial===0) {
       console.log("Fetch data training")
       this.fetchTraining(this.props.UserNo);
-      return 0
+      return null
       }
 
     var trial_ind = this.state.trial-1;
@@ -81,7 +81,7 @@ class Training extends React.Component{
         var percentage_passed = this.state.sum_passed / this.props.num_training;
         this.sendTraining(this.props.UserNo);
         this.props.nextTransition(percentage_passed);
-        return 0
+        return null
       }
     }
 
@@ -233,7 +233,6 @@ class Training extends React.Component{
       chosen: chosen,
       compute_fb: 1,
     });
-
   }
 
   listenner(){
@@ -287,7 +286,6 @@ class Training extends React.Component{
         default:
       }
   }
-
 };
 
 

@@ -152,7 +152,7 @@ class Game extends React.Component{
       console.log("fetch data")
       var BlockNo = this.state.BlockNo;
       this.fetchBlock(this.props.UserNo, BlockNo);
-      return 0
+      return null
       }
 
     else if (this.state.disp_new_block===1) {

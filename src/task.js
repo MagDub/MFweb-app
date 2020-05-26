@@ -2,6 +2,7 @@ import React from 'react';
 import Game from './game';
 import Instructions from './instructions';
 import Training from './training';
+import Questions from './questions';
 
 class Task extends React.Component{
 
@@ -11,9 +12,9 @@ class Task extends React.Component{
     this.state = {
       UserNo:1,
       num_training:1,
-      slide: 19,
+      slide: 1,
       transition:1,
-      pass_training: 0.6, // percentage to pass the training
+      percentage_to_pass: 1, // percentage to pass the training and questions
       };
 
     this.nextTransition = this.nextTransition.bind(this);
@@ -31,17 +32,25 @@ class Task extends React.Component{
 
   render(){
 
+    console.log("slide", this.state.slide)
+
     if (this.state.transition === 1) {
 
       console.log("task: transition 1 - instructions")
 
       /* listens to keyboard presses.*/
-      if (this.state.slide==21){
+      if (this.state.slide===22){
+        document.removeEventListener("keydown", this._handleKeyDownArrows);
+        document.addEventListener("keydown", this._handleKeyDownRightArrow);
+      }
+
+      else if (this.state.slide===0 || this.state.slide===1){
         document.removeEventListener("keydown", this._handleKeyDownArrows);
         document.addEventListener("keydown", this._handleKeyDownRightArrow);
       }
 
       else {
+        document.removeEventListener("keydown", this._handleKeyDownRightArrow);
         document.addEventListener("keydown", this._handleKeyDownArrows);
         }
 
@@ -52,18 +61,38 @@ class Task extends React.Component{
 
     else if (this.state.transition === 2) {
 
-      console.log("task: transition 2 - training")
+      console.log("task: transition 2 - questions")
+
+      document.removeEventListener("keydown", this._handleKeyDownArrows);
+
+      return (
+        <Questions UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition}/>
+      );
+    }
+
+    if (this.state.transition === 3) {
+
+      console.log("task: transition 3 - after questions instructions")
+
+      document.addEventListener("keydown", this._handleKeyDownRightArrow);
+
+      return (
+        <Instructions slide={this.state.slide}/>
+      );
+    }
+
+    else if (this.state.transition === 4) {
+
+      console.log("task: transition 4 - training")
 
       document.removeEventListener("keydown", this._handleKeyDownArrows);
 
       return <Training UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
     }
 
-    else if (this.state.transition === 3) {
+    else if (this.state.transition === 5) {
 
-      // todo: change slide21
-
-      console.log("task: transition 3 - instructions", "replace 'did you understand slide' with: good intuition!")
+      console.log("task: transition 5 - instructions")
 
       document.removeEventListener("keydown", this._handleKeyDownNumbers);
       document.removeEventListener("keydown", this._handleKeyDownEnter);
@@ -76,9 +105,9 @@ class Task extends React.Component{
       );
     }
 
-    else if (this.state.transition === 4) {
+    else if (this.state.transition === 6) {
 
-      console.log("task: transition 4 - start game")
+      console.log("task: transition 6 - start game")
 
       document.removeEventListener("keydown", this._handleKeyDownArrows);
       document.removeEventListener("keydown", this._handleKeyDownRightArrow);
@@ -86,9 +115,9 @@ class Task extends React.Component{
       return <Game UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
     }
 
-    else if (this.state.transition === 5) {
+    else if (this.state.transition === 7) {
 
-      console.log("task: transition 5")
+      console.log("task: transition 7")
       return null
 
     }
@@ -98,7 +127,7 @@ class Task extends React.Component{
 
     console.log("next_transition", "percentage_passed", percentage_passed)
 
-    if (percentage_passed>=this.state.pass_training){
+    if (percentage_passed>=this.state.percentage_to_pass){
       this.setState({
         transition: this.state.transition+1,
       });
@@ -118,12 +147,7 @@ class Task extends React.Component{
         /* arrow left.*/
         case 37:
 
-            if(this.state.slide===1){
-              this.setState({slide: this.state.slide});
-            }
-            else {
-              this.setState({slide: this.state.slide-1});
-            }
+            this.setState({slide: this.state.slide-1});
 
             break;
 
@@ -133,11 +157,6 @@ class Task extends React.Component{
             if(this.state.slide===21){
               this.setState({
                 slide: this.state.slide+1,
-                transition: this.state.transition+1,
-              });
-            }
-            else if(this.state.slide===22){
-              this.setState({
                 transition: this.state.transition+1,
               });
             }
@@ -158,13 +177,13 @@ class Task extends React.Component{
         /* arrow right.*/
         case 39:
 
-            if(this.state.slide===21){
+            if(this.state.slide===22){
               this.setState({
                 slide: this.state.slide+1,
                 transition: this.state.transition+1,
               });
             }
-            else if(this.state.slide===22){
+            else if(this.state.slide===23){
               this.setState({
                 transition: this.state.transition+1,
               });
