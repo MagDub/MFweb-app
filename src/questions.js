@@ -90,6 +90,9 @@ class Questions extends React.Component{
                     </p>
                   </div>
                 );
+
+             default:
+             
               }
             }
 
@@ -152,10 +155,10 @@ class Questions extends React.Component{
 
     let questions_behaviour = {  'SumPassed'          : SumPassed,
                                  'PressedKeys'        : pressed_keys,
-                                 'percentage_passed'  : percentage_passed,
-                                 'correct'            : correct}
+                                 'PercentagePassed'  : percentage_passed,
+                                 'Correct'            : correct}
 
-    console.log("sendQuestions", "questions_behaviour", questions_behaviour)
+    //console.log("sendQuestions", "questions_behaviour", questions_behaviour)
 
     fetch(`${API_URL}/questions_behaviour/` + user_no_, {
        method: 'POST',

@@ -1,0 +1,11 @@
+input[type="checkbox"] {
+  position: relative;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+  margin-left: 3vh;
+  width:  5vh;
+  height: 5vh;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all 150ms;
+}

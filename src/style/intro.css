@@ -1,0 +1,12 @@
+.link{
+  cursor: pointer;
+}
+
+.IntroConsentText{
+  font: "Century Gothic", Futura, sans-serif;
+  font-size  : 3vh;
+  margin-top : 2vh;
+  margin-left: 2vh;
+}
+
+.bold { font-weight: bold; }

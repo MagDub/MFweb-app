@@ -44,7 +44,7 @@ class Training extends React.Component{
   render(){
 
     if (this.state.trial===0) {
-      console.log("Fetch data training")
+      //console.log("Fetch data training")
       this.fetchTraining(this.props.UserNo);
       return null
       }
@@ -203,7 +203,7 @@ class Training extends React.Component{
                                 'ReactionTimes'       : ReactionTimes,
                                 'NumTraining'         : NumTraining}
 
-    console.log("sendTraining", "training_behaviour", training_behaviour)
+    //console.log("sendTraining", "training_behaviour", training_behaviour)
 
     fetch(`${API_URL}/training_behaviour/` + user_no_, {
        method: 'POST',

@@ -38,7 +38,7 @@ class Instructions extends React.Component{
           <div className="slide_text">
             <p>
               You will have to fill a small glass when you can collect 1 apple  <br />
-              and a large glass when you can collect 6 apples <br />
+              and a large glass when you can collect 6 apples. <br />
 
             </p>
           </div>);
@@ -70,6 +70,8 @@ class Instructions extends React.Component{
               Let&#39;s start picking apples now !
             </p>
           </div>);
+
+      default:
   }
 }
 

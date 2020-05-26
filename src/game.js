@@ -127,7 +127,7 @@ class Game extends React.Component{
                             'InitialSamplesSize'  : subset_InitialSamples_Size,
                             'TreePositions'       : subset_TreePositions}
 
-    console.log("sendBlock", "behaviour", behaviour)
+    //console.log("sendBlock", "behaviour", behaviour)
 
     fetch(`${API_URL}/behaviour/` + user_no_ + `/` + block_no_, {
        method: 'POST',
@@ -149,7 +149,7 @@ class Game extends React.Component{
       }
 
     else if (this.state.start_block===1) {
-      console.log("fetch data")
+      //console.log("fetch data")
       var BlockNo = this.state.BlockNo;
       this.fetchBlock(this.props.UserNo, BlockNo);
       return null
@@ -250,7 +250,7 @@ class Game extends React.Component{
         });
       }
       .bind(this),
-      500
+      700
     );
 
     return <Juice mean_score={mean_score} hor={this.state.block_info.Horizon[trialinblock_index]}/>;
