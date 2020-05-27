@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Button } from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
 import Checkbox from './checkbox';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
@@ -150,7 +149,7 @@ handleSubmit(event) {
 
         // sub select only answer options that have been checked
         if (count < box_total){ // at least one box is checked
-            const r = window.confirm("You cannot proceed to the study unless you give your full consent. Please, confirm if you decide to leave the study now"); if(r == true){ window.location.href="https://app.prolific.co"}
+            const r = window.confirm("You cannot proceed to the study unless you give your full consent. Please, confirm if you decide to leave the study now"); if(r === true){ window.location.href="https://app.prolific.co"}
         }
 
         else if (count===box_total) {
@@ -158,7 +157,7 @@ handleSubmit(event) {
         // redirect to survey here - maybe with the timeout
 
           this.props.history.push({
-            pathname: `/Survey`,
+            pathname: `/Questionnaires`,
             state: {participant_info: this.props.location.state.participant_info, newblock_frame: true} // to be changed
           })
         }

@@ -25,7 +25,7 @@ class Questions extends React.Component{
         return (
           <div className="slide_text">
             <p>
-              Apples picked from the same tree: <br /><br />
+              Apples picked from the same tree: <br />
               1 - Have the same size <br />
               2 - Have the same colour <br />
               3 - Are next to each other <br />
@@ -39,7 +39,7 @@ class Questions extends React.Component{
           return (
             <div className="slide_text">
               <p>
-                In order to fill the glass of juice, you need to: <br /><br />
+                In order to fill the glass of juice, you need to: <br />
                 1 - Collect the biggest apples <br />
                 2 - Collect the most apples from the same tree <br />
                 3 - Collect apples from red trees <br />
@@ -53,7 +53,7 @@ class Questions extends React.Component{
             return (
               <div className="slide_text">
                 <p>
-                  The size of the glass of juice depends on: <br /><br />
+                  The size of the glass of juice depends on: <br />
                   1 - The sizes of the apples you collected <br />
                   2 - The colours of the apple you collected <br />
                   3 - Nothing, it is random <br />
@@ -67,7 +67,7 @@ class Questions extends React.Component{
               return (
                 <div className="slide_text">
                   <p>
-                    At the end of the game, all your juice glasses will be: <br /><br />
+                    At the end of the game, all your juice glasses will be: <br />
                     1 - Useless <br />
                     2 - Converted to a money bonus<br />
                     3 - Delivered to your door  <br />
@@ -81,7 +81,7 @@ class Questions extends React.Component{
                 return (
                   <div className="slide_text">
                     <p>
-                      To select which tree you want to pick the next apple from you will use: <br /><br />
+                      To select which tree you want to pick the next apple from you will use: <br />
                       1 - Your mouse <br />
                       2 - Keys 1, 2, 3 <br />
                       3 - Left, Up, Right arrows <br />
@@ -92,7 +92,7 @@ class Questions extends React.Component{
                 );
 
              default:
-             
+
               }
             }
 
