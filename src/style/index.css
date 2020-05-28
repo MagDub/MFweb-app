@@ -21,28 +21,6 @@
   margin-left: 3%;
 }
 
-.QuizBlock{
-  font: "Century Gothic", Futura, sans-serif;
-  background: white;
-  font-size  : 3vh;
-  padding: 10px;
-  margin-top: 0;
-  margin-left:0;
-  margin-right:0;
-  text-align: center;
-  background-size:'cover';
-  background-repeat: 'no-repeat';
-}
-
-.SurveyIntroText{
-  font: "Century Gothic", Futura, sans-serif;
-  font-size  : 3vh;
-  margin-top : 2vh;
-  margin-bottom: 5vh;
-  margin-left: 2vh;
-  border-width: 0.5vh;
-}
-
 .translate {
   margin-top: 1%;
 }
@@ -105,52 +83,6 @@
 
 .answerOption:hover {
   background-color: #eefbfe;
-}
-
-.radioCustomButton {
-  position: absolute;
-  width: auto;
-  opacity: 0;
-}
-
-.radioCustomButton,
-.radioCustomLabel {
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer;
-}
-
-.radioCustomLabel {
-  position: relative;
-  width: 110%;
-  margin: 0;
-  padding: 1.5rem 2.5rem 1.5rem 5rem;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.radioCustomButton ~ .radioCustomLabel:before {
-  position: absolute;
-  width: 110%;
-
-  top: 20px;
-  left: 38px;
-  width: 28px;
-  height: 28px;
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  background: #fff;
-  border: 1px solid #bbb;
-  border-radius: 50%;
-  transition: all 0.3s;
-}
-
-.radioCustomButton:checked ~ .radioCustomLabel:before {
-  content: '';
-  background: #8bc53f url(../svg/icon-check.svg) no-repeat;
-  background-size: 27px;
-  border-color: #8bc53f;
 }
 
 /* Animation */

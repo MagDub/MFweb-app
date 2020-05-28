@@ -41,7 +41,7 @@ class Consent extends Component {
 
   render() {
 
-    var json = { title: "Form", pages: [
+    var json = { title: "Information sheet", pages: [
 
       {questions: [
 
@@ -112,60 +112,16 @@ class Consent extends Component {
       { type: "html",
           name: "info",
           html: "<p> To help future research and make the best use of the research data you have given us (such as answers to questionnaires) we may keep your research data indefinitely and share these. The data we collect will be shared and held as follows:<ul><li> In publications, your data will be anonymised, so you cannot be identified. </li><li> In public databases, your data will be anonymised. </li><li> We do not collect any personal data that could be used to identify you. </li></ul> The legal basis used to process your personal data will be the provision of public task (this means that the research you are taking part in is deemed to be in the public interest). The legal basis used to process special category data (i.e. ethnicity) will be for scientific research purposes. We will follow the UCL and legal guidelines to safeguard your data. If you change your mind and withdraw your consent to participate in this study you can contact us via Prolific. However, we collect all data in an anonymised form, which is why this data cannot be destroyed, withdrawn or recalled.If there are any queries or concerns please do not hesitate to contact: Magda Dubois, magda.dubois.18@ucl.ac.uk.</p>"},
-    ]},
 
-    {questions: [
-
-        { type: "checkbox", name: "checkbox1",
-            title: "I have read the information above, and understand what the study involves.",
-            //isRequired: true,
-            choices: ["Yes"]},
-
-        { type: "checkbox", name: "checkbox2",
-            title: "I consent to the processing of my personal information (e.g. User Id) for the purposes of this research study. I understand that such information will remain confidential and will be handled in accordance with all applicable data protection legislation and ethical standards in research. These data will only be accessible to the study team and individuals from the University and Funder who are responsible for monitoring and audits.",
-            //isRequired: true,
-            choices: ["Yes"]},
-
-        { type: "checkbox", name: "checkbox3",
-            title: 'I consent to being re-contacted for the purposes of this research study.',
-            //isRequired: true,
-            choices: ["Yes"]},
-
-        { type: "checkbox", name: "checkbox4",
-            title: 'I understand that my anonymised personal data can be shared with others for future research, shared in public databases and in scientific reports.',
-            //isRequired: true,
-            choices: ["Yes"]},
-
-        { type: "checkbox", name: "checkbox5",
-            title: 'I understand that I am free to withdraw from this study at any time without giving a reason and this will not affect my future medical care or legal rights.',
-            //isRequired: true,
-            choices: ["Yes"]},
-
-        { type: "checkbox", name: "checkbox6",
-            title: 'I understand the potential benefits and risks of participating, the support available to me should I become distressed during the research, and who to contact if I wish to lodge a complaint.',
-            //isRequired: true,
-            choices: ["Yes"]},
-
-        { type: "checkbox", name: "checkbox7",
-            title: 'I understand the inclusion and exclusion criteria in the Information Sheet and as explained to me by the researcher.  I confirm that I do not fall under the exclusion criteria.',
-            //isRequired: true,
-            choices: ["Yes"]},
-
-        { type: "checkbox", name: "checkbox8",
-            title: 'I agree that the research project named above has been explained to me to my satisfaction and I agree to take part in this study.',
-            //isRequired: true,
-            choices: ["Yes"]},
-        ]}
-  ]};
+          ]}
+    ]};
 
     if(this.state.isCompleted===0){
       return(
       <div>
         <div className="IntroConsentText">
           <p><span className="bold">INFORMATION FOR THE PARTICIPANT</span></p>
-          Please read carefully. If you are happy to proceed please click the boxes on the 2nd page of the form to show that
-          you consent to this study proceeding. Please note that you cannot proceed to the study unless
-          you give your full consent.
+          Please read carefully.
           <br/><br/>
           <Survey.Survey json={json} showCompletedPage={false} onComplete={this.onCompleteComponent}/>
         </div>
@@ -176,7 +132,7 @@ class Consent extends Component {
       console.log("JSON string",this.state.resultAsString);
 
       this.props.history.push({
-        pathname: `/Questionnaires`,
+        pathname: `/Consent`,
         //state: {participant_info: this.props.location.state.participant_info, newblock_frame: true} // to be changed
       })
 

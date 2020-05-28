@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.css'
 import './style/questionnaires.css';
 import 'react-showdown';
+import './style/intro.css';
 
 /*
 var myCss = {
@@ -46,7 +47,102 @@ class Questionnaires extends Component {
   }
 
   render() {
-    var json = { title: "Surveys", showProgressBar: "top", pages: [
+    var json = { title: "Form", showProgressBar: "top", pages: [
+
+      {questions: [
+          { type: "radiogroup", name: "IQ_1_900",
+              title: "What number is one fifth of one fourth of one ninth of 900?",
+              //colCount: 4,
+              choices: ["2", "3", "4", "5", "6", "7"]},
+
+          { type: "radiogroup", name: "IQ_2_Zach",
+              title: "Zach is taller than Matt and Richard is shorter than Zach. Which of the following statements would be the most accurate?",
+              choices: ["Richard is taller than Matt", "Richard is shorter than Matt",
+                  "Richard is as tall as Matt", "It's impossible to tell"]},
+
+          { type: "radiogroup", name: "IQ_3_Joshua",
+              title: "Joshua is 12 years old and his sister is three times as old as he. When Joshua is 23 years old, how old will his sister be?",
+              choices: ["25", "39", "44", "47", "53"]},
+
+          { type: "radiogroup", name: "IQ_4_Thursday",
+              title: "If the day after tomorrow is two days before Thursday then what day is it today?",
+              choices: ["Friday", "Monday", "Wednesday", "Saturday", "Tuesday", "Sunday"]},
+
+          { type: "radiogroup", name: "IQ_5_K",
+              title: "In the following alphanumeric series, what letter comes next? K N P S U ...?",
+              choices: ["S", "T", "U", "V", "W", "X"]},
+
+          { type: "radiogroup", name: "IQ_6_V",
+              title: "In the following alphanumeric series, what letter comes next? V Q M J H ...?",
+              choices: ["E", "F", "G", "H", "I", "J"]},
+
+          { type: "radiogroup", name: "IQ_7_I",
+              title: "In the following alphanumeric series, what letter comes next? I J L O S ...?",
+              choices: ["T", "U", "V", "X", "Y", "Z"]},
+
+          { type: "radiogroup", name: "IQ_8_Q",
+              title: "In the following alphanumeric series, what letter comes next? Q S N P L ...?",
+              choices: ["J", "H", "I", "N", "M", "L"]},
+      ]},
+
+      {questions: [
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='images_quest/mx45_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx45_a.png' width='460px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_1", //isRequired: true,
+            title: "Which figure fits into the missing slot?",
+            choices: ["A", "B", "C", "D", "E", "F"]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='images_quest/mx46_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx46_a.png' width='460px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_2", //isRequired: true,
+            title: "Which figure fits into the missing slot?",
+            choices: ["A", "B", "C", "D", "E", "F"]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='images_quest/mx47_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx47_a.png' width='460px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_3", //isRequired: true,
+            title: "Which figure fits into the missing slot?",
+            choices: ["A", "B", "C", "D", "E", "F"]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='images_quest/mx55_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx55_a.png' width='460px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_4", //isRequired: true,
+            title: "Which figure fits into the missing slot?",
+            choices: ["A", "B", "C", "D", "E", "F"]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='images_quest/rsd3_q.png' width='550px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_5", //isRequired: true,
+            title: "All the cubes below have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            choices: ["A", "B", "C", "D", "E", "F", "G", "H"]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='images_quest/rsd4_q.png' width='550px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_6", //isRequired: true,
+            title: "All the cubes below have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            choices: ["A", "B", "C", "D", "E", "F", "G", "H"]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='images_quest/rsd6_q.png' width='550px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_7", //isRequired: true,
+            title: "All the cubes below have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            choices: ["A", "B", "C", "D", "E", "F", "G", "H"]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='images_quest/rsd8_q.png' width='550px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_8", //isRequired: true,
+            title: "All the cubes below have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            choices: ["A", "B", "C", "D", "E", "F", "G", "H"]},
+    ]},
+
         {questions: [
             { type: "matrix", name: "ASRS", title: "Please indicate what best describes how you have felt and conducted yourself over the past 6 months. ",
                 columns: [
@@ -161,16 +257,25 @@ class Questionnaires extends Component {
     ]};
 
     if(this.state.isCompleted===0){
-      return <Survey.Survey json={json} showCompletedPage={false} onComplete={this.onCompleteComponent}/>
+      return(
+        <div>
+          <div className="IntroConsentText">
+            <p><span className="bold">STUDY PART 1/2</span></p>
+            Thank you for joining our study. Here is the 1st part in which we ask you questions about reasoning and about yourself. Please take your time to answer. Once you have answered all questions in the form bellow, you will proceed to the computer game.
+            <br/><br/>
+            <Survey.Survey json={json} showCompletedPage={false} onComplete={this.onCompleteComponent}/>
+          </div>
+        </div>
+      );
     }
     else {
-      console.log("JSON string",this.resultAsString);
+      console.log("JSON string",this.state.resultAsString);
 
       //this.sendDataToServer()
 
       this.props.history.push({
         pathname: `/Task`,
-        state: {participant_info: this.props.location.state.participant_info, newblock_frame: true} // to be changed
+        //state: {participant_info: this.props.location.state.participant_info, newblock_frame: true} // to be changed
       })
 
       return null
