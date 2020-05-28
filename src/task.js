@@ -14,7 +14,7 @@ class Task extends React.Component{
       UserNo:1,
       num_training:1,
       slide: 1,
-      transition:1,
+      transition:4,
       percentage_to_pass: 1, // percentage to pass the training and questions
       };
 

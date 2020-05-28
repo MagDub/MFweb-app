@@ -58,10 +58,10 @@ class Training extends React.Component{
             <div className="training_text">
               <p>
                 Look at the  apples previously collected <br />
-                (on the wooden crate). Which apple is <br />
-                most likely to be picked next ? <br />
-                Remember: a tree always produces <br />
-                apples of similar sizes!
+                (on the wooden crate). Which apple is most <br />
+                likely to be picked next ? <br />
+                Remember: a tree always produces apples <br />
+                of similar sizes !
               </p>
               <p> &emsp; &emsp; &emsp; Press 1&emsp; &emsp; Press 2</p>
               {this.disp_boxes(col)}
@@ -203,7 +203,7 @@ class Training extends React.Component{
                                 'ReactionTimes'       : ReactionTimes,
                                 'NumTraining'         : NumTraining}
 
-    //console.log("sendTraining", "training_behaviour", training_behaviour)
+    console.log("sendTraining", "training_behaviour", JSON.stringify(training_behaviour))
 
     fetch(`${API_URL}/training_behaviour/` + user_no_, {
        method: 'POST',

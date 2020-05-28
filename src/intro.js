@@ -10,9 +10,7 @@ import 'react-showdown';
 import './style/intro.css';
 
 
-
 class Consent extends Component {
-
 
   constructor(props) {
     super(props);
