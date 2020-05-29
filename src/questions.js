@@ -11,6 +11,9 @@ class Questions extends React.Component{
     let correct = Array(this.props.questions_nb).fill(0);
     let reaction_times = Array(this.props.questions_nb+1).fill(0);
 
+    var currentDate   = new Date();
+    var QuestionsStartTime    = currentDate.toTimeString();
+
     this.state = {
       bg:["slide_no_arrow"],
       question_no: 0,
@@ -18,6 +21,7 @@ class Questions extends React.Component{
       pressed_keys: pressed_keys,
       correct: correct,
       reaction_times: reaction_times,
+      QuestionsStartTime: QuestionsStartTime,
       };
   }
 
@@ -175,16 +179,25 @@ class Questions extends React.Component{
 
   sendQuestions(percentage_passed, user_no_){
 
+    var currentDate   = new Date();
+    var QuestionsFinishTime    = currentDate.toTimeString();
+
+    var QuestionsStartTime = this.state.QuestionsStartTime;
+    var InstructionsStartTime = this.props.InstructionsStartTime;
+
     var SumPassed = this.state.sum_passed;
     var pressed_keys = this.state.pressed_keys;
     var correct = this.state.correct;
     var reaction_times = this.state.reaction_times;
 
-    let questions_behaviour = {  'SumPassed'          : SumPassed,
-                                 'PressedKeys'        : pressed_keys,
-                                 'PercentagePassed'   : percentage_passed,
-                                 'ReactionTimes'      : reaction_times,
-                                 'Correct'            : correct}
+    let questions_behaviour = {  'SumPassed'             : SumPassed,
+                                 'PressedKeys'           : pressed_keys,
+                                 'PercentagePassed'      : percentage_passed,
+                                 'ReactionTimes'         : reaction_times,
+                                 'InstructionsStartTime' : InstructionsStartTime,
+                                 'QuestionsStartTime'    : QuestionsStartTime,
+                                 'QuestionsFinishTime'   : QuestionsFinishTime,
+                                 'Correct'               : correct}
 
     //console.log("sendQuestions", "questions_behaviour", questions_behaviour)
 

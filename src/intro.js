@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './style/questionnaires.css';
 import 'react-showdown';
 import './style/intro.css';
+import { API_URL } from './config';
+import { handleResponse } from './helpers'; // imports json
 
 
 class Consent extends Component {
@@ -15,8 +17,18 @@ class Consent extends Component {
   constructor(props) {
     super(props);
 
+    var currentDate   = new Date();
+    var date          = currentDate.getDate();
+    var month         = currentDate.getMonth(); //Be careful! January is 0 not 1
+    var year          = currentDate.getFullYear();
+    var dateString    = date + "-" +(month + 1) + "-" + year;
+    var timeString    = currentDate.toTimeString();
+
     this.state = {
-      isCompleted: 0,
+      UserNo: [],
+      ConsentCompleted: 0,
+      date: dateString,
+      startTime: timeString,
     };
 
     this.onCompleteComponent = this.onCompleteComponent.bind(this);
@@ -25,13 +37,30 @@ class Consent extends Component {
   onCompleteComponent(survey) {
 
     this.setState({
-      isCompleted: 1,
+      ConsentCompleted: 1,
     });
   }
 
   componentDidMount() {
     Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+    this.fetchUserInfo();
   }
+
+  fetchUserInfo () {
+       fetch(`${API_URL}/questionnaires_behaviour/last_user_no`)
+         .then(handleResponse)
+         .then((data) => {
+           const user_no_ = parseInt(data['new_user_no'])
+           //console.log("fetchUserInfo in Intro ", "user_no", user_no_)
+
+           this.setState({
+                   UserNo : user_no_,
+               });
+       })
+         .catch((error) => {
+          console.log(error)
+       });
+      }
 
   render() {
 
@@ -152,7 +181,7 @@ class Consent extends Component {
         ]}
   ]};
 
-    if(this.state.isCompleted===0){
+    if(this.state.ConsentCompleted===0){
       return(
       <div>
         <div className="IntroConsentText">
@@ -170,7 +199,7 @@ class Consent extends Component {
 
       this.props.history.push({
         pathname: `/Questionnaires`,
-        //state: {participant_info: this.props.location.state.participant_info, newblock_frame: true} // to be changed
+        state: {user_info: this.state}
       })
 
       return null

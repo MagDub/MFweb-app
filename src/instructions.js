@@ -7,7 +7,7 @@ class Instructions extends React.Component{
     super(props);
 
     this.state = {
-      instruc:["slide_22", "slide_1", "slide_2", "slide_3", "slide_4", "slide_5", "slide_6", "slide_7", "slide_8", "slide_9", "slide_10", "slide_11", "slide_12", "slide_13", "slide_14", "slide_15", "slide_16", "slide_17", "slide_18", "slide_19", "slide_20", "slide_21" , "slide_22"],
+      instruc:["slide_22", "slide_1", "slide_2", "slide_3", "slide_4", "slide_5", "slide_6", "slide_7", "slide_8", "slide_9", "slide_10", "slide_11", "slide_12", "slide_13", "slide_14", "slide_15", "slide_16", "slide_17", "slide_18", "slide_19", "slide_20", "slide_21" , "slide_22", "slide_22"],
       };
   }
 
@@ -39,7 +39,6 @@ class Instructions extends React.Component{
             <p>
               You will have to fill a small glass when you can collect 1 apple  <br />
               and a large glass when you can collect 6 apples. <br />
-
             </p>
           </div>);
 
@@ -66,8 +65,18 @@ class Instructions extends React.Component{
         return (
           <div className="slide_text_after_training">
             <p>
-              Congratulations, you&#39;ve done well. <br /> <br />
-              Let&#39;s start picking apples now !
+              Congratulations, you&#39;ve done well. <br />
+              Let&#39;s start picking apples now ! <br />
+              Remember: the bigger the apples, the more juice...
+            </p>
+          </div>);
+
+      case 24:
+        return (
+          <div className="slide_text_after_training">
+            <p>
+              Mmmh... You can do better than that! <br /> <br />
+              Let&#39;s try again !
             </p>
           </div>);
 

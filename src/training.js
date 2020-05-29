@@ -38,6 +38,8 @@ class Training extends React.Component{
       sum_passed:0,
       correct_ans:correct_ans,
       reaction_times: reaction_times,
+      TrainingStartTime: [],
+      TrainingFinishTime: [],
       };
   }
 
@@ -160,6 +162,9 @@ class Training extends React.Component{
 
   fetchTraining(user_no_){
 
+    var currentDate   = new Date();
+    var TrainingStartTime    = currentDate.toTimeString();
+
     var reaction_times = this.state.reaction_times;
 
     fetch(`${API_URL}/training/`+user_no_)
@@ -179,12 +184,17 @@ class Training extends React.Component{
           training_info: training_info,
           trial: 1,
           reaction_times: reaction_times,
+          TrainingStartTime: TrainingStartTime,
         });
       })
   }
 
   sendTraining(user_no_){
 
+    var currentDate   = new Date();
+    var TrainingFinishTime    = currentDate.toTimeString();
+
+    var TrainingStartTime = this.state.TrainingStartTime;
     var SumPassed = this.state.sum_passed;
     var NumTraining = this.props.num_training;
     var Chosen = this.state.chosen;
@@ -195,6 +205,8 @@ class Training extends React.Component{
     var InitialSamplesSize = this.state.training_info.InitialSamplesSize.slice(0,NumTraining);
 
     let training_behaviour = {  'SumPassed'           : SumPassed,
+                                'TrainingStartTime'   : TrainingStartTime,
+                                'TrainingFinishTime'  : TrainingFinishTime,
                                 'ChoicesSize'         : ChoicesSize,
                                 'ChoicesCorrect'      : ChoicesCorrect,
                                 'InitialSamplesSize'  : InitialSamplesSize,

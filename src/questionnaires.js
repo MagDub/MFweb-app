@@ -24,9 +24,13 @@ class Questionnaires extends Component {
   constructor(props) {
     super(props);
 
+    var user_info = this.props.location.state.user_info;
+    var UserNo = user_info.UserNo;
+
     this.state = {
-      UserNo:1,
-      isCompleted: 0,
+      user_info: user_info,
+      UserNo:UserNo,
+      QuestionnairesCompleted: 0,
       resultAsString: {},
     };
 
@@ -36,15 +40,28 @@ class Questionnaires extends Component {
   onCompleteComponent(survey) {
 
     var page = survey.currentPage;
-    var valueName = "PageNo" + (survey.pages.indexOf(page)+1);
-    var seconds = Math.round(performance.now())
+    var RT_valueName = "PageNo" + (survey.pages.indexOf(page)+1);
+    var date = this.state.user_info.date;
+    var startTime = this.state.user_info.startTime;
+    var seconds = Math.round(performance.now());
+    var user_info = this.state.user_info;
+    var QuestionnairesCompleted = 1;
 
-    survey.setValue(valueName, seconds);
+    var currentDate   = new Date();
+    var finishTime    = currentDate.toTimeString();
+
+    user_info.QuestionnairesCompleted = QuestionnairesCompleted;
+
+    survey.setValue(RT_valueName, seconds);
+    survey.setValue("Date", date)
+    survey.setValue("StartTime", startTime)
+    survey.setValue("FinishTime", finishTime)
 
     var resultAsString = JSON.stringify(survey.data);
 
     this.setState({
-      isCompleted: 1,
+      QuestionnairesCompleted: QuestionnairesCompleted,
+      user_info: user_info,
       resultAsString: resultAsString
     });
   }
@@ -401,7 +418,7 @@ class Questionnaires extends Component {
         ]}
     ]};
 
-    if(this.state.isCompleted===0){
+    if(this.state.QuestionnairesCompleted===0){
       return(
         <div>
           <div className="IntroConsentText">
@@ -420,7 +437,7 @@ class Questionnaires extends Component {
 
       this.props.history.push({
         pathname: `/Task`,
-        //state: {participant_info: this.props.location.state.participant_info, newblock_frame: true} // to be changed
+        state: {user_info: this.state.user_info}
       })
 
       return null

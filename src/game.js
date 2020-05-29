@@ -60,6 +60,9 @@ class Game extends React.Component{
 
   fetchBlock(user_no_,block_no_){
 
+    var currentDate   = new Date();
+    var BlockStartTime    = currentDate.toTimeString();
+
     fetch(`${API_URL}/task/`+user_no_+'/'+block_no_)
     .then(handleResponse)
     .then((data) => {
@@ -87,14 +90,20 @@ class Game extends React.Component{
           disp_new_block:1,
           block_info: block_info,
           TrialNo: block_info.TrialNo[0],
+          BlockStartTime: BlockStartTime,
         });
       })
   }
 
   sendBlock(user_no_,block_no_){
 
-    let trial_per_block = this.state.trial_per_block
-    let ind_block = block_no_-1
+    var currentDate   = new Date();
+    var BlockFinishTime    = currentDate.toTimeString();
+
+    let BlockStartTime = this.state.BlockStartTime;
+
+    let trial_per_block = this.state.trial_per_block;
+    let ind_block = block_no_-1;
 
     let block_first_trial = trial_per_block*ind_block;
     let block_last_trial = trial_per_block*ind_block+trial_per_block;
@@ -113,6 +122,8 @@ class Game extends React.Component{
     var subset_Horizon = this.state.block_info.Horizon.slice(block_first_trial,block_last_trial);
 
     let behaviour = {       'BlockNo'             : block_no_,
+                            'BlockStartTime'      : BlockStartTime,
+                            'BlockFinishTime'     : BlockFinishTime,
                             'TreeColours'         : this.state.tree_col[ind_block],
                             'ChosenTree'          : chosen_tree,
                             'ChosenAppleSize'     : chosen_apple_size,

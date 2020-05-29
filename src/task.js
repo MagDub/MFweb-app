@@ -10,12 +10,19 @@ class Task extends React.Component{
   constructor(props) {
     super(props);
 
+    var user_info = this.props.location.state.user_info;
+    var UserNo = user_info.UserNo;
+
+    var currentDate   = new Date();
+    var InstructionsStartTime    = currentDate.toTimeString();
+
     this.state = {
-      UserNo:1,
+      UserNo:UserNo,
       num_training:1,
       slide: 1,
       transition:1,
       percentage_to_pass: 1, // percentage to pass the training and questions
+      InstructionsStartTime: InstructionsStartTime,
       };
 
     this.nextTransition = this.nextTransition.bind(this);
@@ -38,27 +45,27 @@ class Task extends React.Component{
     switch(this.state.transition) {
 
       case 1:
-        //console.log("task: transition 1 - instructions", "slide", this.state.slide)
+        console.log("task: transition 1 - instructions", "slide", this.state.slide)
         return <Instructions slide={this.state.slide}/>
 
       case 2:
-        //console.log("task: transition 2 - questions")
-        return <Questions UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition}/>
+        console.log("task: transition 2 - questions")
+        return <Questions UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
 
       case 3:
-        //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
+        console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
         return <Instructions slide={this.state.slide}/>
 
       case 4:
-        //console.log("task: transition 4 - training")
+        console.log("task: transition 4 - training")
         return <Training UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
       case 5:
-        //console.log("task: transition 5 - instructions")
+        console.log("task: transition 5 - instructions")
         return <Instructions slide={this.state.slide}/>
 
       case 6:
-        //console.log("task: transition 6 - start game")
+        console.log("task: transition 6 - start game")
         return <Game UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
       case 7:
@@ -109,9 +116,27 @@ class Task extends React.Component{
       });
       }
       else {
+
+      var currentDate   = new Date();
+      var InstructionsStartTime    = currentDate.toTimeString();
+
+      var new_transition;
+      var new_slide;
+
+      if (this.state.transition===2) {
+        new_transition=1;
+        new_slide=0;
+      }
+      else if (this.state.transition===4) {
+        console.log("failed training (in nextTransition in task)")
+        new_transition=3;
+        new_slide=24;
+      };
+
       this.setState({
-        transition: 1,
-        slide: 0,
+        InstructionsStartTime: InstructionsStartTime,
+        transition: new_transition,
+        slide: new_slide,
       });
       }
     }
@@ -131,6 +156,7 @@ class Task extends React.Component{
         case 39:
 
             if(this.state.slide===21){
+
               this.setState({
                 slide: this.state.slide+1,
                 transition: this.state.transition+1,
@@ -161,6 +187,12 @@ class Task extends React.Component{
             }
             else if(this.state.slide===23){
               this.setState({
+                transition: this.state.transition+1,
+              });
+            }
+            else if(this.state.slide===24){
+              this.setState({
+                slide: 23,
                 transition: this.state.transition+1,
               });
             }
