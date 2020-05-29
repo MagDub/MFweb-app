@@ -49,9 +49,6 @@ class Questionnaires extends Component {
     });
   }
 
-  //JSON string – "{\"PageNo0\":304,\"IQ_8_Q\":\"L\",\"PageNo1\":3494,\"PageNo2\":7938,\"PageNo3\":9392,\"PageNo4\":10985}" (main.chunk.js, line 3699)
- //"training_behaviour" – "{\"SumPassed\":1,\"ChoicesSize\":[[8,3]],\"ChoicesCorrect\":[[0,1]],\"InitialSamplesSize\":[[3,3,4]],\"Chosen\":[2],\"CorrectAns\":[2],\"ReactionTimes\":[…"
-
   timerCallback(survey){
     var page = survey.currentPage;
     var valueName = "PageNo" + survey.pages.indexOf(page);
@@ -230,7 +227,7 @@ class Questionnaires extends Component {
             name: "info",
             html: "<table><body></br></br></br></br><img src='images_quest/rsd3_q.png' width='550px'/></body></table>"},
           { type: "radiogroup", name: "IQimage_5", //isRequired: true,
-            title: "All the cubes below have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
             choices: [
               {value:1, text:"A"},
               {value:2, text:"B"},
@@ -246,7 +243,7 @@ class Questionnaires extends Component {
             name: "info",
             html: "<table><body></br></br></br></br><img src='images_quest/rsd4_q.png' width='550px'/></body></table>"},
           { type: "radiogroup", name: "IQimage_6", //isRequired: true,
-            title: "All the cubes below have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
             choices: [
               {value:1, text:"A"},
               {value:2, text:"B"},
@@ -262,7 +259,7 @@ class Questionnaires extends Component {
             name: "info",
             html: "<table><body></br></br></br></br><img src='images_quest/rsd6_q.png' width='550px'/></body></table>"},
           { type: "radiogroup", name: "IQimage_7", //isRequired: true,
-            title: "All the cubes below have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
             choices: [
               {value:1, text:"A"},
               {value:2, text:"B"},
@@ -277,8 +274,8 @@ class Questionnaires extends Component {
           { type: "html",
             name: "info",
             html: "<table><body></br></br></br></br><img src='images_quest/rsd8_q.png' width='550px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_8", //isRequired: true,
-            title: "All the cubes below have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+          { type: "radiogroup", name: "IQimage_8",  //isRequired: true,
+            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
             choices: [
               {value:1, text:"A"},
               {value:2, text:"B"},

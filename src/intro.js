@@ -17,7 +17,6 @@ class Consent extends Component {
 
     this.state = {
       isCompleted: 0,
-      resultAsString: {}
     };
 
     this.onCompleteComponent = this.onCompleteComponent.bind(this);
@@ -25,11 +24,8 @@ class Consent extends Component {
 
   onCompleteComponent(survey) {
 
-    var resultAsString = JSON.stringify(survey.data);
-
     this.setState({
       isCompleted: 1,
-      resultAsString: resultAsString
     });
   }
 
@@ -171,7 +167,6 @@ class Consent extends Component {
       );
     }
     else {
-      console.log("JSON string",this.state.resultAsString);
 
       this.props.history.push({
         pathname: `/Questionnaires`,

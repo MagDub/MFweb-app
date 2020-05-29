@@ -9,13 +9,15 @@ class Questions extends React.Component{
 
     let pressed_keys = Array(this.props.questions_nb).fill(0);
     let correct = Array(this.props.questions_nb).fill(0);
+    let reaction_times = Array(this.props.questions_nb+1).fill(0);
 
     this.state = {
       bg:["slide_no_arrow"],
-      question_no: 1,
+      question_no: 0,
       sum_passed: 0,
       pressed_keys: pressed_keys,
       correct: correct,
+      reaction_times: reaction_times,
       };
   }
 
@@ -96,11 +98,27 @@ class Questions extends React.Component{
               }
             }
 
-  next_question(pressed){
+  start_quest(){
+
+    var reaction_times = this.state.reaction_times;
+    var time_displayed = Math.round(performance.now());
+
+    reaction_times[0] = time_displayed;
+
+    this.setState({
+      question_no: 1,
+      reaction_times: reaction_times,
+    });
+
+
+  }
+
+  next_question(pressed, time_pressed){
 
     var question_no = this.state.question_no;
     var sum_passed = this.state.sum_passed;
     var pressed_keys = this.state.pressed_keys;
+    var reaction_times = this.state.reaction_times;
     var correct = this.state.correct;
     var ind_question = question_no - 1;
 
@@ -114,7 +132,8 @@ class Questions extends React.Component{
         sum_passed = sum_passed+1;
     }
 
-    pressed_keys[ind_question]=pressed;
+    pressed_keys[ind_question] = pressed;
+    reaction_times[ind_question+1] = time_pressed;
 
     question_no=question_no+1;
 
@@ -128,22 +147,29 @@ class Questions extends React.Component{
 
     document.addEventListener("keydown", this._handleKeyDownNumbers)
 
-    if (this.state.question_no<=this.props.questions_nb){
-      return (
-        <div className={this.state.bg}>
-          <div className={this.state.bg}>
-            {this.display_question(this.state.question_no)}
-          </div>
-        </div>
-      );
+    if(this.state.question_no===0){
+      this.start_quest();
+      return null;
     }
 
-    else {
-      document.removeEventListener("keydown", this._handleKeyDownEnter)
-      var percentage_passed = this.state.sum_passed / this.props.questions_nb;
-      this.sendQuestions(percentage_passed, this.props.UserNo);
-      this.props.nextTransition(percentage_passed);
-      return null
+    else{
+      if (this.state.question_no<=this.props.questions_nb){
+        return (
+          <div className={this.state.bg}>
+            <div className={this.state.bg}>
+              {this.display_question(this.state.question_no)}
+            </div>
+          </div>
+        );
+      }
+
+      else {
+        document.removeEventListener("keydown", this._handleKeyDownEnter)
+        var percentage_passed = this.state.sum_passed / this.props.questions_nb;
+        this.sendQuestions(percentage_passed, this.props.UserNo);
+        this.props.nextTransition(percentage_passed);
+        return null
+      }
     }
   }
 
@@ -152,10 +178,12 @@ class Questions extends React.Component{
     var SumPassed = this.state.sum_passed;
     var pressed_keys = this.state.pressed_keys;
     var correct = this.state.correct;
+    var reaction_times = this.state.reaction_times;
 
     let questions_behaviour = {  'SumPassed'          : SumPassed,
                                  'PressedKeys'        : pressed_keys,
-                                 'PercentagePassed'  : percentage_passed,
+                                 'PercentagePassed'   : percentage_passed,
+                                 'ReactionTimes'      : reaction_times,
                                  'Correct'            : correct}
 
     //console.log("sendQuestions", "questions_behaviour", questions_behaviour)
@@ -173,39 +201,48 @@ class Questions extends React.Component{
   _handleKeyDownNumbers = (event) => {
 
     var pressed;
+    var time_pressed;
 
     switch( event.keyCode ) {
         case 97:
         pressed = 1;
-        this.next_question(pressed)
+        time_pressed = Math.round(performance.now());
+        this.next_question(pressed, time_pressed)
             break;
         case 98:
         pressed = 2;
-        this.next_question(pressed)
+        time_pressed = Math.round(performance.now());
+        this.next_question(pressed, time_pressed)
             break;
         case 99:
         pressed = 3;
-        this.next_question(pressed)
+        time_pressed = Math.round(performance.now());
+        this.next_question(pressed, time_pressed)
             break;
         case 100:
         pressed = 4;
-        this.next_question(pressed)
+        time_pressed = Math.round(performance.now());
+        this.next_question(pressed, time_pressed)
             break;
         case 49:
         pressed = 1;
-        this.next_question(pressed)
+        time_pressed = Math.round(performance.now());
+        this.next_question(pressed, time_pressed)
             break;
         case 50:
         pressed = 2;
-        this.next_question(pressed)
+        time_pressed = Math.round(performance.now());
+        this.next_question(pressed, time_pressed)
             break;
         case 51:
         pressed = 3;
-        this.next_question(pressed)
+        time_pressed = Math.round(performance.now());
+        this.next_question(pressed, time_pressed)
             break;
         case 52:
         pressed = 4;
-        this.next_question(pressed)
+        time_pressed = Math.round(performance.now());
+        this.next_question(pressed, time_pressed)
             break;
         default:
       }

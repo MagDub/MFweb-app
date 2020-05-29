@@ -14,7 +14,7 @@ class Task extends React.Component{
       UserNo:1,
       num_training:1,
       slide: 1,
-      transition:4,
+      transition:1,
       percentage_to_pass: 1, // percentage to pass the training and questions
       };
 
@@ -38,31 +38,31 @@ class Task extends React.Component{
     switch(this.state.transition) {
 
       case 1:
-        console.log("task: transition 1 - instructions", "slide", this.state.slide)
+        //console.log("task: transition 1 - instructions", "slide", this.state.slide)
         return <Instructions slide={this.state.slide}/>
 
       case 2:
-        console.log("task: transition 2 - questions")
+        //console.log("task: transition 2 - questions")
         return <Questions UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition}/>
 
       case 3:
-        console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
+        //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
         return <Instructions slide={this.state.slide}/>
 
       case 4:
-        console.log("task: transition 4 - training")
+        //console.log("task: transition 4 - training")
         return <Training UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
       case 5:
-        console.log("task: transition 5 - instructions")
+        //console.log("task: transition 5 - instructions")
         return <Instructions slide={this.state.slide}/>
 
       case 6:
-        console.log("task: transition 6 - start game")
+        //console.log("task: transition 6 - start game")
         return <Game UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
       case 7:
-        console.log("task: transition 7")
+        //console.log("task: transition 7")
         return null
 
       default:
