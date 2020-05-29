@@ -1,9 +1,12 @@
 import React from 'react';
 import Game from './game';
+import Button from 'react-bootstrap/Button'
 import Instructions from './instructions';
 import Training from './training';
 import Questions from './questions';
 import {withRouter} from 'react-router-dom';
+import './style/task.css';
+
 
 class Task extends React.Component{
 
@@ -19,8 +22,9 @@ class Task extends React.Component{
     this.state = {
       UserNo:UserNo,
       num_training:1,
+      loading: 1,
       slide: 1,
-      transition:1,
+      transition:0,
       percentage_to_pass: 1, // percentage to pass the training and questions
       InstructionsStartTime: InstructionsStartTime,
       };
@@ -36,6 +40,22 @@ class Task extends React.Component{
       e.preventDefault();
     }
     });
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+
+    setTimeout(
+      function() {
+        this.setState({
+          transition: 1,
+        });
+      }
+      .bind(this),
+      100
+    );
+
   }
 
   render(){
@@ -44,28 +64,44 @@ class Task extends React.Component{
 
     switch(this.state.transition) {
 
+      case 0:
+        return(
+          <div>
+            <div className="IntroConsentText">
+              <p><span className="bold">STUDY PART 2/2</span></p>
+                Thank you for answering all questions. If you are ready, you will now proceed to the computer game.
+              <br/><br/>
+              <div className="container">
+                  <div className="center">
+                    <Button variant="outline-success" size="lg" onClick={this.handleClick}> Let&#39;s start playing ! </Button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        );
+
       case 1:
-        console.log("task: transition 1 - instructions", "slide", this.state.slide)
+        //console.log("task: transition 1", "slide", this.state.slide)
         return <Instructions slide={this.state.slide}/>
 
       case 2:
-        console.log("task: transition 2 - questions")
+        //console.log("task: transition 2 - questions")
         return <Questions UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
 
       case 3:
-        console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
+        //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
         return <Instructions slide={this.state.slide}/>
 
       case 4:
-        console.log("task: transition 4 - training")
+        //console.log("task: transition 4 - training")
         return <Training UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
       case 5:
-        console.log("task: transition 5 - instructions")
+        //console.log("task: transition 5 - instructions")
         return <Instructions slide={this.state.slide}/>
 
       case 6:
-        console.log("task: transition 6 - start game")
+        //console.log("task: transition 6 - start game")
         return <Game UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
       case 7:
@@ -128,7 +164,6 @@ class Task extends React.Component{
         new_slide=0;
       }
       else if (this.state.transition===4) {
-        console.log("failed training (in nextTransition in task)")
         new_transition=3;
         new_slide=24;
       };

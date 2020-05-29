@@ -6,13 +6,49 @@ class Instructions extends React.Component{
   constructor(props) {
     super(props);
 
+    this.switchImage = this.switchImage.bind(this);
+
     this.state = {
-      instruc:["slide_22", "slide_1", "slide_2", "slide_3", "slide_4", "slide_5", "slide_6", "slide_7", "slide_8", "slide_9", "slide_10", "slide_11", "slide_12", "slide_13", "slide_14", "slide_15", "slide_16", "slide_17", "slide_18", "slide_19", "slide_20", "slide_21" , "slide_22", "slide_22"],
+      currentImage: 0,
+      images: ["images/loading.jpg"],
+      instruc:["slide_22", "slide_22", "slide_2", "slide_3", "slide_4", "slide_5", "slide_6", "slide_7", "slide_8", "slide_9", "slide_10", "slide_11", "slide_12", "slide_13", "slide_14", "slide_15", "slide_16", "slide_17", "slide_18", "slide_19", "slide_20", "slide_21" , "slide_22", "slide_22"],
       };
+  }
+
+  switchImage() {
+    this.setState({
+      currentImage: 1
+    });
+  }
+
+  componentDidMount() {
+    setTimeout(this.switchImage, 2000);
   }
 
   bubble_text(slide){
     switch(slide) {
+
+      case 1:
+
+        if (this.state.currentImage===0){
+          return (
+            <div className="slideshow-container">
+              <img src={this.state.images[this.state.currentImage]}
+              width={800}
+              />
+            </div>
+          );}
+
+        else {
+          return (
+            <div className="slide_text">
+              <p>
+                Hi my name is Maggie, welcome to our farm ! <br />
+                The apple picking season just started. We are really glad that you are <br />
+                here to help. Press the right arrow on your keyboard to continue. <br />
+              </p>
+            </div>);
+        }
 
       case 0:
         return (
