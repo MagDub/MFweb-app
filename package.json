@@ -12,9 +12,11 @@
     "react": "^16.13.0",
     "react-bootstrap-validation": "^0.1.11",
     "react-dom": "^16.13.0",
+    "react-image-resizer": "^1.3.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.0",
     "react-showdown": "^2.0.3",
+    "react-image-resizer": "^1.3.0",
     "react-transition-group": "^1.2.1",
     "showdown": "^1.9.1",
     "survey-react": "^1.7.8"
