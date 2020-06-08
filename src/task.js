@@ -21,6 +21,7 @@ class Task extends React.Component{
 
     this.state = {
       UserNo:UserNo,
+      user_info: user_info,
       num_training:1,
       loading: 1,
       slide: 1,
@@ -68,8 +69,11 @@ class Task extends React.Component{
         return(
           <div>
             <div className="IntroConsentText">
-              <p><span className="bold">STUDY PART 2/2</span></p>
-                Thank you for answering all questions. If you are ready, you will now proceed to the computer game.
+              <p><span className="bold">STUDY PART 1/2</span></p>
+                Thank you for joining our study. <br/>
+                In the 1st part you will play a computer game and in the 2nd part you will
+                be asked a few questions about yourself.<br/>
+                If you are ready, press the button to be redirected to the game.
               <br/><br/>
               <div className="container">
                   <div className="center">
@@ -106,6 +110,10 @@ class Task extends React.Component{
 
       case 7:
         //console.log("task: transition 7")
+        this.props.history.push({
+          pathname: `/Questionnaires`,
+          state: {user_info: this.state.user_info}
+        })
         return null
 
       default:

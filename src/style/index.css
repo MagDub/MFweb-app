@@ -6,17 +6,9 @@
   height: 1000px;
 }
 
-.IntroConsentText{
-  font: "Century Gothic", Futura, sans-serif;
-  font-size  : 3vh;
-  margin-top : 2vh;
-  margin-left: 2vh;
-}
-
-
 .IntroText{
   font: "Century Gothic", Futura, sans-serif;
-  font-size  : 14vh;
+  font-size  : 16;
   margin-top : 3%;
   margin-left: 3%;
 }
@@ -37,6 +29,7 @@
 
 .container {
   position: relative;
+  top: 2vh;
   max-width: 800px;
   margin: 0 auto;
   background: #fff;

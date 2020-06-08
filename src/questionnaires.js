@@ -95,217 +95,8 @@ class Questionnaires extends Component {
   render() {
     var json = { title: "Form", showProgressBar: "top", pages: [
 
+      // ASRS
       {questions: [
-          { type: "radiogroup", name: "IQ_1", //isRequired: true,
-              title: "What number is one fifth of one fourth of one ninth of 900?",
-              //colCount: 4,
-              choices: [
-                {value:1, text:"2"},
-                {value:2, text:"3"},
-                {value:3, text:"4"},
-                {value:4, text:"5"},
-                {value:5, text:"6"},
-                {value:6, text:"7"}
-              ]},
-
-          { type: "radiogroup", name: "IQ_2", //isRequired: true,
-              title: "Zach is taller than Matt and Richard is shorter than Zach. Which of the following statements would be the most accurate?",
-              choices: [
-                {value:1, text:"Richard is taller than Matt"},
-                {value:2, text:"Richard is shorter than Matt"},
-                {value:3, text:"Richard is as tall as Matt"},
-                {value:4, text:"It's impossible to tell"}
-              ]},
-
-          { type: "radiogroup", name: "IQ_3", //isRequired: true,
-              title: "Joshua is 12 years old and his sister is three times as old as he. When Joshua is 23 years old, how old will his sister be?",
-              choices: [
-                {value:1, text:"25"},
-                {value:2, text:"39"},
-                {value:3, text:"44"},
-                {value:4, text:"47"},
-                {value:5, text:"53"}
-              ]},
-
-          { type: "radiogroup", name: "IQ_4", //isRequired: true,
-              title: "If the day after tomorrow is two days before Thursday then what day is it today?",
-              choices: [
-                {value:1, text:"Friday"},
-                {value:2, text:"Monday"},
-                {value:3, text:"Wednesday"},
-                {value:4, text:"Saturday"},
-                {value:5, text:"Tuesday"},
-                {value:6, text:"Sunday"}
-              ]},
-
-          { type: "radiogroup", name: "IQ_5", //isRequired: true,
-              title: "In the following alphanumeric series, what letter comes next? K N P S U ...?",
-              choices: [
-                {value:1, text:"S"},
-                {value:2, text:"T"},
-                {value:3, text:"U"},
-                {value:4, text:"V"},
-                {value:5, text:"W"},
-                {value:6, text:"X"}
-              ]},
-
-          { type: "radiogroup", name: "IQ_6", //isRequired: true,
-              title: "In the following alphanumeric series, what letter comes next? V Q M J H ...?",
-              choices: [
-                {value:1, text:"E"},
-                {value:2, text:"F"},
-                {value:3, text:"G"},
-                {value:4, text:"H"},
-                {value:5, text:"I"},
-                {value:6, text:"J"}
-              ]},
-
-          { type: "radiogroup", name: "IQ_7", //isRequired: true,
-              title: "In the following alphanumeric series, what letter comes next? I J L O S ...?",
-              choices: [
-                {value:1, text:"T"},
-                {value:2, text:"U"},
-                {value:3, text:"V"},
-                {value:4, text:"X"},
-                {value:5, text:"Y"},
-                {value:6, text:"Z"}
-              ]},
-
-          { type: "radiogroup", name: "IQ_8", //isRequired: true,
-              title: "In the following alphanumeric series, what letter comes next? Q S N P L ...?",
-              choices: [
-                {value:1, text:"J"},
-                {value:2, text:"H"},
-                {value:3, text:"I"},
-                {value:4, text:"N"},
-                {value:5, text:"M"},
-                {value:6, text:"L"}
-              ]},
-      ]},
-
-      {questions: [
-          { type: "html",
-            name: "info",
-            html: "<table><body></br></br></br></br><img src='images_quest/mx45_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx45_a.png' width='460px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_1", //isRequired: true,
-            title: "Which figure fits into the missing slot?",
-            choices: [
-              {value:1, text:"A"},
-              {value:2, text:"B"},
-              {value:3, text:"C"},
-              {value:4, text:"D"},
-              {value:5, text:"E"},
-              {value:6, text:"F"}
-            ]},
-
-          { type: "html",
-            name: "info",
-            html: "<table><body></br></br></br></br><img src='images_quest/mx46_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx46_a.png' width='460px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_2", //isRequired: true,
-            title: "Which figure fits into the missing slot?",
-            choices: [
-              {value:1, text:"A"},
-              {value:2, text:"B"},
-              {value:3, text:"C"},
-              {value:4, text:"D"},
-              {value:5, text:"E"},
-              {value:6, text:"F"}
-            ]},
-
-          { type: "html",
-            name: "info",
-            html: "<table><body></br></br></br></br><img src='images_quest/mx47_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx47_a.png' width='460px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_3", //isRequired: true,
-            title: "Which figure fits into the missing slot?",
-            choices: [
-              {value:1, text:"A"},
-              {value:2, text:"B"},
-              {value:3, text:"C"},
-              {value:4, text:"D"},
-              {value:5, text:"E"},
-              {value:6, text:"F"}
-            ]},
-
-          { type: "html",
-            name: "info",
-            html: "<table><body></br></br></br></br><img src='images_quest/mx55_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx55_a.png' width='460px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_4", //isRequired: true,
-            title: "Which figure fits into the missing slot?",
-            choices: [
-              {value:1, text:"A"},
-              {value:2, text:"B"},
-              {value:3, text:"C"},
-              {value:4, text:"D"},
-              {value:5, text:"E"},
-              {value:6, text:"F"}
-            ]},
-
-          { type: "html",
-            name: "info",
-            html: "<table><body></br></br></br></br><img src='images_quest/rsd3_q.png' width='550px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_5", //isRequired: true,
-            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
-            choices: [
-              {value:1, text:"A"},
-              {value:2, text:"B"},
-              {value:3, text:"C"},
-              {value:4, text:"D"},
-              {value:5, text:"E"},
-              {value:6, text:"F"},
-              {value:7, text:"G"},
-              {value:8, text:"H"}
-            ]},
-
-          { type: "html",
-            name: "info",
-            html: "<table><body></br></br></br></br><img src='images_quest/rsd4_q.png' width='550px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_6", //isRequired: true,
-            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
-            choices: [
-              {value:1, text:"A"},
-              {value:2, text:"B"},
-              {value:3, text:"C"},
-              {value:4, text:"D"},
-              {value:5, text:"E"},
-              {value:6, text:"F"},
-              {value:7, text:"G"},
-              {value:8, text:"H"}
-            ]},
-
-          { type: "html",
-            name: "info",
-            html: "<table><body></br></br></br></br><img src='images_quest/rsd6_q.png' width='550px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_7", //isRequired: true,
-            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
-            choices: [
-              {value:1, text:"A"},
-              {value:2, text:"B"},
-              {value:3, text:"C"},
-              {value:4, text:"D"},
-              {value:5, text:"E"},
-              {value:6, text:"F"},
-              {value:7, text:"G"},
-              {value:8, text:"H"}
-            ]},
-
-          { type: "html",
-            name: "info",
-            html: "<table><body></br></br></br></br><img src='images_quest/rsd8_q.png' width='550px'/></body></table>"},
-          { type: "radiogroup", name: "IQimage_8",  //isRequired: true,
-            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
-            choices: [
-              {value:1, text:"A"},
-              {value:2, text:"B"},
-              {value:3, text:"C"},
-              {value:4, text:"D"},
-              {value:5, text:"E"},
-              {value:6, text:"F"},
-              {value:7, text:"G"},
-              {value:8, text:"H"}
-            ]},
-    ]},
-
-        {questions: [
             { type: "matrix", name: "ASRS", title: "Please indicate what best describes how you have felt and conducted yourself over the past 6 months. ",
                 columns: [
                     { value: 1, text: "Never" },
@@ -335,7 +126,8 @@ class Questionnaires extends Component {
                   ]},
         ]},
 
-        {questions: [
+      // BIS 11
+      {questions: [
             { type: "matrix", name: "BIS11", title: "People differ in the ways they act and think in different situations. This is a test to measure some of the ways in which you act and think. Do not spend too much time on any statement. Answer quickly and honestly.",
                 columns: [
                     { value: 1, text: "Rarely/Never" },
@@ -376,7 +168,8 @@ class Questionnaires extends Component {
                   ]},
         ]},
 
-        {questions: [
+      // IUS
+      {questions: [
             {   type: "matrix", name: "IUS", /*isAllRowRequired: true,*/
                 title: "You will find below a series of statements which describe how people may react to the uncertainties of life. Please use the scale below to describe to what extent each item is characteristic of you.",
                 columns: [
@@ -415,15 +208,229 @@ class Questionnaires extends Component {
                     { value: "IUS_26",  text: "26. The ambiguities in life stress me." },
                     { value: "IUS_27",  text: "27. I can’t stand being undecided about my future." }
                   ]},
-        ]}
+        ]},
+
+      // IQ text
+      {questions: [
+            { type: "radiogroup", name: "IQ_1", //isRequired: true,
+                title: "What number is one fifth of one fourth of one ninth of 900?",
+                //colCount: 4,
+                choices: [
+                  {value:1, text:"2"},
+                  {value:2, text:"3"},
+                  {value:3, text:"4"},
+                  {value:4, text:"5"},
+                  {value:5, text:"6"},
+                  {value:6, text:"7"}
+                ]},
+
+            { type: "radiogroup", name: "IQ_2", //isRequired: true,
+                title: "Zach is taller than Matt and Richard is shorter than Zach. Which of the following statements would be the most accurate?",
+                choices: [
+                  {value:1, text:"Richard is taller than Matt"},
+                  {value:2, text:"Richard is shorter than Matt"},
+                  {value:3, text:"Richard is as tall as Matt"},
+                  {value:4, text:"It's impossible to tell"}
+                ]},
+
+            { type: "radiogroup", name: "IQ_3", //isRequired: true,
+                title: "Joshua is 12 years old and his sister is three times as old as he. When Joshua is 23 years old, how old will his sister be?",
+                choices: [
+                  {value:1, text:"25"},
+                  {value:2, text:"39"},
+                  {value:3, text:"44"},
+                  {value:4, text:"47"},
+                  {value:5, text:"53"}
+                ]},
+
+            { type: "radiogroup", name: "IQ_4", //isRequired: true,
+                title: "If the day after tomorrow is two days before Thursday then what day is it today?",
+                choices: [
+                  {value:1, text:"Friday"},
+                  {value:2, text:"Monday"},
+                  {value:3, text:"Wednesday"},
+                  {value:4, text:"Saturday"},
+                  {value:5, text:"Tuesday"},
+                  {value:6, text:"Sunday"}
+                ]},
+
+            { type: "radiogroup", name: "IQ_5", //isRequired: true,
+                title: "In the following alphanumeric series, what letter comes next? K N P S U ...?",
+                choices: [
+                  {value:1, text:"S"},
+                  {value:2, text:"T"},
+                  {value:3, text:"U"},
+                  {value:4, text:"V"},
+                  {value:5, text:"W"},
+                  {value:6, text:"X"}
+                ]},
+
+            { type: "radiogroup", name: "IQ_6", //isRequired: true,
+                title: "In the following alphanumeric series, what letter comes next? V Q M J H ...?",
+                choices: [
+                  {value:1, text:"E"},
+                  {value:2, text:"F"},
+                  {value:3, text:"G"},
+                  {value:4, text:"H"},
+                  {value:5, text:"I"},
+                  {value:6, text:"J"}
+                ]},
+
+            { type: "radiogroup", name: "IQ_7", //isRequired: true,
+                title: "In the following alphanumeric series, what letter comes next? I J L O S ...?",
+                choices: [
+                  {value:1, text:"T"},
+                  {value:2, text:"U"},
+                  {value:3, text:"V"},
+                  {value:4, text:"X"},
+                  {value:5, text:"Y"},
+                  {value:6, text:"Z"}
+                ]},
+
+            { type: "radiogroup", name: "IQ_8", //isRequired: true,
+                title: "In the following alphanumeric series, what letter comes next? Q S N P L ...?",
+                choices: [
+                  {value:1, text:"J"},
+                  {value:2, text:"H"},
+                  {value:3, text:"I"},
+                  {value:4, text:"N"},
+                  {value:5, text:"M"},
+                  {value:6, text:"L"}
+                ]},
+        ]},
+
+      // IQ images
+      {questions: [
+            { type: "html",
+              name: "info",
+              html: "<table><body></br></br></br></br><img src='images_quest/mx45_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx45_a.png' width='460px'/></body></table>"},
+            { type: "radiogroup", name: "IQimage_1", //isRequired: true,
+              title: "Which figure fits into the missing slot?",
+              choices: [
+                {value:1, text:"A"},
+                {value:2, text:"B"},
+                {value:3, text:"C"},
+                {value:4, text:"D"},
+                {value:5, text:"E"},
+                {value:6, text:"F"}
+              ]},
+
+            { type: "html",
+              name: "info",
+              html: "<table><body></br></br></br></br><img src='images_quest/mx46_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx46_a.png' width='460px'/></body></table>"},
+            { type: "radiogroup", name: "IQimage_2", //isRequired: true,
+              title: "Which figure fits into the missing slot?",
+              choices: [
+                {value:1, text:"A"},
+                {value:2, text:"B"},
+                {value:3, text:"C"},
+                {value:4, text:"D"},
+                {value:5, text:"E"},
+                {value:6, text:"F"}
+              ]},
+
+            { type: "html",
+              name: "info",
+              html: "<table><body></br></br></br></br><img src='images_quest/mx47_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx47_a.png' width='460px'/></body></table>"},
+            { type: "radiogroup", name: "IQimage_3", //isRequired: true,
+              title: "Which figure fits into the missing slot?",
+              choices: [
+                {value:1, text:"A"},
+                {value:2, text:"B"},
+                {value:3, text:"C"},
+                {value:4, text:"D"},
+                {value:5, text:"E"},
+                {value:6, text:"F"}
+              ]},
+
+            { type: "html",
+              name: "info",
+              html: "<table><body></br></br></br></br><img src='images_quest/mx55_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx55_a.png' width='460px'/></body></table>"},
+            { type: "radiogroup", name: "IQimage_4", //isRequired: true,
+              title: "Which figure fits into the missing slot?",
+              choices: [
+                {value:1, text:"A"},
+                {value:2, text:"B"},
+                {value:3, text:"C"},
+                {value:4, text:"D"},
+                {value:5, text:"E"},
+                {value:6, text:"F"}
+              ]},
+
+            { type: "html",
+              name: "info",
+              html: "<table><body></br></br></br></br><img src='images_quest/rsd3_q.png' width='550px'/></body></table>"},
+            { type: "radiogroup", name: "IQimage_5", //isRequired: true,
+              title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+              choices: [
+                {value:1, text:"A"},
+                {value:2, text:"B"},
+                {value:3, text:"C"},
+                {value:4, text:"D"},
+                {value:5, text:"E"},
+                {value:6, text:"F"},
+                {value:7, text:"G"},
+                {value:8, text:"H"}
+              ]},
+
+            { type: "html",
+              name: "info",
+              html: "<table><body></br></br></br></br><img src='images_quest/rsd4_q.png' width='550px'/></body></table>"},
+            { type: "radiogroup", name: "IQimage_6", //isRequired: true,
+              title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+              choices: [
+                {value:1, text:"A"},
+                {value:2, text:"B"},
+                {value:3, text:"C"},
+                {value:4, text:"D"},
+                {value:5, text:"E"},
+                {value:6, text:"F"},
+                {value:7, text:"G"},
+                {value:8, text:"H"}
+              ]},
+
+            { type: "html",
+              name: "info",
+              html: "<table><body></br></br></br></br><img src='images_quest/rsd6_q.png' width='550px'/></body></table>"},
+            { type: "radiogroup", name: "IQimage_7", //isRequired: true,
+              title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+              choices: [
+                {value:1, text:"A"},
+                {value:2, text:"B"},
+                {value:3, text:"C"},
+                {value:4, text:"D"},
+                {value:5, text:"E"},
+                {value:6, text:"F"},
+                {value:7, text:"G"},
+                {value:8, text:"H"}
+              ]},
+
+            { type: "html",
+              name: "info",
+              html: "<table><body></br></br></br></br><img src='images_quest/rsd8_q.png' width='550px'/></body></table>"},
+            { type: "radiogroup", name: "IQimage_8",  //isRequired: true,
+              title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+              choices: [
+                {value:1, text:"A"},
+                {value:2, text:"B"},
+                {value:3, text:"C"},
+                {value:4, text:"D"},
+                {value:5, text:"E"},
+                {value:6, text:"F"},
+                {value:7, text:"G"},
+                {value:8, text:"H"}
+              ]},
+
+            ]},
+
     ]};
 
     if(this.state.QuestionnairesCompleted===0){
       return(
         <div>
           <div className="IntroConsentText">
-            <p><span className="bold">STUDY PART 1/2</span></p>
-            Thank you for joining our study. Here is the 1st part in which we ask you questions about reasoning and about yourself. Please take your time to answer. Once you have answered all questions in the form bellow, you will proceed to the computer game.
+            <p><span className="bold">STUDY PART 2/2</span></p>
+            Thank you for completing the game. Here is the 2nd part of the study in which we ask you questions about reasoning and about yourself. Please take your time to answer.
             <br/><br/>
             <Survey.Survey json={json} showCompletedPage={false} onComplete={this.onCompleteComponent} onCurrentPageChanged={this.timerCallback}/>
           </div>
@@ -436,7 +443,7 @@ class Questionnaires extends Component {
       this.sendQuestionnaires(this.state.UserNo);
 
       this.props.history.push({
-        pathname: `/Task`,
+        pathname: `/End`,
         state: {user_info: this.state.user_info}
       })
 

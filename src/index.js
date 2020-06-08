@@ -12,13 +12,13 @@ const App = () => {
         <BrowserRouter>
             <Switch>
                 <Route path="/" component={Intro} exact />
-                <Route path="/Questionnaires" component={Questionnaires} exact />
                 <Route path="/Task" component={Task} exact />
+                <Route path="/Questionnaires" component={Questionnaires} exact />
+                <Route path="/End" component={Intro} exact />
             </Switch>
         </BrowserRouter>
     );
 }
-
 
 ReactDOM.render(
   < App />,

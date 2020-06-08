@@ -22,7 +22,7 @@ class Instructions extends React.Component{
   }
 
   componentDidMount() {
-    setTimeout(this.switchImage, 2000);
+    setTimeout(this.switchImage, 1800);
   }
 
   bubble_text(slide){
@@ -35,6 +35,7 @@ class Instructions extends React.Component{
             <div className="slideshow-container">
               <img src={this.state.images[this.state.currentImage]}
               width={800}
+              alt='loading'
               />
             </div>
           );}

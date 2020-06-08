@@ -47,7 +47,7 @@ class Consent extends Component {
   }
 
   fetchUserInfo () {
-       fetch(`${API_URL}/questionnaires_behaviour/last_user_no`)
+       fetch(`${API_URL}/questions_behaviour/last_user_no`)
          .then(handleResponse)
          .then((data) => {
            const user_no_ = parseInt(data['new_user_no'])
@@ -198,7 +198,7 @@ class Consent extends Component {
     else {
 
       this.props.history.push({
-        pathname: `/Questionnaires`,
+        pathname: `/Task`,
         state: {user_info: this.state}
       })
 
