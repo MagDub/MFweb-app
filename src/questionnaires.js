@@ -95,6 +95,50 @@ class Questionnaires extends Component {
   render() {
     var json = { title: "Form", showProgressBar: "top", pages: [
 
+      // LSAS
+      {questions: [
+        {type: "matrixdropdown", name: "LSAS", horizontalScroll: true, columnMinWidth:"130px",
+        title: "Read each situation carefully and answer two questions about it; the first question asks how anxious or fearful you feel in the situation; the second question asks how often you avoid it. Please base your ratings on the way that situations have affected you in the last week.",
+          columns: [
+              { name: "fear", title: "Anxiety", choices:[
+                                                {"value": 0, "text": "None"},
+                                                {"value": 1, "text": "Mild"},
+                                                {"value": 2, "text": "Moderate"},
+                                                {"value": 3, "text": "Severe"}]},
+              { name: "avoidance", title: "Avoidance", choices:[
+                                                {"value": 0, "text": "Never"},
+                                                {"value": 1, "text": "Occasionally"},
+                                                {"value": 2, "text": "Often"},
+                                                {"value": 3, "text": "Usually"}]},],
+          rows: [
+              { value: "LSAS_1",       text: "1. Telephoning in public" },
+              { value: "LSAS_2",       text: "2. Participating in small groups" },
+              { value: "LSAS_3",       text: "3. Eating in public places" },
+              { value: "LSAS_4",       text: "4. Drinking with others in public places" },
+              { value: "LSAS_5",       text: "5. Talking to people in authority" },
+              { value: "LSAS_6",       text: "6. Acting, performing or giving a talk in front of an audience" },
+              { value: "LSAS_7",       text: "7. Going to a party" },
+              { value: "LSAS_8",       text: "8. Working while being observed" },
+              { value: "LSAS_9",       text: "9. Writing while being observed " },
+              { value: "LSAS_10",      text: "10. Calling someone you don’t know very well " },
+              { value: "LSAS_11",      text: "11. Talking with people you don’t know very well " },
+              { value: "LSAS_12",      text: "12. Meeting strangers" },
+              { value: "LSAS_13",      text: "13. Urinating in a public bathroom" },
+              { value: "LSAS_14",      text: "14. Entering a room when others are already seated" },
+              { value: "LSAS_15",      text: "15. Being the centre of attention" },
+              { value: "LSAS_16",      text: "16. Speaking up at a meeting" },
+              { value: "LSAS_17",      text: "17. Taking a test " },
+              { value: "LSAS_18",      text: "18. Expressing a disagreement or disapproval to people you don’t know very well" },
+              { value: "LSAS_19",      text: "19. Looking at people you don’t very well in the eyes" },
+              { value: "LSAS_20",      text: "20. Giving a report to a group" },
+              { value: "LSAS_21",      text: "21. Trying to pick up someone" },
+              { value: "LSAS_22",      text: "22. Returning goods to a store " },
+              { value: "LSAS_23",      text: "23. Giving a party" },
+              { value: "LSAS_24",      text: "24. Resisting a high pressure salesperson" }
+            ]
+        }
+      ]},
+
       // ASRS
       {questions: [
             { type: "matrix", name: "ASRS", title: "Please indicate what best describes how you have felt and conducted yourself over the past 6 months. ",
@@ -207,6 +251,74 @@ class Questionnaires extends Component {
                     { value: "IUS_25",  text: "25. I must get away from all uncertain situations." },
                     { value: "IUS_26",  text: "26. The ambiguities in life stress me." },
                     { value: "IUS_27",  text: "27. I can’t stand being undecided about my future." }
+                  ]},
+        ]},
+
+      // SDS
+      {questions: [
+            {   type: "matrix", name: "SDS", /*isAllRowRequired: true,*/
+                title: "For each item below, please place a check the column which best describes how often you felt or behaved this way during the past several days",
+                columns: [
+                    { value: 1, text: "A little of the time" },
+                    { value: 2, text: "Some of the time" },
+                    { value: 3, text: "Good part of the time" },
+                    { value: 4, text: "Most of the time" },
+                  ],
+                rows: [
+                    { value: "SDS_1",   text: "1. I feel down-hearted and blue." },
+                    { value: "SDS_2",   text: "2. Morning is when I feel the best." },
+                    { value: "SDS_3",   text: "3. I have crying spells or feel like it." },
+                    { value: "SDS_4",   text: "4. I have trouble sleeping at night." },
+                    { value: "SDS_5",   text: "5. I eat as much as I used to." },
+                    { value: "SDS_6",   text: "6. I still enjoy sex." },
+                    { value: "SDS_7",   text: "7. I notice that I am losing weight." },
+                    { value: "SDS_8",   text: "8. I have trouble with constipation." },
+                    { value: "SDS_9",   text: "9. My heart beats faster than usual." },
+                    { value: "SDS_10",  text: "10. I get tired for no reason." },
+                    { value: "SDS_11",  text: "11. My mind is as clear as it used to be." },
+                    { value: "SDS_12",  text: "12. I find it easy to do the things I used to." },
+                    { value: "SDS_13",  text: "13. I am restless and can’t keep still." },
+                    { value: "SDS_14",  text: "14. I feel hopeful about the future." },
+                    { value: "SDS_15",  text: "15. I am more irritable than usual." },
+                    { value: "SDS_16",  text: "16. I find it easy to make decisions." },
+                    { value: "SDS_17",  text: "17. I feel that I am useful and needed." },
+                    { value: "SDS_18",  text: "18. My life is pretty full." },
+                    { value: "SDS_19",  text: "19. I feel that others would be better off if I were dead." },
+                    { value: "SDS_20",  text: "20. I still enjoy the things I used to do." }
+                  ]},
+        ]},
+
+      // STAI-Y2
+      {questions: [
+            {   type: "matrix", name: "STAI-Y2", /*isAllRowRequired: true,*/
+                title: "Read each statement and then write the number in the blank at the end of the statement that indicates how you generally feel. There is no right or wrong answer. Do not spend too much time on any one statement but give the answer which seems to describe how you generally feel.",
+                columns: [
+                    { value: 1, text: "Almost Never" },
+                    { value: 2, text: "Sometimes" },
+                    { value: 3, text: "Often" },
+                    { value: 4, text: "Almost Always" },
+                  ],
+                rows: [
+                    { value: "STAI_21",   text: "1. I feel pleasant" },
+                    { value: "STAI_22",   text: "2. I feel nervous and restless" },
+                    { value: "STAI_23",   text: "3. I feel satisfied with myself" },
+                    { value: "STAI_24",   text: "4. I wish I could be as happy as others seem to be" },
+                    { value: "STAI_25",   text: "5. I feel like a failure" },
+                    { value: "STAI_26",   text: "6. I feel rested" },
+                    { value: "STAI_27",   text: "7. I am calm, cool, and collected" },
+                    { value: "STAI_28",   text: "8. I feel that difficulties are piling up so that I cannot overcome them" },
+                    { value: "STAI_29",   text: "9. I worry too much over something that really doesn’t matter" },
+                    { value: "STAI_30",  text: "10. I am happy" },
+                    { value: "STAI_31",  text: "11. I have disturbing thoughts" },
+                    { value: "STAI_32",  text: "12. I lack self confidence" },
+                    { value: "STAI_33",  text: "13. I feel secure" },
+                    { value: "STAI_34",  text: "14. I make decision easily" },
+                    { value: "STAI_35",  text: "15. I feel inadequate" },
+                    { value: "STAI_36",  text: "16. I am content" },
+                    { value: "STAI_37",  text: "17. Some unimportant thoughts runs through my mind and bothers me" },
+                    { value: "STAI_38",  text: "18. I take disappointments so keenly that I can’t put them out of my mind" },
+                    { value: "STAI_39",  text: "19. I am a steady person" },
+                    { value: "STAI_40",  text: "20. I get in a state of tension or turmoil as I think over my recent concerns and interests" }
                   ]},
         ]},
 

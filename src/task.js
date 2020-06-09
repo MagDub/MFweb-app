@@ -122,27 +122,27 @@ class Task extends React.Component{
 
   listenner(transition){
 
-    document.removeEventListener("keydown", this._handleKeyDownNumbers);
-    document.removeEventListener("keydown", this._handleKeyDownEnter);
-    document.removeEventListener("keydown", this._handleKeyDownArrows);
-    document.removeEventListener("keydown", this._handleKeyDownRightArrow);
+    document.removeEventListener("keyup", this._handleKeyDownNumbers);
+    document.removeEventListener("keyup", this._handleKeyDownEnter);
+    document.removeEventListener("keyup", this._handleKeyDownArrows);
+    document.removeEventListener("keyup", this._handleKeyDownRightArrow);
 
     switch (transition){
       case 1:
         if (this.state.slide===0 || this.state.slide===1){
-          document.addEventListener("keydown", this._handleKeyDownRightArrow);
+          document.addEventListener("keyup", this._handleKeyDownRightArrow);
         }
         else {
-          document.addEventListener("keydown", this._handleKeyDownArrows);
+          document.addEventListener("keyup", this._handleKeyDownArrows);
         }
         break;
       case 2:
         break;
-      case 3: document.addEventListener("keydown", this._handleKeyDownRightArrow);
+      case 3: document.addEventListener("keyup", this._handleKeyDownRightArrow);
         break;
       case 4:
         break;
-      case 5: document.addEventListener("keydown", this._handleKeyDownRightArrow);
+      case 5: document.addEventListener("keyup", this._handleKeyDownRightArrow);
         break;
       case 6:
         break;

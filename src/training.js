@@ -79,7 +79,7 @@ class Training extends React.Component{
       }
 
       else {
-        document.removeEventListener("keydown", this._handleKeyDownEnter)
+        document.removeEventListener("keyup", this._handlekeyupEnter)
         var percentage_passed = this.state.sum_passed / this.props.num_training;
         this.sendTraining(this.props.UserNo);
         this.props.nextTransition(percentage_passed);
@@ -215,7 +215,7 @@ class Training extends React.Component{
                                 'ReactionTimes'       : ReactionTimes,
                                 'NumTraining'         : NumTraining}
 
-    console.log("sendTraining", "training_behaviour", JSON.stringify(training_behaviour))
+    //console.log("sendTraining", "training_behaviour", JSON.stringify(training_behaviour))
 
     fetch(`${API_URL}/training_behaviour/` + user_no_, {
        method: 'POST',
@@ -249,11 +249,11 @@ class Training extends React.Component{
 
   listenner(){
 
-    document.removeEventListener("keydown", this._handleKeyDownEnter)
-    document.removeEventListener("keydown", this._handleKeyDownNumbers)
+    document.removeEventListener("keyup", this._handlekeyupEnter)
+    document.removeEventListener("keyup", this._handlekeyupNumbers)
 
     if (this.state.disp_fb===0){
-      return document.addEventListener("keydown", this._handleKeyDownNumbers);
+      return document.addEventListener("keyup", this._handlekeyupNumbers);
         }
 
     else {
@@ -274,7 +274,7 @@ class Training extends React.Component{
       }
   }
 
-  _handleKeyDownNumbers = (event) => {
+  _handlekeyupNumbers = (event) => {
 
     var time_pressed;
 

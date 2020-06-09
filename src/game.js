@@ -155,7 +155,7 @@ class Game extends React.Component{
     var trialinblock_index = this.state.TrialInBlockNo-1;
 
     if (this.state.BlockNo>this.state.BlockNb) {
-      document.addEventListener("keydown", this._handleKeyDownSpace);
+      document.addEventListener("keyup", this._handleKeyDownSpace);
       return <Block block_i={this.state.BlockNo} BlockNb={this.state.BlockNb}/>
       }
 
@@ -167,8 +167,8 @@ class Game extends React.Component{
       }
 
     else if (this.state.disp_new_block===1) {
-      document.removeEventListener("keydown", this._handleKeyDownTree);
-      document.addEventListener("keydown", this._handleKeyDownSpace);
+      document.removeEventListener("keyup", this._handleKeyDownTree);
+      document.addEventListener("keyup", this._handleKeyDownSpace);
       return <Block block_i={this.state.block_info.BlockNo[trialinblock_index]} BlockNb={this.state.BlockNb}/>
     }
 
@@ -368,14 +368,14 @@ class Game extends React.Component{
 
   listenner(trialinblock_index) {
 
-    document.removeEventListener("keydown", this._handleKeyDownSpace)
-    document.removeEventListener("keydown", this._handleKeyDownTree)
+    document.removeEventListener("keyup", this._handleKeyDownSpace)
+    document.removeEventListener("keyup", this._handleKeyDownTree)
 
     let tmp_apples_picked = this.state.SampleNo;
     var tmp_apples_to_pick = this.state.block_info.Horizon[trialinblock_index];
 
     if (tmp_apples_picked < tmp_apples_to_pick){
-      return document.addEventListener("keydown", this._handleKeyDownTree);
+      return document.addEventListener("keyup", this._handleKeyDownTree);
       }
 
     else {
@@ -450,8 +450,8 @@ class Game extends React.Component{
 
           if (this.state.BlockNo>this.state.BlockNb) {
             this.props.nextTransition(1);
-            document.removeEventListener("keydown", this._handleKeyDownSpace)
-            document.removeEventListener("keydown", this._handleKeyDownSpace)
+            document.removeEventListener("keyup", this._handleKeyDownSpace)
+            document.removeEventListener("keyup", this._handleKeyDownSpace)
           }
           else {
             this.setState({
