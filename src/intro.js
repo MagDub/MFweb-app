@@ -141,42 +141,42 @@ class Consent extends Component {
 
         { type: "checkbox", name: "checkbox1",
             title: "I have read the information above, and understand what the study involves.",
-            //isRequired: true,
+            isRequired: true,
             choices: ["Yes"]},
 
         { type: "checkbox", name: "checkbox2",
             title: "I consent to the processing of my personal information (e.g. User Id) for the purposes of this research study. I understand that such information will remain confidential and will be handled in accordance with all applicable data protection legislation and ethical standards in research. These data will only be accessible to the study team and individuals from the University and Funder who are responsible for monitoring and audits.",
-            //isRequired: true,
+            isRequired: true,
             choices: ["Yes"]},
 
         { type: "checkbox", name: "checkbox3",
             title: 'I consent to being re-contacted for the purposes of this research study.',
-            //isRequired: true,
+            isRequired: true,
             choices: ["Yes"]},
 
         { type: "checkbox", name: "checkbox4",
             title: 'I understand that my anonymised personal data can be shared with others for future research, shared in public databases and in scientific reports.',
-            //isRequired: true,
+            isRequired: true,
             choices: ["Yes"]},
 
         { type: "checkbox", name: "checkbox5",
             title: 'I understand that I am free to withdraw from this study at any time without giving a reason and this will not affect my future medical care or legal rights.',
-            //isRequired: true,
+            isRequired: true,
             choices: ["Yes"]},
 
         { type: "checkbox", name: "checkbox6",
             title: 'I understand the potential benefits and risks of participating, the support available to me should I become distressed during the research, and who to contact if I wish to lodge a complaint.',
-            //isRequired: true,
+            isRequired: true,
             choices: ["Yes"]},
 
         { type: "checkbox", name: "checkbox7",
             title: 'I understand the inclusion and exclusion criteria in the Information Sheet and as explained to me by the researcher.  I confirm that I do not fall under the exclusion criteria.',
-            //isRequired: true,
+            isRequired: true,
             choices: ["Yes"]},
 
         { type: "checkbox", name: "checkbox8",
             title: 'I agree that the research project named above has been explained to me to my satisfaction and I agree to take part in this study.',
-            //isRequired: true,
+            isRequired: true,
             choices: ["Yes"]},
         ]}
   ]};
