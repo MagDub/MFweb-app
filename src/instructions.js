@@ -22,7 +22,7 @@ class Instructions extends React.Component{
   }
 
   componentDidMount() {
-    setTimeout(this.switchImage, 1800);
+    setTimeout(this.switchImage, 2000);
   }
 
   bubble_text(slide){

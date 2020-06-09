@@ -20,6 +20,7 @@ class Task extends React.Component{
     var InstructionsStartTime    = currentDate.toTimeString();
 
     this.state = {
+      mounted: 0,
       UserNo:UserNo,
       user_info: user_info,
       num_training:1,
@@ -45,8 +46,13 @@ class Task extends React.Component{
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
+  componentDidMount() {
+    this.setState({
+      mounted: 1,
+    });
+  }
 
+  handleClick(e) {
     setTimeout(
       function() {
         this.setState({
@@ -56,68 +62,72 @@ class Task extends React.Component{
       .bind(this),
       100
     );
-
   }
 
   render(){
 
-    this.listenner(this.state.transition)
+    if (this.state.mounted===1){
 
-    switch(this.state.transition) {
+      this.listenner(this.state.transition);
 
-      case 0:
-        return(
-          <div>
-            <div className="IntroConsentText">
-              <p><span className="bold">STUDY PART 1/2</span></p>
-                Thank you for joining our study. <br/>
-                In the 1st part you will play a computer game and in the 2nd part you will
-                be asked a few questions about yourself.<br/>
-                If you are ready, press the button to be redirected to the game.
-              <br/><br/>
-              <div className="container">
-                  <div className="center">
-                    <Button variant="outline-success" size="lg" onClick={this.handleClick}> Let&#39;s start playing ! </Button>
+      switch(this.state.transition) {
+
+          case 0:
+            return(
+              <div>
+                <div className="IntroConsentText">
+                  <p><span className="bold">STUDY PART 1/2</span></p>
+                    Thank you for joining our study. <br/>
+                    In the 1st part you will play a computer game and in the 2nd part you will
+                    be asked a few questions about yourself.<br/>
+                    If you are ready, press the button to be redirected to the game.
+                  <br/><br/>
+                  <div className="container">
+                      <div className="center">
+                        <Button variant="outline-success" size="lg" onClick={this.handleClick}> Let&#39;s start playing ! </Button>
+                      </div>
                   </div>
+                </div>
               </div>
-            </div>
-          </div>
-        );
+            );
 
-      case 1:
-        //console.log("task: transition 1", "slide", this.state.slide)
-        return <Instructions slide={this.state.slide}/>
+          case 1:
+            //console.log("task: transition 1", "slide", this.state.slide)
+            return <Instructions slide={this.state.slide}/>
 
-      case 2:
-        //console.log("task: transition 2 - questions")
-        return <Questions UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
+          case 2:
+            //console.log("task: transition 2 - questions")
+            return <Questions UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
 
-      case 3:
-        //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
-        return <Instructions slide={this.state.slide}/>
+          case 3:
+            //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
+            return <Instructions slide={this.state.slide}/>
 
-      case 4:
-        //console.log("task: transition 4 - training")
-        return <Training UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
+          case 4:
+            //console.log("task: transition 4 - training")
+            return <Training UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
-      case 5:
-        //console.log("task: transition 5 - instructions")
-        return <Instructions slide={this.state.slide}/>
+          case 5:
+            //console.log("task: transition 5 - instructions")
+            return <Instructions slide={this.state.slide}/>
 
-      case 6:
-        //console.log("task: transition 6 - start game")
-        return <Game UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
+          case 6:
+            //console.log("task: transition 6 - start game")
+            return <Game UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
-      case 7:
-        //console.log("task: transition 7")
-        this.props.history.push({
-          pathname: `/Questionnaires`,
-          state: {user_info: this.state.user_info}
-        })
-        return null
+          case 7:
+            //console.log("task: transition 7")
+            this.props.history.push({
+              pathname: `/Questionnaires`,
+              state: {user_info: this.state.user_info}
+            })
+            return null
 
-      default:
-  }
+          default:
+      }
+    }
+    
+    else return null;
 }
 
   listenner(transition){

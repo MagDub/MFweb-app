@@ -261,7 +261,7 @@ class Game extends React.Component{
         });
       }
       .bind(this),
-      700
+      500
     );
 
     return <Juice mean_score={mean_score} hor={this.state.block_info.Horizon[trialinblock_index]}/>;

@@ -11,7 +11,6 @@ import './style/questionnaires.css';
 import 'react-showdown';
 import './style/intro.css';
 
-
 class Questionnaires extends Component {
 
   constructor(props) {
