@@ -125,7 +125,7 @@ class Questionnaires extends Component {
                                                 {"value": 2, "text": "Often"},
                                                 {"value": 3, "text": "Usually"}]},],
           rows: [
-              { value: "LSAS_1",       text: "1. Telephoning in public" },
+              { value: "LSAS_1",       text: "1. Telephone in public" },
               { value: "LSAS_2",       text: "2. Participating in small groups" },
               { value: "LSAS_3",       text: "3. Eating in public places" },
               { value: "LSAS_4",       text: "4. Drinking with others in public places" },
