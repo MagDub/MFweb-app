@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as Survey from 'survey-react';
+import Button from 'react-bootstrap/Button'
 import { API_URL } from './config';
 import 'survey-react/survey.css';
 import 'jquery/dist/jquery.js';
@@ -10,14 +11,6 @@ import './style/questionnaires.css';
 import 'react-showdown';
 import './style/intro.css';
 
-/*
-var myCss = {
-matrix: {
-    root: "table table-striped"
-},
-navigationButton: "button btn-lg"
-};
-*/
 
 class Questionnaires extends Component {
 
@@ -30,11 +23,27 @@ class Questionnaires extends Component {
     this.state = {
       user_info: user_info,
       UserNo:UserNo,
-      QuestionnairesCompleted: 0,
+      transition: 0,
       resultAsString: {},
     };
 
     this.onCompleteComponent = this.onCompleteComponent.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
+  }
+
+  handleClick(e) {
+
+    setTimeout(
+      function() {
+        this.setState({
+          transition: 1,
+        });
+      }
+      .bind(this),
+      100
+    );
+
   }
 
   onCompleteComponent(survey) {
@@ -45,12 +54,11 @@ class Questionnaires extends Component {
     var startTime = this.state.user_info.startTime;
     var seconds = Math.round(performance.now());
     var user_info = this.state.user_info;
-    var QuestionnairesCompleted = 1;
 
     var currentDate   = new Date();
     var finishTime    = currentDate.toTimeString();
 
-    user_info.QuestionnairesCompleted = QuestionnairesCompleted;
+    user_info.QuestionnairesCompleted = 1;
 
     survey.setValue(RT_valueName, seconds);
     survey.setValue("Date", date)
@@ -60,7 +68,7 @@ class Questionnaires extends Component {
     var resultAsString = JSON.stringify(survey.data);
 
     this.setState({
-      QuestionnairesCompleted: QuestionnairesCompleted,
+      transition: 2,
       user_info: user_info,
       resultAsString: resultAsString
     });
@@ -77,6 +85,8 @@ class Questionnaires extends Component {
 
     var resultAsString = this.state.resultAsString;
 
+    console.log("resultAsString", resultAsString)
+
     fetch(`${API_URL}/questionnaires_behaviour/` + user_no_, {
        method: 'POST',
        headers: {
@@ -87,25 +97,27 @@ class Questionnaires extends Component {
      })
   }
 
-
   componentDidMount() {
     Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
   }
 
   render() {
+
+    console.log("render", "this.state.transition", this.state.transition)
     var json = { title: "Form", showProgressBar: "top", pages: [
 
       // LSAS
       {questions: [
         {type: "matrixdropdown", name: "LSAS", horizontalScroll: true, columnMinWidth:"130px",
+        isAllRowRequired: true,
         title: "Read each situation carefully and answer two questions about it; the first question asks how anxious or fearful you feel in the situation; the second question asks how often you avoid it. Please base your ratings on the way that situations have affected you in the last week.",
           columns: [
-              { name: "fear", title: "Anxiety", choices:[
+              { isRequired: true, name: "fear", title: "Anxiety", choices:[
                                                 {"value": 0, "text": "None"},
                                                 {"value": 1, "text": "Mild"},
                                                 {"value": 2, "text": "Moderate"},
                                                 {"value": 3, "text": "Severe"}]},
-              { name: "avoidance", title: "Avoidance", choices:[
+              { isRequired: true, name: "avoidance", title: "Avoidance", choices:[
                                                 {"value": 0, "text": "Never"},
                                                 {"value": 1, "text": "Occasionally"},
                                                 {"value": 2, "text": "Often"},
@@ -141,7 +153,8 @@ class Questionnaires extends Component {
 
       // ASRS
       {questions: [
-            { type: "matrix", name: "ASRS", title: "Please indicate what best describes how you have felt and conducted yourself over the past 6 months. ",
+            { type: "matrix", name: "ASRS", isAllRowRequired: true,
+            title: "Please indicate what best describes how you have felt and conducted yourself over the past 6 months. ",
                 columns: [
                     { value: 1, text: "Never" },
                     { value: 2, text: "Rarely" },
@@ -170,9 +183,10 @@ class Questionnaires extends Component {
                   ]},
         ]},
 
-      // BIS 11
+      //BIS 11
       {questions: [
-            { type: "matrix", name: "BIS11", title: "People differ in the ways they act and think in different situations. This is a test to measure some of the ways in which you act and think. Do not spend too much time on any statement. Answer quickly and honestly.",
+            { type: "matrix", name: "BIS11", isAllRowRequired: true,
+              title: "People differ in the ways they act and think in different situations. This is a test to measure some of the ways in which you act and think. Do not spend too much time on any statement. Answer quickly and honestly.",
                 columns: [
                     { value: 1, text: "Rarely/Never" },
                     { value: 2, text: "Occasionally" },
@@ -212,9 +226,9 @@ class Questionnaires extends Component {
                   ]},
         ]},
 
-      // IUS
+      // IU
       {questions: [
-            {   type: "matrix", name: "IUS", /*isAllRowRequired: true,*/
+            {   type: "matrix", name: "IUS", isAllRowRequired: true,
                 title: "You will find below a series of statements which describe how people may react to the uncertainties of life. Please use the scale below to describe to what extent each item is characteristic of you.",
                 columns: [
                     { value: 1, text: "1 - Not at all" },
@@ -256,7 +270,7 @@ class Questionnaires extends Component {
 
       // SDS
       {questions: [
-            {   type: "matrix", name: "SDS", /*isAllRowRequired: true,*/
+            {   type: "matrix", name: "SDS", isAllRowRequired: true,
                 title: "For each item below, please place a check the column which best describes how often you felt or behaved this way during the past several days",
                 columns: [
                     { value: 1, text: "A little of the time" },
@@ -290,7 +304,7 @@ class Questionnaires extends Component {
 
       // STAI-Y2
       {questions: [
-            {   type: "matrix", name: "STAI-Y2", /*isAllRowRequired: true,*/
+            {   type: "matrix", name: "STAI", isAllRowRequired: true,
                 title: "Read each statement and then write the number in the blank at the end of the statement that indicates how you generally feel. There is no right or wrong answer. Do not spend too much time on any one statement but give the answer which seems to describe how you generally feel.",
                 columns: [
                     { value: 1, text: "Almost Never" },
@@ -324,7 +338,7 @@ class Questionnaires extends Component {
 
       // IQ text
       {questions: [
-            { type: "radiogroup", name: "IQ_1", //isRequired: true,
+            { type: "radiogroup", name: "IQ_1", isRequired: true,
                 title: "What number is one fifth of one fourth of one ninth of 900?",
                 //colCount: 4,
                 choices: [
@@ -416,7 +430,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='images_quest/mx45_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx45_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_1", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_1", isRequired: true,
               title: "Which figure fits into the missing slot?",
               choices: [
                 {value:1, text:"A"},
@@ -430,7 +444,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='images_quest/mx46_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx46_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_2", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_2", isRequired: true,
               title: "Which figure fits into the missing slot?",
               choices: [
                 {value:1, text:"A"},
@@ -444,7 +458,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='images_quest/mx47_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx47_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_3", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_3", isRequired: true,
               title: "Which figure fits into the missing slot?",
               choices: [
                 {value:1, text:"A"},
@@ -458,7 +472,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='images_quest/mx55_q.png' width='230px'/></br></br></br> </td><img src='images_quest/mx55_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_4", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_4", isRequired: true,
               title: "Which figure fits into the missing slot?",
               choices: [
                 {value:1, text:"A"},
@@ -472,7 +486,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='images_quest/rsd3_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_5", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_5", isRequired: true,
               title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
               choices: [
                 {value:1, text:"A"},
@@ -488,7 +502,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='images_quest/rsd4_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_6", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_6", isRequired: true,
               title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
               choices: [
                 {value:1, text:"A"},
@@ -504,7 +518,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='images_quest/rsd6_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_7", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_7", isRequired: true,
               title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
               choices: [
                 {value:1, text:"A"},
@@ -520,7 +534,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='images_quest/rsd8_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_8",  //isRequired: true,
+            { type: "radiogroup", name: "IQimage_8",  isRequired: true,
               title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
               choices: [
                 {value:1, text:"A"},
@@ -537,19 +551,39 @@ class Questionnaires extends Component {
 
     ]};
 
-    if(this.state.QuestionnairesCompleted===0){
+    if(this.state.transition===0){
       return(
         <div>
           <div className="IntroConsentText">
             <p><span className="bold">STUDY PART 2/2</span></p>
-            Thank you for completing the game. Here is the 2nd part of the study in which we ask you questions about reasoning and about yourself. Please take your time to answer.
+            Thank you for completing the game. Here is the 2nd part of the study in which we will ask you questions about reasoning and about yourself.
+            Click the button when you are ready.
+            <br/><br/>
+            <div className="container">
+                <div className="center">
+                  <Button variant="outline-success" size="lg" onClick={this.handleClick}> Let&#39;s go ! </Button>
+                </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    else if(this.state.transition===1){
+      return(
+        <div>
+          <div className="IntroConsentText">
+            <p><span className="bold">STUDY PART 2/2</span></p>
+            Please take your time to answer.
             <br/><br/>
             <Survey.Survey json={json} showCompletedPage={false} onComplete={this.onCompleteComponent} onCurrentPageChanged={this.timerCallback}/>
           </div>
         </div>
       );
     }
-    else {
+
+    else if(this.state.transition===2){
+
       console.log("JSON string",this.state.resultAsString);
 
       this.sendQuestionnaires(this.state.UserNo);
