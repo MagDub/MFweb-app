@@ -100,6 +100,8 @@ class Game extends React.Component{
     var currentDate   = new Date();
     var BlockFinishTime    = currentDate.toTimeString();
 
+    var StartTime= this.props.StartTime;
+
     let BlockStartTime = this.state.BlockStartTime;
 
     let trial_per_block = this.state.trial_per_block;
@@ -122,6 +124,7 @@ class Game extends React.Component{
     var subset_Horizon = this.state.block_info.Horizon.slice(block_first_trial,block_last_trial);
 
     let behaviour = {       'BlockNo'             : block_no_,
+                            'UserStartTime'       : StartTime,
                             'BlockStartTime'      : BlockStartTime,
                             'BlockFinishTime'     : BlockFinishTime,
                             'TreeColours'         : this.state.tree_col[ind_block],

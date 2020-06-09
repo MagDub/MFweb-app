@@ -5,6 +5,8 @@ import Instructions from './instructions';
 import Training from './training';
 import Questions from './questions';
 import {withRouter} from 'react-router-dom';
+import { API_URL } from './config';
+import { handleResponse } from './helpers'; // imports json
 import './style/task.css';
 
 
@@ -14,19 +16,19 @@ class Task extends React.Component{
     super(props);
 
     var user_info = this.props.location.state.user_info;
-    var UserNo = user_info.UserNo;
 
     var currentDate   = new Date();
     var InstructionsStartTime    = currentDate.toTimeString();
 
     this.state = {
       mounted: 0,
-      UserNo:UserNo,
+      UserNo:[], //default
       user_info: user_info,
       num_training:1,
       loading: 1,
       slide: 1,
       transition:0,
+      fetched: 0,
       percentage_to_pass: 1, // percentage to pass the training and questions
       InstructionsStartTime: InstructionsStartTime,
       };
@@ -51,6 +53,23 @@ class Task extends React.Component{
       mounted: 1,
     });
   }
+
+  fetchUserInfo () {
+       fetch(`${API_URL}/questions_behaviour/last_user_no`)
+         .then(handleResponse)
+         .then((data) => {
+           const user_no_ = parseInt(data['new_user_no'])
+           //console.log("fetchUserInfo in Intro ", "user_no", user_no_)
+
+           this.setState({
+                   UserNo : user_no_,
+                   fetched: 1,
+               });
+       })
+         .catch((error) => {
+          console.log(error)
+       });
+      }
 
   handleClick(e) {
     setTimeout(
@@ -96,8 +115,11 @@ class Task extends React.Component{
             return <Instructions slide={this.state.slide}/>
 
           case 2:
+            if (this.state.fetched===0){
+              this.fetchUserInfo();
+            }
             //console.log("task: transition 2 - questions")
-            return <Questions UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
+            return <Questions StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
 
           case 3:
             //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
@@ -105,7 +127,7 @@ class Task extends React.Component{
 
           case 4:
             //console.log("task: transition 4 - training")
-            return <Training UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
+            return <Training StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
           case 5:
             //console.log("task: transition 5 - instructions")
@@ -113,20 +135,20 @@ class Task extends React.Component{
 
           case 6:
             //console.log("task: transition 6 - start game")
-            return <Game UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
+            return <Game StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
           case 7:
             //console.log("task: transition 7")
             this.props.history.push({
               pathname: `/Questionnaires`,
-              state: {user_info: this.state.user_info}
+              state: {user_info: this.state.user_info, UserNo: this.state.UserNo}
             })
             return null
 
           default:
       }
     }
-    
+
     else return null;
 }
 

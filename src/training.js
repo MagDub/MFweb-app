@@ -193,8 +193,8 @@ class Training extends React.Component{
 
     var currentDate   = new Date();
     var TrainingFinishTime    = currentDate.toTimeString();
-
     var TrainingStartTime = this.state.TrainingStartTime;
+    var StartTime= this.props.StartTime;
     var SumPassed = this.state.sum_passed;
     var NumTraining = this.props.num_training;
     var Chosen = this.state.chosen;
@@ -205,6 +205,7 @@ class Training extends React.Component{
     var InitialSamplesSize = this.state.training_info.InitialSamplesSize.slice(0,NumTraining);
 
     let training_behaviour = {  'SumPassed'           : SumPassed,
+                                'UserStartTime'       : StartTime,
                                 'TrainingStartTime'   : TrainingStartTime,
                                 'TrainingFinishTime'  : TrainingFinishTime,
                                 'ChoicesSize'         : ChoicesSize,

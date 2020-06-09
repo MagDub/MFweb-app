@@ -113,8 +113,6 @@ class Questions extends React.Component{
       question_no: 1,
       reaction_times: reaction_times,
     });
-
-
   }
 
   next_question(pressed, time_pressed){
@@ -184,6 +182,7 @@ class Questions extends React.Component{
 
     var QuestionsStartTime = this.state.QuestionsStartTime;
     var InstructionsStartTime = this.props.InstructionsStartTime;
+    var UserStartTime = this.props.StartTime;
 
     var SumPassed = this.state.sum_passed;
     var pressed_keys = this.state.pressed_keys;
@@ -191,6 +190,7 @@ class Questions extends React.Component{
     var reaction_times = this.state.reaction_times;
 
     let questions_behaviour = {  'SumPassed'             : SumPassed,
+                                 'UserStartTime'         : UserStartTime,
                                  'PressedKeys'           : pressed_keys,
                                  'PercentagePassed'      : percentage_passed,
                                  'ReactionTimes'         : reaction_times,

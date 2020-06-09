@@ -6,6 +6,7 @@ import './style/index.css';
 import Task from './task';
 import Intro from './intro';
 import Questionnaires from './questionnaires';
+import End from './end';
 
 const App = () => {
     return (
@@ -14,7 +15,7 @@ const App = () => {
                 <Route path="/" component={Intro} exact />
                 <Route path="/Task" component={Task} exact />
                 <Route path="/Questionnaires" component={Questionnaires} exact />
-                <Route path="/End" component={Intro} exact />
+                <Route path="/End" component={End} exact />
             </Switch>
         </BrowserRouter>
     );

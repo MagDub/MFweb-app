@@ -8,8 +8,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './style/questionnaires.css';
 import 'react-showdown';
 import './style/intro.css';
-import { API_URL } from './config';
-import { handleResponse } from './helpers'; // imports json
 
 
 class Consent extends Component {
@@ -25,7 +23,6 @@ class Consent extends Component {
     var timeString    = currentDate.toTimeString();
 
     this.state = {
-      UserNo: [],
       ConsentCompleted: 0,
       date: dateString,
       startTime: timeString,
@@ -43,24 +40,7 @@ class Consent extends Component {
 
   componentDidMount() {
     Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
-    this.fetchUserInfo();
   }
-
-  fetchUserInfo () {
-       fetch(`${API_URL}/questions_behaviour/last_user_no`)
-         .then(handleResponse)
-         .then((data) => {
-           const user_no_ = parseInt(data['new_user_no'])
-           //console.log("fetchUserInfo in Intro ", "user_no", user_no_)
-
-           this.setState({
-                   UserNo : user_no_,
-               });
-       })
-         .catch((error) => {
-          console.log(error)
-       });
-      }
 
   render() {
 

@@ -17,13 +17,14 @@ class Questionnaires extends Component {
     super(props);
 
     var user_info = this.props.location.state.user_info;
-    var UserNo = user_info.UserNo;
+    var UserNo = this.props.location.state.UserNo;
 
     this.state = {
       user_info: user_info,
       UserNo:UserNo,
       transition: 0,
       resultAsString: {},
+      QuestionnaireStartTime: '',
     };
 
     this.onCompleteComponent = this.onCompleteComponent.bind(this);
@@ -33,10 +34,14 @@ class Questionnaires extends Component {
 
   handleClick(e) {
 
+    var currentDate             = new Date();
+    var QuestionnaireStartTime  = currentDate.toTimeString();
+
     setTimeout(
       function() {
         this.setState({
           transition: 1,
+          QuestionnaireStartTime: QuestionnaireStartTime,
         });
       }
       .bind(this),
@@ -49,8 +54,6 @@ class Questionnaires extends Component {
 
     var page = survey.currentPage;
     var RT_valueName = "PageNo" + (survey.pages.indexOf(page)+1);
-    var date = this.state.user_info.date;
-    var startTime = this.state.user_info.startTime;
     var seconds = Math.round(performance.now());
     var user_info = this.state.user_info;
 
@@ -60,9 +63,10 @@ class Questionnaires extends Component {
     user_info.QuestionnairesCompleted = 1;
 
     survey.setValue(RT_valueName, seconds);
-    survey.setValue("Date", date)
-    survey.setValue("StartTime", startTime)
-    survey.setValue("FinishTime", finishTime)
+    survey.setValue("Date", this.state.user_info.date)
+    survey.setValue("QuestionnaireStartTime", this.state.QuestionnaireStartTime)
+    survey.setValue("QuestionnaireFinishTime", finishTime)
+    survey.setValue("UserStartTime", this.state.user_info.startTime)
 
     var resultAsString = JSON.stringify(survey.data);
 
@@ -84,7 +88,7 @@ class Questionnaires extends Component {
 
     var resultAsString = this.state.resultAsString;
 
-    console.log("resultAsString", resultAsString)
+    //console.log("resultAsString", resultAsString)
 
     fetch(`${API_URL}/questionnaires_behaviour/` + user_no_, {
        method: 'POST',
@@ -102,7 +106,6 @@ class Questionnaires extends Component {
 
   render() {
 
-    console.log("render", "this.state.transition", this.state.transition)
     var json = { title: "Form", showProgressBar: "top", pages: [
 
       // LSAS
