@@ -203,9 +203,11 @@ class Training extends React.Component{
     var ChoicesSize = this.state.training_info.ChoicesSize.slice(0,NumTraining);
     var ChoicesCorrect = this.state.training_info.ChoicesCorrect.slice(0,NumTraining);
     var InitialSamplesSize = this.state.training_info.InitialSamplesSize.slice(0,NumTraining);
+    var prolific_id = this.props.prolific_id;
 
     let training_behaviour = {  'SumPassed'           : SumPassed,
                                 'UserStartTime'       : StartTime,
+                                'ProlificID'          : prolific_id,
                                 'TrainingStartTime'   : TrainingStartTime,
                                 'TrainingFinishTime'  : TrainingFinishTime,
                                 'ChoicesSize'         : ChoicesSize,

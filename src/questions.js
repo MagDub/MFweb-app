@@ -189,8 +189,11 @@ class Questions extends React.Component{
     var correct = this.state.correct;
     var reaction_times = this.state.reaction_times;
 
+    var prolific_id = this.props.prolific_id;
+
     let questions_behaviour = {  'SumPassed'             : SumPassed,
                                  'UserStartTime'         : UserStartTime,
+                                 'ProlificID'            : prolific_id,
                                  'PressedKeys'           : pressed_keys,
                                  'PercentagePassed'      : percentage_passed,
                                  'ReactionTimes'         : reaction_times,

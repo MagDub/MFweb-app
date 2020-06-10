@@ -8,12 +8,21 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './style/questionnaires.css';
 import 'react-showdown';
 import './style/intro.css';
+import queryString from 'query-string';
 
 
 class Consent extends Component {
 
   constructor(props) {
     super(props);
+
+    //console.log(this.props.location)
+    let url    = this.props.location.search;
+    //console.log("url", url)
+    let params = queryString.parse(url);
+    //console.log("params", params)
+    const prolific_id = (params['PROLIFIC_PID']=== undefined ? 'undefined' : params['PROLIFIC_PID'])
+    //console.log("prolific_id", prolific_id)
 
     var currentDate   = new Date();
     var date          = currentDate.getDate();
@@ -23,6 +32,7 @@ class Consent extends Component {
     var timeString    = currentDate.toTimeString();
 
     this.state = {
+      prolific_id: prolific_id,
       ConsentCompleted: 0,
       date: dateString,
       startTime: timeString,

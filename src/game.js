@@ -122,9 +122,11 @@ class Game extends React.Component{
     var subset_UnusedTree = this.state.block_info.UnusedTree.slice(block_first_trial,block_last_trial);
     var subset_TreePositions = this.state.block_info.TreePositions.slice(block_first_trial,block_last_trial);
     var subset_Horizon = this.state.block_info.Horizon.slice(block_first_trial,block_last_trial);
+    var prolific_id = this.props.prolific_id;
 
     let behaviour = {       'BlockNo'             : block_no_,
                             'UserStartTime'       : StartTime,
+                            'ProlificID'          : prolific_id,
                             'BlockStartTime'      : BlockStartTime,
                             'BlockFinishTime'     : BlockFinishTime,
                             'TreeColours'         : this.state.tree_col[ind_block],

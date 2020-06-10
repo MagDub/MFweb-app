@@ -119,7 +119,7 @@ class Task extends React.Component{
               this.fetchUserInfo();
             }
             //console.log("task: transition 2 - questions")
-            return <Questions StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
+            return <Questions prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
 
           case 3:
             //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
@@ -127,7 +127,7 @@ class Task extends React.Component{
 
           case 4:
             //console.log("task: transition 4 - training")
-            return <Training StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
+            return <Training prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
           case 5:
             //console.log("task: transition 5 - instructions")
@@ -135,7 +135,7 @@ class Task extends React.Component{
 
           case 6:
             //console.log("task: transition 6 - start game")
-            return <Game StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
+            return <Game prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
           case 7:
             //console.log("task: transition 7")
