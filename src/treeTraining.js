@@ -12,6 +12,10 @@ class TreeTraining extends React.Component{
       };
   }
 
+  componentDidMount() {
+    this.state.apple_col.forEach(image => { new Image().src = image })
+  }
+
   render(){
 
     return (

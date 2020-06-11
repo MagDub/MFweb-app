@@ -19,6 +19,17 @@ class Tree extends React.Component{
       };
   }
 
+  componentDidMount() {
+    this.state.col1.forEach(image => { new Image().src = image })
+    this.state.col2.forEach(image => { new Image().src = image })
+    this.state.col3.forEach(image => { new Image().src = image })
+    this.state.col4.forEach(image => { new Image().src = image })
+    this.state.col5.forEach(image => { new Image().src = image })
+    this.state.col6.forEach(image => { new Image().src = image })
+    this.state.col7.forEach(image => { new Image().src = image })
+    this.state.col8.forEach(image => { new Image().src = image })
+  }
+
   render(){
 
     var disp_col;

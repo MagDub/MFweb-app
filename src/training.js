@@ -40,21 +40,41 @@ class Training extends React.Component{
       reaction_times: reaction_times,
       TrainingStartTime: [],
       TrainingFinishTime: [],
+      currentImage: 0,
+      images: ["images/loading.jpg"],
       };
+
+      this.switchImage = this.switchImage.bind(this);
+  }
+
+  switchImage() {
+    this.setState({
+      currentImage: 1
+    });
   }
 
   componentDidMount() {
-
-    this.state.training_bg.forEach(image => { new Image().src = image })
-
+    setTimeout(this.switchImage, 1000);
   }
 
   render(){
 
     if (this.state.trial===0) {
-      //console.log("Fetch data training")
-      this.fetchTraining(this.props.UserNo);
-      return null
+
+      if (this.state.currentImage===0){
+        return (
+          <div className="slideshow-container">
+            <img src={this.state.images[this.state.currentImage]}
+            width={800}
+            alt='loading'
+            />
+          </div>
+        );}
+
+        else
+          //console.log("Fetch data training")
+          this.fetchTraining(this.props.UserNo);
+          return null
       }
 
     var trial_ind = this.state.trial-1;
