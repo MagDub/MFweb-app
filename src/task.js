@@ -27,7 +27,7 @@ class Task extends React.Component{
       num_training:1,
       loading: 1,
       slide: 1,
-      transition:0,
+      transition:1,
       fetched: 0,
       percentage_to_pass: 1, // percentage to pass the training and questions
       InstructionsStartTime: InstructionsStartTime,

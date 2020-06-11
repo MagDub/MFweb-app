@@ -12,7 +12,7 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
 
-    var trial_per_block = 2;
+    var trial_per_block = 100;
 
     /* fill in random colors .*/
     var BlockNb = 4;
@@ -107,22 +107,20 @@ class Game extends React.Component{
     let trial_per_block = this.state.trial_per_block;
     let ind_block = block_no_-1;
 
-    let block_first_trial = trial_per_block*ind_block;
-    let block_last_trial = trial_per_block*ind_block+trial_per_block;
-
     let chosen_tree = this.state.chosen_tree
     let chosen_apple_size = this.state.chosen_apple_size
     let all_key_pressed = this.state.all_key_pressed
     let reaction_times = this.state.reaction_times
-    var subset_InitialSampleNb = this.state.block_info.InitialSampleNb.slice(block_first_trial,block_last_trial);
-    var subset_InitialSamples_Tree = this.state.block_info.InitialSamples_Tree.slice(block_first_trial,block_last_trial);
-    var subset_InitialSamples_Size = this.state.block_info.InitialSamples_Size.slice(block_first_trial,block_last_trial);
-    var subset_ItemNo = this.state.block_info.ItemNo.slice(block_first_trial,block_last_trial);
-    var subset_TrialNo = this.state.block_info.TrialNo.slice(block_first_trial,block_last_trial);
-    var subset_UnusedTree = this.state.block_info.UnusedTree.slice(block_first_trial,block_last_trial);
-    var subset_TreePositions = this.state.block_info.TreePositions.slice(block_first_trial,block_last_trial);
-    var subset_Horizon = this.state.block_info.Horizon.slice(block_first_trial,block_last_trial);
     var prolific_id = this.props.prolific_id;
+
+    var subset_Horizon = this.state.block_info.Horizon.slice(0,trial_per_block);
+    var subset_InitialSampleNb = this.state.block_info.InitialSampleNb.slice(0,trial_per_block);
+    var subset_InitialSamples_Tree = this.state.block_info.InitialSamples_Tree.slice(0,trial_per_block);
+    var subset_InitialSamples_Size = this.state.block_info.InitialSamples_Size.slice(0,trial_per_block);
+    var subset_ItemNo = this.state.block_info.ItemNo.slice(0,trial_per_block);
+    var subset_TrialNo = this.state.block_info.TrialNo.slice(0,trial_per_block);
+    var subset_UnusedTree = this.state.block_info.UnusedTree.slice(0,trial_per_block);
+    var subset_TreePositions = this.state.block_info.TreePositions.slice(0,trial_per_block);
 
     let behaviour = {       'BlockNo'             : block_no_,
                             'UserStartTime'       : StartTime,
