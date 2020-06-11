@@ -229,6 +229,38 @@ class Questionnaires extends Component {
                   ]},
         ]},
 
+      //OCI-R
+      {questions: [
+              { type: "matrix", name: "OCIR", isAllRowRequired: true,
+                title: "Indicated what best describes HOW MUCH each experience has DISTRESSED or BOTHERED you during the PAST MONTH.",
+                  columns: [
+                      { value: 0, text: "Not at all" },
+                      { value: 1, text: "A little" },
+                      { value: 2, text: "Moderately" },
+                      { value: 3, text: "A lot" },
+                      { value: 4, text: "Extremely" }],
+                  rows: [
+                      { value: "OCIR_1",    text: "1. I have saved up so many things that they get in the way." },
+                      { value: "OCIR_2",    text: "2. I check things more often than necessary." },
+                      { value: "OCIR_3",    text: "3. I get upset if objects are not arranged properly." },
+                      { value: "OCIR_4",    text: "4. I feel compelled to count while I am doing things." },
+                      { value: "OCIR_5",    text: "5. I find it difficult to touch an object when I know it has been touched by strangers or certain people.”" },
+                      { value: "OCIR_6",    text: "6. I find it difficult to control my own thoughts." },
+                      { value: "OCIR_7",    text: "7. I collect things I don’t need." },
+                      { value: "OCIR_8",    text: "8. I repeatedly check doors, windows, drawers, etc." },
+                      { value: "OCIR_9",    text: "9. I get upset if others change the way I have arranged things." },
+                      { value: "OCIR_10",   text: "10. I feel I have to repeat certain numbers." },
+                      { value: "OCIR_11",   text: "11. I sometimes have to wash or clean myself simply because I feel contaminated." },
+                      { value: "OCIR_12",   text: "12. I am upset by unpleasant thoughts that come into my mind against my will." },
+                      { value: "OCIR_13",   text: "13. I avoid throwing things away because I am afraid I might need them later." },
+                      { value: "OCIR_14",   text: "14. I repeatedly check gas and water taps and light switches after turning them off." },
+                      { value: "OCIR_15",   text: "15. I need things to be arranged in a particular way." },
+                      { value: "OCIR_16",   text: "16. I feel that there are good and bad numbers." },
+                      { value: "OCIR_17",   text: "17. I wash my hands more often and longer than necessary." },
+                      { value: "OCIR_18",   text: "18. I frequently get nasty thoughts and have difficulty in getting rid of them." }
+                    ]},
+          ]},
+
       // IU
       {questions: [
             {   type: "matrix", name: "IUS", isAllRowRequired: true,

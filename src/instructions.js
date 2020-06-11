@@ -23,7 +23,8 @@ class Instructions extends React.Component{
 
   componentDidMount() {
 
-    const imagesToBePreloaded = this.state.instruc;
+    //const imagesToBePreloaded = this.state.instruc;
+    this.state.instruc.forEach(image => { new Image().src = image })
 
     setTimeout(this.switchImage, 2000);
   }
