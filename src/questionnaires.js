@@ -244,7 +244,7 @@ class Questionnaires extends Component {
                       { value: "OCIR_2",    text: "2. I check things more often than necessary." },
                       { value: "OCIR_3",    text: "3. I get upset if objects are not arranged properly." },
                       { value: "OCIR_4",    text: "4. I feel compelled to count while I am doing things." },
-                      { value: "OCIR_5",    text: "5. I find it difficult to touch an object when I know it has been touched by strangers or certain people.”" },
+                      { value: "OCIR_5",    text: "5. I find it difficult to touch an object when I know it has been touched by strangers or certain people." },
                       { value: "OCIR_6",    text: "6. I find it difficult to control my own thoughts." },
                       { value: "OCIR_7",    text: "7. I collect things I don’t need." },
                       { value: "OCIR_8",    text: "8. I repeatedly check doors, windows, drawers, etc." },

@@ -43,6 +43,12 @@ class Training extends React.Component{
       };
   }
 
+  componentDidMount() {
+
+    this.state.training_bg.forEach(image => { new Image().src = image })
+
+  }
+
   render(){
 
     if (this.state.trial===0) {
