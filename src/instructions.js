@@ -11,7 +11,7 @@ class Instructions extends React.Component{
     this.state = {
       currentImage: 0,
       images: ["images/loading.jpg"],
-      instruc:["slide_22", "slide_22", "slide_2", "slide_3", "slide_4", "slide_5", "slide_6", "slide_7", "slide_8", "slide_9", "slide_10", "slide_11", "slide_12", "slide_13", "slide_14", "slide_15", "slide_16", "slide_17", "slide_18", "slide_19", "slide_20", "slide_21" , "slide_22", "slide_22"],
+      instruc:["slide_1_arrow", "slide_2_arrows", "slide_6", "slide_7", "slide_8", "slide_9", "slide_10", "slide_11", "slide_12", "slide_13", "slide_14", "slide_15", "slide_16", "slide_17", "slide_18"],
       };
   }
 
@@ -30,6 +30,7 @@ class Instructions extends React.Component{
   }
 
   bubble_text(slide){
+
     switch(slide) {
 
       case 1:
@@ -61,6 +62,43 @@ class Instructions extends React.Component{
             <p>
               Mmmh... You can do better than that! <br /> <br />
               Let&#39;s start slowly from the beginning.
+            </p>
+          </div>);
+
+      case 2:
+        return (
+          <div className="slide_text">
+            <p>
+              Apples come in different shades and sizes. You needs to help us <br />
+              collect the BIGGEST ones before sunset.
+            </p>
+          </div>);
+
+      case 3:
+        return (
+          <div className="slide_text">
+            <p>
+              You can only pick apples until sunset. Sometimes you will start at <br />
+              noon and will pick 6 apples, sometimes you will start in the <br />
+              afternoon and will pick only 1 apple.
+            </p>
+          </div>);
+
+      case 4:
+        return (
+          <div className="slide_text">
+            <p>
+              On each day you will collect apples from new trees. Some of the  <br />
+              trees are better than others. To help you, some apples were <br />
+              already picked up before you arrived.
+            </p>
+          </div>);
+
+      case 5:
+        return (
+          <div className="slide_text">
+            <p>
+              Let me explain this in more details, follow me to the plantation !
             </p>
           </div>);
 
@@ -126,14 +164,31 @@ class Instructions extends React.Component{
 }
 
   render(){
+
+    if(this.props.slide===1) {
       return (
-        <div className={this.state.instruc[this.props.slide-1]}>
-          <div className={this.state.instruc[this.props.slide]}>
-            {this.bubble_text(this.props.slide)}
-          </div>
+        <div className={this.state.instruc[0]}>
+          {this.bubble_text(this.props.slide)}
         </div>
       );
     }
+
+    if((this.props.slide>1 && this.props.slide<6) || (this.props.slide>18 && this.props.slide<22)) {
+      return (
+        <div className={this.state.instruc[1]}>
+          {this.bubble_text(this.props.slide)}
+        </div>
+      );
+    }
+
+    else {
+      return (
+        <div className={this.state.instruc[this.props.slide-4]}>
+          {this.bubble_text(this.props.slide)}
+        </div>
+      );
+    }
+  }
 };
 
 

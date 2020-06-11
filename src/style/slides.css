@@ -186,7 +186,7 @@
   background-size:800px;
 }
 
-.slide_19{
+.slide_2_arrows{
   position:absolute;
   background: url('../instructions/slides/slide_empty_2arrows.png');
   background-repeat: no-repeat;
@@ -195,25 +195,7 @@
   background-size:800px;
 }
 
-.slide_20{
-  position:absolute;
-  background: url('../instructions/slides/slide_empty_2arrows.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.slide_21{
-  position:absolute;
-  background: url('../instructions/slides/slide_empty_2arrows.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.slide_22{
+.slide_1_arrow{
   position:absolute;
   background: url('../instructions/slides/slide_empty_1arrow.png');
   background-repeat: no-repeat;
