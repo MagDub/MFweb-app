@@ -168,7 +168,9 @@ class Instructions extends React.Component{
     if(this.props.slide===1) {
       return (
         <div className={this.state.instruc[0]}>
-          {this.bubble_text(this.props.slide)}
+          <div className={this.state.instruc[0]}>
+            {this.bubble_text(this.props.slide)}
+          </div>
         </div>
       );
     }
@@ -176,7 +178,9 @@ class Instructions extends React.Component{
     if((this.props.slide>1 && this.props.slide<6) || (this.props.slide>18 && this.props.slide<22)) {
       return (
         <div className={this.state.instruc[1]}>
-          {this.bubble_text(this.props.slide)}
+          <div className={this.state.instruc[1]}>
+            {this.bubble_text(this.props.slide)}
+          </div>
         </div>
       );
     }
@@ -184,7 +188,9 @@ class Instructions extends React.Component{
     else {
       return (
         <div className={this.state.instruc[this.props.slide-4]}>
-          {this.bubble_text(this.props.slide)}
+          <div className={this.state.instruc[this.props.slide-4]}>
+            {this.bubble_text(this.props.slide)}
+          </div>
         </div>
       );
     }
