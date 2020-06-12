@@ -77,24 +77,57 @@ class Game extends React.Component{
 
   componentDidMount() {
 
-    this.state.image_bg_SH_1.forEach(image => { new Image().src = image })
-    this.state.image_bg_LH_1.forEach(image => { new Image().src = image })
-    this.state.image_bg_SH_2.forEach(image => { new Image().src = image })
-    this.state.image_bg_LH_2.forEach(image => { new Image().src = image })
-    this.state.image_bg_SH_3.forEach(image => { new Image().src = image })
-    this.state.image_bg_LH_3.forEach(image => { new Image().src = image })
-    this.state.image_bg_SH_4.forEach(image => { new Image().src = image })
-    this.state.image_bg_LH_4.forEach(image => { new Image().src = image })
-    this.state.image_bg_SH_5.forEach(image => { new Image().src = image })
-    this.state.image_bg_LH_5.forEach(image => { new Image().src = image })
-    this.state.image_bg_SH_6.forEach(image => { new Image().src = image })
-    this.state.image_bg_LH_6.forEach(image => { new Image().src = image })
-    this.state.image_bg_SH_7.forEach(image => { new Image().src = image })
-    this.state.image_bg_LH_7.forEach(image => { new Image().src = image })
-    this.state.image_bg_SH_8.forEach(image => { new Image().src = image })
-    this.state.image_bg_LH_8.forEach(image => { new Image().src = image })
+    var image_bg_SH_1 = this.state.image_bg_SH_1;
+    var image_bg_LH_1 = this.state.image_bg_LH_1;
+    var image_bg_SH_2 = this.state.image_bg_SH_1;
+    var image_bg_LH_2 = this.state.image_bg_LH_1;
+    var image_bg_SH_3 = this.state.image_bg_SH_1;
+    var image_bg_LH_3 = this.state.image_bg_LH_1;
+    var image_bg_SH_4 = this.state.image_bg_SH_1;
+    var image_bg_LH_4 = this.state.image_bg_LH_1;
+    var image_bg_SH_5 = this.state.image_bg_SH_1;
+    var image_bg_LH_5 = this.state.image_bg_LH_1;
+    var image_bg_SH_6 = this.state.image_bg_SH_1;
+    var image_bg_LH_6 = this.state.image_bg_LH_1;
+    var image_bg_SH_7 = this.state.image_bg_SH_1;
+    var image_bg_LH_7 = this.state.image_bg_LH_1;
+    var image_bg_SH_8 = this.state.image_bg_SH_1;
+    var image_bg_LH_8 = this.state.image_bg_LH_1;
+
+    image_bg_SH_1.forEach(image => { new Image().src = image })
+    image_bg_LH_1.forEach(image => { new Image().src = image })
+    image_bg_SH_2.forEach(image => { new Image().src = image })
+    image_bg_LH_2.forEach(image => { new Image().src = image })
+    image_bg_SH_3.forEach(image => { new Image().src = image })
+    image_bg_LH_3.forEach(image => { new Image().src = image })
+    image_bg_SH_4.forEach(image => { new Image().src = image })
+    image_bg_LH_4.forEach(image => { new Image().src = image })
+    image_bg_SH_5.forEach(image => { new Image().src = image })
+    image_bg_LH_5.forEach(image => { new Image().src = image })
+    image_bg_SH_6.forEach(image => { new Image().src = image })
+    image_bg_LH_6.forEach(image => { new Image().src = image })
+    image_bg_SH_7.forEach(image => { new Image().src = image })
+    image_bg_LH_7.forEach(image => { new Image().src = image })
+    image_bg_SH_8.forEach(image => { new Image().src = image })
+    image_bg_LH_8.forEach(image => { new Image().src = image })
 
     this.setState({
+        image_bg_SH_1: image_bg_SH_1,
+        image_bg_LH_1: image_bg_LH_1,
+        image_bg_SH_2: image_bg_SH_2,
+        image_bg_LH_2: image_bg_LH_2,
+        image_bg_SH_3: image_bg_SH_3,
+        image_bg_LH_3: image_bg_LH_3,
+        image_bg_SH_4: image_bg_SH_4,
+        image_bg_LH_4: image_bg_LH_4,
+        image_bg_SH_5: image_bg_SH_5,
+        image_bg_LH_5: image_bg_LH_5,
+        image_bg_SH_6: image_bg_SH_6,
+        image_bg_LH_6: image_bg_LH_6,
+        image_bg_SH_7: image_bg_SH_7,
+        image_bg_LH_7: image_bg_LH_7,
+        image_bg_SH_8: image_bg_SH_8,
+        image_bg_LH_8: image_bg_LH_8,
         mounted:1,
       });
   }
