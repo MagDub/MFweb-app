@@ -44,12 +44,30 @@ class Instructions extends React.Component{
             <div className={this.state.instruc[4]}>
             <div className={this.state.instruc[5]}>
             <div className={this.state.instruc[6]}>
+            <div className={this.state.instruc[7]}>
+            <div className={this.state.instruc[8]}>
+            <div className={this.state.instruc[9]}>
+            <div className={this.state.instruc[10]}>
+            <div className={this.state.instruc[11]}>
+            <div className={this.state.instruc[12]}>
+            <div className={this.state.instruc[13]}>
+            <div className={this.state.instruc[14]}>
+            <div className={this.state.instruc[15]}>
               <div className="slideshow-container">
                 <img src={this.state.images[this.state.currentImage]}
                 width={800}
                 alt='loading'
                 />
               </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
             </div>
             </div>
@@ -189,7 +207,7 @@ class Instructions extends React.Component{
       );
     }
 
-    if((this.props.slide>1 && this.props.slide<6) || (this.props.slide>18 && this.props.slide<22)) {
+    if(this.props.slide>0 || (this.props.slide>1 && this.props.slide<6) || (this.props.slide>18 && this.props.slide<22)) {
       return (
         <div className={this.state.instruc[0]}>
           <div className={this.state.instruc[1]}>
