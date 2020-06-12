@@ -15,60 +15,6 @@
   font-family: Arial;
 }
 
-.slide_0{
-  position:absolute;
-  background: url('../instructions/slides/slide0.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.slide_1{
-  position:absolute;
-  background: url('../instructions/slides/slide1.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.slide_2{
-  position:absolute;
-  background: url('../instructions/slides/slide2.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.slide_3{
-  position:absolute;
-  background: url('../instructions/slides/slide3.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.slide_4{
-  position:absolute;
-  background: url('../instructions/slides/slide4.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.slide_5{
-  position:absolute;
-  background: url('../instructions/slides/slide5.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
 .slide_6{
   position:absolute;
   background: url('../instructions/slides/slide6.png');

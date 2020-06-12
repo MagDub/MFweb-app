@@ -185,7 +185,7 @@ class Instructions extends React.Component{
 
   render(){
 
-    if(this.props.slide===0 || this.props.slide===1) {
+    if(this.props.slide===0 || this.props.slide===1 || (this.props.slide>21 && this.props.slide<25)) {
       return (
         <div className={this.state.instruc[0]}>
           <div className={this.state.instruc[0]}>

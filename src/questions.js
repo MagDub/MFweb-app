@@ -22,7 +22,21 @@ class Questions extends React.Component{
       correct: correct,
       reaction_times: reaction_times,
       QuestionsStartTime: QuestionsStartTime,
+      currentImage: 0,
+      images: ["images/loading.jpg"],
       };
+
+      this.switchImage = this.switchImage.bind(this);
+  }
+
+  switchImage() {
+    this.setState({
+      currentImage: 1
+    });
+  }
+
+  componentDidMount() {
+    setTimeout(this.switchImage, 1000);
   }
 
   display_question(question_no){
@@ -150,8 +164,20 @@ class Questions extends React.Component{
     document.addEventListener("keydown", this._handleKeyDownNumbers)
 
     if(this.state.question_no===0){
-      this.start_quest();
-      return null;
+        if (this.state.currentImage===0){
+          return (
+            <div className="slideshow-container">
+              <img src={this.state.images[this.state.currentImage]}
+              width={800}
+              alt='loading'
+              />
+            </div>
+          );}
+
+        else {
+          this.start_quest();
+          return null;
+      }
     }
 
     else{

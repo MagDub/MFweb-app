@@ -29,7 +29,8 @@ class Task extends React.Component{
       slide: 1,
       transition:1,
       fetched: 0,
-      percentage_to_pass: 1, // percentage to pass the training and questions
+      percentage_to_pass_questions: 1, // percentage to pass the training and questions
+      percentage_to_pass_training: 0.8,
       InstructionsStartTime: InstructionsStartTime,
       };
 
@@ -186,7 +187,8 @@ class Task extends React.Component{
 
   nextTransition(percentage_passed) {
 
-    if (percentage_passed>=this.state.percentage_to_pass){
+    if ((this.state.transition===2 && percentage_passed>=this.state.percentage_to_pass_questions)
+          || (this.state.transition===4 && percentage_passed>=this.state.percentage_to_pass_training)){
       this.setState({
         transition: this.state.transition+1,
       });
