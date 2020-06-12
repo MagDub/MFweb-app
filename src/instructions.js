@@ -1,5 +1,7 @@
 import React from 'react';
 import './style/slides.css';
+import Image from 'react-image-resizer';
+
 
 class Instructions extends React.Component{
 
@@ -7,12 +9,13 @@ class Instructions extends React.Component{
     super(props);
 
     this.switchImage = this.switchImage.bind(this);
+    this.preload = this.preload.bind(this);
 
     this.state = {
       currentImage: 0,
       images: ["images/loading.jpg"],
-      instruc:["slide_1_arrow", "slide_2_arrows", "slide_6", "slide_7", "slide_8", "slide_9", "slide_10", "slide_11", "slide_12", "slide_13", "slide_14", "slide_15", "slide_16", "slide_17", "slide_18"],
-      instruc_:["slide_1_arrow_", "slide_2_arrows_", "slide_6_", "slide_7_", "slide_8_", "slide_9_", "slide_10_", "slide_11_", "slide_12_", "slide_13_", "slide_14_", "slide_15_", "slide_16_", "slide_17_", "slide_18_"],
+      instruc_:["images/instructions/slide_empty_1arrow.png", "images/instructions/slide_empty_2arrows.png", "images/instructions/slide6.png", "images/instructions/slide7.png", "images/instructions/slide8.png", "images/instructions/slide9.png", "images/instructions/slide10.png", "images/instructions/slide11.png", "images/instructions/slide12.png", "images/instructions/slide13.png", "images/instructions/slide14.png", "images/instructions/slide15.png", "images/instructions/slide16.png", "images/instructions/slide17.png", "images/instructions/slide18.png"],
+      images_slide: [],
       };
   }
 
@@ -22,12 +25,23 @@ class Instructions extends React.Component{
     });
   }
 
+  preload() {
+
+    var images_slide = [];
+
+    for (var i = 0; i < 4; i++) {
+      images_slide[i] = new Image()
+      images_slide[i].src = this.state.instruc_[i]
+    }
+  }
+
   componentDidMount() {
 
-    //const imagesToBePreloaded = this.state.instruc;
-    this.state.instruc.forEach(image => { new Image().src = image })
+    var images = new Array()
+
 
     setTimeout(this.switchImage, 2000);
+
   }
 
   bubble_text(slide){
@@ -35,59 +49,14 @@ class Instructions extends React.Component{
     switch(slide) {
 
       case 1:
-
-        if (this.state.currentImage===0){
-          return (
-            <div className={this.state.instruc_[0]}>
-            <div className={this.state.instruc_[1]}>
-            <div className={this.state.instruc_[2]}>
-            <div className={this.state.instruc_[3]}>
-            <div className={this.state.instruc_[4]}>
-            <div className={this.state.instruc_[5]}>
-            <div className={this.state.instruc_[6]}>
-            <div className={this.state.instruc_[7]}>
-            <div className={this.state.instruc_[8]}>
-            <div className={this.state.instruc_[9]}>
-            <div className={this.state.instruc_[10]}>
-            <div className={this.state.instruc_[11]}>
-            <div className={this.state.instruc_[12]}>
-            <div className={this.state.instruc_[13]}>
-            <div className={this.state.instruc_[14]}>
-            <div className={this.state.instruc_[15]}>
-              <div className="slideshow-container">
-                <img src={this.state.images[this.state.currentImage]}
-                width={800}
-                alt='loading'
-                />
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-          );}
-
-        else {
-          return (
-            <div className="slide_text">
-              <p>
-                Hi my name is Maggie, welcome to our farm ! <br />
-                The apple picking season just started. We are really glad that you are <br />
-                here to help. Press the right arrow on your keyboard to continue. <br />
-              </p>
-            </div>);
-        }
+        return (
+          <div className="slide_text">
+            <p>
+              Hi my name is Maggie, welcome to our farm ! <br />
+              The apple picking season just started. We are really glad that you are <br />
+              here to help. Press the right arrow on your keyboard to continue. <br />
+            </p>
+          </div>);
 
       case 0:
         return (
@@ -198,32 +167,47 @@ class Instructions extends React.Component{
 
   render(){
 
-    if(this.props.slide===0 || this.props.slide===1 || (this.props.slide>21 && this.props.slide<25)) {
-      return (
-        <div className={this.state.instruc[0]}>
-          <div className={this.state.instruc[0]}>
+    if(this.props.slide===1) {
+      if (this.state.currentImage===0) {
+        return (
+          <div className="slide_im">
+              <Image src={this.state.images[this.state.currentImage]} height={800}/>
+          </div>
+        );
+      }
+      else {
+        return (
+          <div className="slide_im">
+            <Image src={this.state.instruc_[0]} height={800}/>
             {this.bubble_text(this.props.slide)}
           </div>
+        );
+      }
+    }
+
+    if(this.props.slide===0 || (this.props.slide>21 && this.props.slide<25)) {
+      return (
+        <div className="slide_im">
+          <Image src={this.state.instruc_[0]} height={800}/>
+          {this.bubble_text(this.props.slide)}
         </div>
       );
     }
 
     if((this.props.slide>1 && this.props.slide<6) || (this.props.slide>18 && this.props.slide<22)) {
       return (
-        <div className={this.state.instruc[0]}>
-          <div className={this.state.instruc[1]}>
+        <div className="slide_im">
+          <Image src={this.state.instruc_[1]} height={800}/>
             {this.bubble_text(this.props.slide)}
-          </div>
         </div>
       );
     }
 
     else {
       return (
-        <div className={this.state.instruc[this.props.slide-5]}>
-          <div className={this.state.instruc[this.props.slide-4]}>
+        <div className="slide_im">
+          <Image src={this.state.instruc_[this.props.slide-4]} height={800}/>
             {this.bubble_text(this.props.slide)}
-          </div>
         </div>
       );
     }
