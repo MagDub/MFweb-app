@@ -24,6 +24,16 @@
   background-size:800px;
 }
 
+.slide_6_{
+  position:absolute;
+  background: url('../instructions/slides/slide6.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
+}
+
 .slide_7{
   position:absolute;
   background: url('../instructions/slides/slide7.png');
@@ -31,6 +41,16 @@
   width: 1000px;
   height: 1000px;
   background-size:800px;
+}
+
+.slide_7_{
+  position:absolute;
+  background: url('../instructions/slides/slide7.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
 }
 
 .slide_8{
@@ -42,6 +62,16 @@
   background-size:800px;
 }
 
+.slide_8_{
+  position:absolute;
+  background: url('../instructions/slides/slide8.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
+}
+
 .slide_9{
   position:absolute;
   background: url('../instructions/slides/slide9.png');
@@ -49,6 +79,16 @@
   width: 1000px;
   height: 1000px;
   background-size:800px;
+}
+
+.slide_9_{
+  position:absolute;
+  background: url('../instructions/slides/slide9.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
 }
 
 .slide_10{
@@ -60,6 +100,16 @@
   background-size:800px;
 }
 
+.slide_10_{
+  position:absolute;
+  background: url('../instructions/slides/slide10.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
+}
+
 .slide_11{
   position:absolute;
   background: url('../instructions/slides/slide11.png');
@@ -67,6 +117,16 @@
   width: 1000px;
   height: 1000px;
   background-size:800px;
+}
+
+.slide_11_{
+  position:absolute;
+  background: url('../instructions/slides/slide11.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
 }
 
 .slide_12{
@@ -78,6 +138,16 @@
   background-size:800px;
 }
 
+.slide_12_{
+  position:absolute;
+  background: url('../instructions/slides/slide12.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
+}
+
 .slide_13{
   position:absolute;
   background: url('../instructions/slides/slide13.png');
@@ -85,6 +155,16 @@
   width: 1000px;
   height: 1000px;
   background-size:800px;
+}
+
+.slide_13_{
+  position:absolute;
+  background: url('../instructions/slides/slide13.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
 }
 
 .slide_14{
@@ -96,6 +176,16 @@
   background-size:800px;
 }
 
+.slide_14_{
+  position:absolute;
+  background: url('../instructions/slides/slide14.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
+}
+
 .slide_15{
   position:absolute;
   background: url('../instructions/slides/slide15.png');
@@ -103,6 +193,16 @@
   width: 1000px;
   height: 1000px;
   background-size:800px;
+}
+
+.slide_15_{
+  position:absolute;
+  background: url('../instructions/slides/slide15.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
 }
 
 .slide_16{
@@ -114,6 +214,16 @@
   background-size:800px;
 }
 
+.slide_16_{
+  position:absolute;
+  background: url('../instructions/slides/slide16.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
+}
+
 .slide_17{
   position:absolute;
   background: url('../instructions/slides/slide17.png');
@@ -121,6 +231,16 @@
   width: 1000px;
   height: 1000px;
   background-size:800px;
+}
+
+.slide_17_{
+  position:absolute;
+  background: url('../instructions/slides/slide17.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
 }
 
 .slide_18{
@@ -132,6 +252,16 @@
   background-size:800px;
 }
 
+.slide_18_{
+  position:absolute;
+  background: url('../instructions/slides/slide18.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
+}
+
 .slide_2_arrows{
   position:absolute;
   background: url('../instructions/slides/slide_empty_2arrows.png');
@@ -139,6 +269,16 @@
   width: 1000px;
   height: 1000px;
   background-size:800px;
+}
+
+.slide_2_arrows_{
+  position:absolute;
+  background: url('../instructions/slides/slide_empty_2arrows.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
 }
 
 .slide_1_arrow{
@@ -150,6 +290,16 @@
   background-size:800px;
 }
 
+.slide_1_arrow_{
+  position:absolute;
+  background: url('../instructions/slides/slide_empty_1arrow.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
+}
+
 .slide_no_arrow{
   position:absolute;
   background: url('../instructions/slides/slide_empty_0arrow_big.png');
@@ -157,4 +307,14 @@
   width: 1000px;
   height: 1000px;
   background-size:800px;
+}
+
+.slide_no_arrow_{
+  position:absolute;
+  background: url('../instructions/slides/slide_empty_0arrow_big.png');
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 1000px;
+  background-size:800px;
+  display: none;
 }
