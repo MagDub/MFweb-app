@@ -46,6 +46,23 @@ class Game extends React.Component{
       all_key_pressed: all_key_pressed,
       reaction_times: reaction_times,
       trial_per_block: trial_per_block,
+      mounted: 0,
+      image_bg_SH_1:["farm1_6", "farm1_6", "farm1_7"],
+      image_bg_LH_1:["farm1_1", "farm1_1", "farm1_2", "farm1_3", "farm1_4", "farm1_5", "farm1_6", "farm1_7"],
+      image_bg_SH_2:["farm2_6", "farm2_6", "farm2_7"],
+      image_bg_LH_2:["farm2_1", "farm2_1", "farm2_2", "farm2_3", "farm2_4", "farm2_5", "farm2_6", "farm2_7"],
+      image_bg_SH_3:["farm3_6", "farm3_6", "farm3_7"],
+      image_bg_LH_3:["farm3_1", "farm3_1", "farm3_2", "farm3_3", "farm3_4", "farm3_5", "farm3_6", "farm3_7"],
+      image_bg_SH_4:["farm4_6", "farm4_6", "farm4_7"],
+      image_bg_LH_4:["farm4_1", "farm4_1", "farm4_2", "farm4_3", "farm4_4", "farm4_5", "farm4_6", "farm4_7"],
+      image_bg_SH_5:["farm5_6", "farm5_6", "farm5_7"],
+      image_bg_LH_5:["farm5_1", "farm5_1", "farm5_2", "farm5_3", "farm5_4", "farm5_5", "farm5_6", "farm5_7"],
+      image_bg_SH_6:["farm6_6", "farm6_6", "farm6_7"],
+      image_bg_LH_6:["farm6_1", "farm6_1", "farm6_2", "farm6_3", "farm6_4", "farm6_5", "farm6_6", "farm6_7"],
+      image_bg_SH_7:["farm7_6", "farm7_6", "farm7_7"],
+      image_bg_LH_7:["farm7_1", "farm7_1", "farm7_2", "farm7_3", "farm7_4", "farm7_5", "farm7_6", "farm7_7"],
+      image_bg_SH_8:["farm8_6", "farm8_6", "farm8_7"],
+      image_bg_LH_8:["farm8_1", "farm8_1", "farm8_2", "farm8_3", "farm8_4", "farm8_5", "farm8_6", "farm8_7"],
       }
 
     /* prevents page from going down when space bar is hit .*/
@@ -56,6 +73,30 @@ class Game extends React.Component{
     });
 
     this.fetchBlock.bind(this);
+  }
+
+  componentDidMount() {
+
+    this.state.image_bg_SH_1.forEach(image => { new Image().src = image })
+    this.state.image_bg_LH_1.forEach(image => { new Image().src = image })
+    this.state.image_bg_SH_2.forEach(image => { new Image().src = image })
+    this.state.image_bg_LH_2.forEach(image => { new Image().src = image })
+    this.state.image_bg_SH_3.forEach(image => { new Image().src = image })
+    this.state.image_bg_LH_3.forEach(image => { new Image().src = image })
+    this.state.image_bg_SH_4.forEach(image => { new Image().src = image })
+    this.state.image_bg_LH_4.forEach(image => { new Image().src = image })
+    this.state.image_bg_SH_5.forEach(image => { new Image().src = image })
+    this.state.image_bg_LH_5.forEach(image => { new Image().src = image })
+    this.state.image_bg_SH_6.forEach(image => { new Image().src = image })
+    this.state.image_bg_LH_6.forEach(image => { new Image().src = image })
+    this.state.image_bg_SH_7.forEach(image => { new Image().src = image })
+    this.state.image_bg_LH_7.forEach(image => { new Image().src = image })
+    this.state.image_bg_SH_8.forEach(image => { new Image().src = image })
+    this.state.image_bg_LH_8.forEach(image => { new Image().src = image })
+
+    this.setState({
+        mounted:1,
+      });
   }
 
   fetchBlock(user_no_,block_no_){
@@ -155,57 +196,112 @@ class Game extends React.Component{
 
   render() {
 
-    var trialinblock_index = this.state.TrialInBlockNo-1;
+    if (this.state.mounted===1) {
 
-    if (this.state.BlockNo>this.state.BlockNb) {
-      document.addEventListener("keyup", this._handleKeyDownSpace);
-      return <Block block_i={this.state.BlockNo} BlockNb={this.state.BlockNb}/>
+      var trialinblock_index = this.state.TrialInBlockNo-1;
+
+      if (this.state.BlockNo>this.state.BlockNb) {
+        document.addEventListener("keyup", this._handleKeyDownSpace);
+        return <Block block_i={this.state.BlockNo} BlockNb={this.state.BlockNb}/>
+        }
+
+      else if (this.state.start_block===1) {
+        //console.log("fetch data")
+        var BlockNo = this.state.BlockNo;
+        this.fetchBlock(this.props.UserNo, BlockNo);
+        return null
+        }
+
+      else if (this.state.disp_new_block===1) {
+        document.removeEventListener("keyup", this._handleKeyDownTree);
+        document.addEventListener("keyup", this._handleKeyDownSpace);
+        return <Block block_i={this.state.block_info.BlockNo[trialinblock_index]} BlockNb={this.state.BlockNb}/>
       }
 
-    else if (this.state.start_block===1) {
-      //console.log("fetch data")
-      var BlockNo = this.state.BlockNo;
-      this.fetchBlock(this.props.UserNo, BlockNo);
-      return null
-      }
+      else {
+        switch(this.state.disp_juice) {
+            case 0:
 
-    else if (this.state.disp_new_block===1) {
-      document.removeEventListener("keyup", this._handleKeyDownTree);
-      document.addEventListener("keyup", this._handleKeyDownSpace);
-      return <Block block_i={this.state.block_info.BlockNo[trialinblock_index]} BlockNb={this.state.BlockNb}/>
-    }
+                var current_block = this.state.block_info.BlockNo[trialinblock_index];
+                var col = this.state.tree_col[current_block-1][trialinblock_index];
+                var hor = this.state.block_info.Horizon[trialinblock_index];
+                var disp;
 
-    else {
-      switch(this.state.disp_juice) {
-          case 0:
+                if (hor===1){
+                  switch(col) {
+                      case 1:
+                        disp = this.state.image_bg_SH_1; break;
+                      case 2:
+                        disp = this.state.image_bg_SH_2; break;
+                      case 3:
+                        disp = this.state.image_bg_SH_3; break;
+                      case 4:
+                        disp = this.state.image_bg_SH_4; break;
+                      case 5:
+                        disp = this.state.image_bg_SH_5; break;
+                      case 6:
+                        disp = this.state.image_bg_SH_6; break;
+                      case 7:
+                        disp = this.state.image_bg_SH_7; break;
+                      case 8:
+                        disp = this.state.image_bg_SH_8; break;
+                      default:
+                    }
+                  }
 
-              var current_block = this.state.block_info.BlockNo[trialinblock_index];
+                  else if (hor===6){
+                    switch(col) {
+                        case 1:
+                          disp = this.state.image_bg_LH_1; break;
+                        case 2:
+                          disp = this.state.image_bg_LH_2; break;
+                        case 3:
+                          disp = this.state.image_bg_LH_3; break;
+                        case 4:
+                          disp = this.state.image_bg_LH_4; break;
+                        case 5:
+                          disp = this.state.image_bg_LH_5; break;
+                        case 6:
+                          disp = this.state.image_bg_LH_6; break;
+                        case 7:
+                          disp = this.state.image_bg_LH_7; break;
+                        case 8:
+                          disp = this.state.image_bg_LH_8; break;
+                        default:
+                      }
+                    }
 
+                return (
+                    <div className="shift">
+
+                        {this.listenner(trialinblock_index)}
+
+                        {/* background.*/}
+                        <Farm apples_picked={this.state.SampleNo} disp={disp}/>
+
+                        {/* display all boxes. Depends on trial and condition. */}
+                        {this.disp_current_apples(trialinblock_index)}
+
+                    </div>
+                  );
+            case 1:
               return (
                   <div className="shift">
 
-                      {this.listenner(trialinblock_index)}
+                    {this.listenner(trialinblock_index)}
 
-                      {/* background.*/}
-                      <Farm apples_picked={this.state.SampleNo} hor={this.state.block_info.Horizon[trialinblock_index]} col={this.state.tree_col[current_block-1][trialinblock_index]}/>
-
-                      {/* display all boxes. Depends on trial and condition. */}
-                      {this.disp_current_apples(trialinblock_index)}
+                    {this.disp_juice(trialinblock_index)}
 
                   </div>
-                );
-          case 1:
-            return (
-                <div className="shift">
+              );
+            default:
+            }
+        }
+      }
 
-                  {this.listenner(trialinblock_index)}
-
-                  {this.disp_juice(trialinblock_index)}
-
-                </div>
-            );
-          default:
-          }
+      else {
+        console.log("not ready")
+        return null
       }
   }
 
