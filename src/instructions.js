@@ -37,11 +37,25 @@ class Instructions extends React.Component{
 
         if (this.state.currentImage===0){
           return (
-            <div className="slideshow-container">
-              <img src={this.state.images[this.state.currentImage]}
-              width={800}
-              alt='loading'
-              />
+            <div className={this.state.instruc[0]}>
+            <div className={this.state.instruc[1]}>
+            <div className={this.state.instruc[2]}>
+            <div className={this.state.instruc[3]}>
+            <div className={this.state.instruc[4]}>
+            <div className={this.state.instruc[5]}>
+            <div className={this.state.instruc[6]}>
+              <div className="slideshow-container">
+                <img src={this.state.images[this.state.currentImage]}
+                width={800}
+                alt='loading'
+                />
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
           );}
 
@@ -177,7 +191,7 @@ class Instructions extends React.Component{
 
     if((this.props.slide>1 && this.props.slide<6) || (this.props.slide>18 && this.props.slide<22)) {
       return (
-        <div className={this.state.instruc[1]}>
+        <div className={this.state.instruc[0]}>
           <div className={this.state.instruc[1]}>
             {this.bubble_text(this.props.slide)}
           </div>
@@ -187,7 +201,7 @@ class Instructions extends React.Component{
 
     else {
       return (
-        <div className={this.state.instruc[this.props.slide-4]}>
+        <div className={this.state.instruc[this.props.slide-5]}>
           <div className={this.state.instruc[this.props.slide-4]}>
             {this.bubble_text(this.props.slide)}
           </div>
