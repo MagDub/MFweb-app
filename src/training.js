@@ -28,7 +28,6 @@ class Training extends React.Component{
 
     this.state = {
       tot_num_app: 3,
-      training_bg:["training_1","training_2","training_3","training_4"],
       training_info: {},
       tree_col:random_col,
       trial:0,
@@ -82,7 +81,7 @@ class Training extends React.Component{
 
     if (this.state.trial<=this.props.num_training){
       return (
-        <div className={this.state.training_bg[col-1]}>
+        <div className={this.props.training_bg[col-1]}>
             <div className="training_text">
               <p>
                 Look at the  apples previously collected <br />

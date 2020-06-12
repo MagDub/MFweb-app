@@ -32,6 +32,7 @@ class Task extends React.Component{
       percentage_to_pass_questions: 1, // percentage to pass the training and questions
       percentage_to_pass_training: 0.8,
       InstructionsStartTime: InstructionsStartTime,
+      training_bg:["training_1","training_2","training_3","training_4"],
       };
 
     this.nextTransition = this.nextTransition.bind(this);
@@ -50,7 +51,13 @@ class Task extends React.Component{
   }
 
   componentDidMount() {
+
+    var training_bg = this.state.training_bg;
+
+    training_bg.forEach(image => { new Image().src = image })
+
     this.setState({
+      training_bg: training_bg,
       mounted: 1,
     });
   }
@@ -128,7 +135,7 @@ class Task extends React.Component{
 
           case 4:
             //console.log("task: transition 4 - training")
-            return <Training prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
+            return <Training training_bg={this.state.training_bg} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
           case 5:
             //console.log("task: transition 5 - instructions")

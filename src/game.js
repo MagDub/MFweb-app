@@ -4,6 +4,7 @@ import Apple from './apple';
 import Juice from './juice';
 import Block from './block';
 import './style/game.css';
+import './style/juice.css';
 import { API_URL } from './config';
 import { handleResponse } from './helpers'; // imports json
 
@@ -63,6 +64,8 @@ class Game extends React.Component{
       image_bg_LH_7:["farm7_1", "farm7_1", "farm7_2", "farm7_3", "farm7_4", "farm7_5", "farm7_6", "farm7_7"],
       image_bg_SH_8:["farm8_6", "farm8_6", "farm8_7"],
       image_bg_LH_8:["farm8_1", "farm8_1", "farm8_2", "farm8_3", "farm8_4", "farm8_5", "farm8_6", "farm8_7"],
+      image_juice_small:["juice_small_1", "juice_small_2", "juice_small_3", "juice_small_4", "juice_small_5", "juice_small_6", "juice_small_7", "juice_small_8", "juice_small_9", "juice_small_10"],
+      image_juice_big:["juice_big_1", "juice_big_2", "juice_big_3", "juice_big_4", "juice_big_5", "juice_big_6", "juice_big_7", "juice_big_8", "juice_big_9", "juice_big_10"],
       }
 
     /* prevents page from going down when space bar is hit .*/
@@ -93,6 +96,8 @@ class Game extends React.Component{
     var image_bg_LH_7 = this.state.image_bg_LH_1;
     var image_bg_SH_8 = this.state.image_bg_SH_1;
     var image_bg_LH_8 = this.state.image_bg_LH_1;
+    var image_juice_small = this.state.image_juice_small;
+    var image_juice_big = this.state.image_juice_big;
 
     image_bg_SH_1.forEach(image => { new Image().src = image })
     image_bg_LH_1.forEach(image => { new Image().src = image })
@@ -111,6 +116,9 @@ class Game extends React.Component{
     image_bg_SH_8.forEach(image => { new Image().src = image })
     image_bg_LH_8.forEach(image => { new Image().src = image })
 
+    image_juice_small.forEach(image => { new Image().src = image })
+    image_juice_big.forEach(image => { new Image().src = image })
+
     this.setState({
         image_bg_SH_1: image_bg_SH_1,
         image_bg_LH_1: image_bg_LH_1,
@@ -128,6 +136,8 @@ class Game extends React.Component{
         image_bg_LH_7: image_bg_LH_7,
         image_bg_SH_8: image_bg_SH_8,
         image_bg_LH_8: image_bg_LH_8,
+        image_juice_small: image_juice_small,
+        image_juice_big: image_juice_big,
         mounted:1,
       });
   }
@@ -396,7 +406,19 @@ class Game extends React.Component{
       500
     );
 
-    return <Juice mean_score={mean_score} hor={this.state.block_info.Horizon[trialinblock_index]}/>;
+    var image_juice;
+    var shift_mean_score = mean_score - 1; // shift size (2,10) to (1,9)
+    var ind_mean_score = shift_mean_score - 1;
+    var hor = this.state.block_info.Horizon[trialinblock_index];
+
+    if (hor===1) {
+      image_juice = this.state.image_juice_small[ind_mean_score];
+    }
+    else if (hor===6) {
+      image_juice = this.state.image_juice_big[ind_mean_score];
+    }
+
+    return <Juice image_juice={image_juice}/>;
 
    }
 
