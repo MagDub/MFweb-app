@@ -296,7 +296,7 @@ class Game extends React.Component{
         });
       }
       .bind(this),
-      500
+      1000
     );
 
     var image_juice;
