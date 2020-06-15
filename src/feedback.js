@@ -21,7 +21,7 @@ class Feedback extends React.Component{
       return (
         <div className="feedback">
           <Image
-            src={this.state.images[1]}
+            src={this.props.images_fb[1]}
             height={200}
             width={200}
           />
