@@ -45,6 +45,7 @@ class Consent extends Component {
       instruc_bg:["images/instructions/slide_empty_1arrow.png", "images/instructions/slide_empty_2arrows.png", "images/instructions/slide6.png", "images/instructions/slide7.png", "images/instructions/slide8.png", "images/instructions/slide9.png", "images/instructions/slide10.png", "images/instructions/slide11.png", "images/instructions/slide12.png", "images/instructions/slide13.png", "images/instructions/slide14.png", "images/instructions/slide15.png", "images/instructions/slide16.png", "images/instructions/slide17.png", "images/instructions/slide18.png"],
       questions_bg:["images/instructions/slide_empty_0arrow.png"],
       loading_bg: ["images/loading.jpg"],
+      training_apple_col:["images/images_training/apple_1.png","images/images_training/apple_2.png","images/images_training/apple_3.png","images/images_training/apple_4.png"],
       image_bg_1:["images/images_set1/sun_1.png", "images/images_set1/sun_2.png", "images/images_set1/sun_3.png", "images/images_set1/sun_4.png", "images/images_set1/sun_5.png", "images/images_set1/sun_6.png", "images/images_set1/sun_7.png"],
       image_bg_2:["images/images_set2/sun_1.png", "images/images_set2/sun_2.png", "images/images_set2/sun_3.png", "images/images_set2/sun_4.png", "images/images_set2/sun_5.png", "images/images_set2/sun_6.png", "images/images_set2/sun_7.png"],
       image_bg_3:["images/images_set3/sun_1.png", "images/images_set3/sun_2.png", "images/images_set3/sun_3.png", "images/images_set3/sun_4.png", "images/images_set3/sun_5.png", "images/images_set3/sun_6.png", "images/images_set3/sun_7.png"],
@@ -65,8 +66,8 @@ class Consent extends Component {
       apple_col6:["images/images_set6/apple_1.png","images/images_set6/apple_2.png","images/images_set6/apple_3.png"],
       apple_col7:["images/images_set7/apple_1.png","images/images_set7/apple_2.png","images/images_set7/apple_3.png"],
       apple_col8:["images/images_set8/apple_1.png","images/images_set8/apple_2.png","images/images_set8/apple_3.png"],
-      training_apple_col:["images/images_training/apple_1.png","images/images_training/apple_2.png","images/images_training/apple_3.png","images/images_training/apple_4.png"],
-      
+
+
     };
 
     this.onCompleteComponent = this.onCompleteComponent.bind(this);
@@ -107,12 +108,14 @@ class Consent extends Component {
     var apple_col6 = this.state.apple_col6;
     var apple_col7 = this.state.apple_col7;
     var apple_col8 = this.state.apple_col8;
+
     var training_apple_col = this.state.training_apple_col;
 
-    training_bg.forEach(image => { new Image().src = image })
     instruc_bg.forEach(image => { new Image().src = image })
+    training_bg.forEach(image => { new Image().src = image })
     questions_bg.forEach(image => { new Image().src = image })
     loading_bg.forEach(image => { new Image().src = image })
+    training_apple_col.forEach(image => { new Image().src = image })
     image_bg_1.forEach(image => { new Image().src = image })
     image_bg_2.forEach(image => { new Image().src = image })
     image_bg_3.forEach(image => { new Image().src = image })
@@ -133,13 +136,11 @@ class Consent extends Component {
     apple_col6.forEach(image => { new Image().src = image })
     apple_col7.forEach(image => { new Image().src = image })
     apple_col8.forEach(image => { new Image().src = image })
-    training_apple_col.forEach(image => { new Image().src = image })
 
     this.setState({
-      training_bg: training_bg,
       instruc_bg: instruc_bg,
+      training_bg: training_bg,
       questions_bg: questions_bg,
-      loading_bg: loading_bg,
       image_bg_1: image_bg_1,
       image_bg_2: image_bg_2,
       image_bg_3: image_bg_3,
@@ -156,11 +157,12 @@ class Consent extends Component {
       apple_col6: apple_col6,
       apple_col7: apple_col7,
       apple_col8: apple_col8,
-      training_apple_col: training_apple_col,
       juice_small_bg: juice_small_bg,
       juice_big_bg: juice_big_bg,
       block_finish_bg: block_finish_bg,
       block_start_bg: block_start_bg,
+      loading_bg: loading_bg,
+      training_apple_col: training_apple_col,
       mounted: 1,
     });
   }

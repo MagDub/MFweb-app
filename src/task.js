@@ -11,7 +11,6 @@ import './style/task.css';
 import Image from 'react-image-resizer';
 
 
-
 class Task extends React.Component{
 
   constructor(props) {
@@ -29,11 +28,12 @@ class Task extends React.Component{
       loading: 1,
       slide: 1,
       transition: 1,
-      currentImage: 0,
+      mounted: 0,
       fetched: 0,
       percentage_to_pass_questions: 1, // percentage to pass the training and questions
       percentage_to_pass_training: 0.8,
       InstructionsStartTime: InstructionsStartTime,
+
     };
 
     this.nextTransition = this.nextTransition.bind(this);
@@ -55,7 +55,7 @@ class Task extends React.Component{
     setTimeout(
       function() {
         this.setState({
-          currentImage: 1,
+          mounted: 1,
         });
       }
       .bind(this),
@@ -99,13 +99,13 @@ class Task extends React.Component{
       switch(this.state.transition) {
 
           case 0:
-            if (this.state.currentImage===0){
+            if (this.state.mounted===0){
               return (
                 <div className="slide_im">
                     <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
                 </div>
               );}
-            else{
+            else if (this.state.mounted===1){
               return(
                 <div>
                   <div className="IntroConsentText">
@@ -134,7 +134,7 @@ class Task extends React.Component{
               this.fetchUserInfo();
             }
             //console.log("task: transition 2 - questions")
-            return <Questions loading_bg={this.state.user_info.this.state.loading_bg} questions_bg={this.state.user_info.questions_bg} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
+            return <Questions loading_bg={this.state.user_info.loading_bg} questions_bg={this.state.user_info.questions_bg} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
 
           case 3:
             //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
