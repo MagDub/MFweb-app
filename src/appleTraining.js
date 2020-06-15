@@ -8,7 +8,7 @@ class AppleTraining extends React.Component{
 
       <div className="apple">
 
-      <TreeTraining value={this.props.value} col={this.props.col}/>
+      <TreeTraining value={this.props.value} col={this.props.col} training_apple_col={this.props.training_apple_col}/>
 
       </div>
     );

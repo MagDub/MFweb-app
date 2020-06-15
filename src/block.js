@@ -1,33 +1,24 @@
 import React from 'react';
 import './style/block.css';
+import Image from 'react-image-resizer';
 
 class Block extends React.Component{
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      block_start:["startblock_1", "startblock_1", "startblock_2", "startblock_3", "startblock_4"],
-      block_finish:["finishblock_1", "finishblock_1", "finishblock_2", "finishblock_3", "finishblock_4"],
-    };
-
-  }
 
   render(){
 
     if (this.props.block_i<=this.props.BlockNb) {
-
       return (
-        <div className={this.state.block_start[this.props.block_i]}>
-
+        <div className="block_im">
+          <Image src={this.props.block_start_bg[this.props.block_i]} height={800}/>
         </div>
         );
       }
 
     else  {
       return (
-        <div className={this.state.block_finish[this.props.block_i-1]}>
-
+        <div className="block_im">
+          <Image src={this.props.block_finish_bg[this.props.block_i]} height={800}/>
         </div>
         );
       }

@@ -47,26 +47,7 @@ class Game extends React.Component{
       all_key_pressed: all_key_pressed,
       reaction_times: reaction_times,
       trial_per_block: trial_per_block,
-      mounted: 0,
-      image_bg_SH_1:["farm1_6", "farm1_6", "farm1_7"],
-      image_bg_LH_1:["farm1_1", "farm1_1", "farm1_2", "farm1_3", "farm1_4", "farm1_5", "farm1_6", "farm1_7"],
-      image_bg_SH_2:["farm2_6", "farm2_6", "farm2_7"],
-      image_bg_LH_2:["farm2_1", "farm2_1", "farm2_2", "farm2_3", "farm2_4", "farm2_5", "farm2_6", "farm2_7"],
-      image_bg_SH_3:["farm3_6", "farm3_6", "farm3_7"],
-      image_bg_LH_3:["farm3_1", "farm3_1", "farm3_2", "farm3_3", "farm3_4", "farm3_5", "farm3_6", "farm3_7"],
-      image_bg_SH_4:["farm4_6", "farm4_6", "farm4_7"],
-      image_bg_LH_4:["farm4_1", "farm4_1", "farm4_2", "farm4_3", "farm4_4", "farm4_5", "farm4_6", "farm4_7"],
-      image_bg_SH_5:["farm5_6", "farm5_6", "farm5_7"],
-      image_bg_LH_5:["farm5_1", "farm5_1", "farm5_2", "farm5_3", "farm5_4", "farm5_5", "farm5_6", "farm5_7"],
-      image_bg_SH_6:["farm6_6", "farm6_6", "farm6_7"],
-      image_bg_LH_6:["farm6_1", "farm6_1", "farm6_2", "farm6_3", "farm6_4", "farm6_5", "farm6_6", "farm6_7"],
-      image_bg_SH_7:["farm7_6", "farm7_6", "farm7_7"],
-      image_bg_LH_7:["farm7_1", "farm7_1", "farm7_2", "farm7_3", "farm7_4", "farm7_5", "farm7_6", "farm7_7"],
-      image_bg_SH_8:["farm8_6", "farm8_6", "farm8_7"],
-      image_bg_LH_8:["farm8_1", "farm8_1", "farm8_2", "farm8_3", "farm8_4", "farm8_5", "farm8_6", "farm8_7"],
-      image_juice_small:["juice_small_1", "juice_small_2", "juice_small_3", "juice_small_4", "juice_small_5", "juice_small_6", "juice_small_7", "juice_small_8", "juice_small_9", "juice_small_10"],
-      image_juice_big:["juice_big_1", "juice_big_2", "juice_big_3", "juice_big_4", "juice_big_5", "juice_big_6", "juice_big_7", "juice_big_8", "juice_big_9", "juice_big_10"],
-      }
+}
 
     /* prevents page from going down when space bar is hit .*/
     window.addEventListener('keydown', function(e) {
@@ -78,12 +59,6 @@ class Game extends React.Component{
     this.fetchBlock.bind(this);
   }
 
-  componentDidMount() {
-
-    this.setState({
-        mounted:1,
-      });
-  }
 
   fetchBlock(user_no_,block_no_){
 
@@ -188,13 +163,11 @@ class Game extends React.Component{
 
   render() {
 
-    if (this.state.mounted===1) {
-
       var trialinblock_index = this.state.TrialInBlockNo-1;
 
       if (this.state.BlockNo>this.state.BlockNb) {
         document.addEventListener("keyup", this._handleKeyDownSpace);
-        return <Block block_i={this.state.BlockNo} BlockNb={this.state.BlockNb}/>
+        return <Block block_start_bg={this.props.block_start_bg} block_finish_bg={this.props.block_finish_bg} block_i={this.state.BlockNo} BlockNb={this.state.BlockNb}/>
         }
 
       else if (this.state.start_block===1) {
@@ -207,7 +180,7 @@ class Game extends React.Component{
       else if (this.state.disp_new_block===1) {
         document.removeEventListener("keyup", this._handleKeyDownTree);
         document.addEventListener("keyup", this._handleKeyDownSpace);
-        return <Block block_i={this.state.block_info.BlockNo[trialinblock_index]} BlockNb={this.state.BlockNb}/>
+        return <Block block_start_bg={this.props.block_start_bg} block_finish_bg={this.props.block_finish_bg} block_i={this.state.block_info.BlockNo[trialinblock_index]} BlockNb={this.state.BlockNb}/>
       }
 
       else {
@@ -219,48 +192,24 @@ class Game extends React.Component{
                 var hor = this.state.block_info.Horizon[trialinblock_index];
                 var disp;
 
-                if (hor===1){
                   switch(col) {
                       case 1:
-                        disp = this.state.image_bg_SH_1; break;
+                        disp = this.props.image_bg_1; break;
                       case 2:
-                        disp = this.state.image_bg_SH_2; break;
+                        disp = this.props.image_bg_2; break;
                       case 3:
-                        disp = this.state.image_bg_SH_3; break;
+                        disp = this.props.image_bg_3; break;
                       case 4:
-                        disp = this.state.image_bg_SH_4; break;
+                        disp = this.props.image_bg_4; break;
                       case 5:
-                        disp = this.state.image_bg_SH_5; break;
+                        disp = this.props.image_bg_5; break;
                       case 6:
-                        disp = this.state.image_bg_SH_6; break;
+                        disp = this.props.image_bg_6; break;
                       case 7:
-                        disp = this.state.image_bg_SH_7; break;
+                        disp = this.props.image_bg_7; break;
                       case 8:
-                        disp = this.state.image_bg_SH_8; break;
+                        disp = this.props.image_bg_8; break;
                       default:
-                    }
-                  }
-
-                  else if (hor===6){
-                    switch(col) {
-                        case 1:
-                          disp = this.state.image_bg_LH_1; break;
-                        case 2:
-                          disp = this.state.image_bg_LH_2; break;
-                        case 3:
-                          disp = this.state.image_bg_LH_3; break;
-                        case 4:
-                          disp = this.state.image_bg_LH_4; break;
-                        case 5:
-                          disp = this.state.image_bg_LH_5; break;
-                        case 6:
-                          disp = this.state.image_bg_LH_6; break;
-                        case 7:
-                          disp = this.state.image_bg_LH_7; break;
-                        case 8:
-                          disp = this.state.image_bg_LH_8; break;
-                        default:
-                      }
                     }
 
                 return (
@@ -269,7 +218,7 @@ class Game extends React.Component{
                         {this.listenner(trialinblock_index)}
 
                         {/* background.*/}
-                        <Farm apples_picked={this.state.SampleNo} disp={disp}/>
+                        <Farm apples_picked={this.state.SampleNo} disp={disp} hor={hor}/>
 
                         {/* display all boxes. Depends on trial and condition. */}
                         {this.disp_current_apples(trialinblock_index)}
@@ -289,12 +238,7 @@ class Game extends React.Component{
             default:
             }
         }
-      }
 
-      else {
-        console.log("not ready")
-        return null
-      }
   }
 
   disp_juice(trialinblock_index) {
@@ -362,10 +306,10 @@ class Game extends React.Component{
 
 
     if (hor===1) {
-      image_juice = this.state.image_juice_small[ind_mean_score];
+      image_juice = this.props.juice_small_bg[ind_mean_score];
     }
     else if (hor===6) {
-      image_juice = this.state.image_juice_big[ind_mean_score];
+      image_juice = this.props.juice_small_bg[ind_mean_score];
     }
 
     return <Juice image_juice={image_juice}/>;
@@ -466,8 +410,38 @@ class Game extends React.Component{
 
           var trialinblock_index = this.state.TrialInBlockNo-1;
           var current_block_index = this.state.block_info.BlockNo[trialinblock_index]-1;
+          var col=this.state.tree_col[current_block_index][trialinblock_index];
+          var disp_col;
 
-          return <Apple value={val} tree={tree_i} col={this.state.tree_col[current_block_index][trialinblock_index]}/>;
+          switch(col) {
+              case 1:
+                disp_col = this.props.apple_col1;
+                break;
+              case 2:
+                disp_col = this.props.apple_col2;
+                break;
+              case 3:
+                disp_col = this.props.apple_col3;
+                break;
+              case 4:
+                disp_col = this.props.apple_col4;
+                break;
+              case 5:
+                disp_col = this.props.apple_col5;
+                break;
+              case 6:
+                disp_col = this.props.apple_col6;
+                break;
+              case 7:
+                disp_col = this.props.apple_col7;
+                break;
+              case 8:
+                disp_col = this.props.apple_col8;
+                break;
+              default:
+            }
+
+          return <Apple value={val} tree={tree_i} disp_col={disp_col}/>;
         }
 
   listenner(trialinblock_index) {

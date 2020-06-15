@@ -12,7 +12,6 @@ class Instructions extends React.Component{
 
     this.state = {
       currentImage: 0,
-      images: ["images/loading.jpg"],
       };
   }
 
@@ -155,7 +154,7 @@ class Instructions extends React.Component{
       if (this.state.currentImage===0) {
         return (
           <div className="slide_im">
-              <Image src={this.state.images[this.state.currentImage]} height={800}/>
+              <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
           </div>
         );
       }

@@ -41,7 +41,6 @@ class Training extends React.Component{
       TrainingStartTime: [],
       TrainingFinishTime: [],
       currentImage: 0,
-      images: ["images/loading.jpg"],
       };
 
       this.switchImage = this.switchImage.bind(this);
@@ -64,7 +63,7 @@ class Training extends React.Component{
       if (this.state.currentImage===0){
         return (
           <div className="slide_im">
-              <Image src={this.state.images[this.state.currentImage]} height={800}/>
+              <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
           </div>
         );}
 
@@ -117,11 +116,11 @@ class Training extends React.Component{
     }
 
   renderApple(val, col){
-    return <AppleTraining value={val} col={col}/>;
+    return <AppleTraining value={val} col={col} training_apple_col={this.props.training_apple_col}/>;
   }
 
   renderAppleSug(val, col){
-    return <AppleSug value={val} col={col}/>;
+    return <AppleSug value={val} col={col} training_apple_col={this.props.training_apple_col}/>;
   }
 
   disp_boxes(col) {

@@ -8,7 +8,7 @@ class Apple extends React.Component{
 
       <div className="appleTask">
 
-      <Tree value={this.props.value} tree={this.props.tree} col={this.props.col}/>
+      <Tree value={this.props.value} tree={this.props.tree} disp_col={this.props.disp_col}/>
 
       </div>
 

@@ -16,7 +16,6 @@ class Questions extends React.Component{
     var QuestionsStartTime    = currentDate.toTimeString();
 
     this.state = {
-      bg:["images/instructions/slide_empty_0arrow.png"],
       question_no: 0,
       sum_passed: 0,
       pressed_keys: pressed_keys,
@@ -24,7 +23,6 @@ class Questions extends React.Component{
       reaction_times: reaction_times,
       QuestionsStartTime: QuestionsStartTime,
       currentImage: 0,
-      images: ["images/loading.jpg"],
       };
 
       this.switchImage = this.switchImage.bind(this);
@@ -168,7 +166,7 @@ class Questions extends React.Component{
         if (this.state.currentImage===0){
           return (
             <div className="slide_im">
-                <Image src={this.state.images[this.state.currentImage]} height={800}/>
+                <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
             </div>
           );}
 
@@ -182,7 +180,7 @@ class Questions extends React.Component{
       if (this.state.question_no<=this.props.questions_nb){
         return (
           <div className="slide_im">
-            <Image src={this.state.bg} height={800}/>
+            <Image src={this.props.questions_bg} height={800}/>
             {this.display_question(this.state.question_no)}
           </div>
         );
@@ -217,12 +215,11 @@ class Questions extends React.Component{
     var task_no = this.props.task_no;
 
 
-
     let questions_behaviour = {  'SumPassed'             : SumPassed,
                                  'UserStartTime'         : UserStartTime,
                                  'ProlificID'            : prolific_id,
-                                 'TrainingNo'      : training_no,
-                                 'TaskNo'          : task_no,
+                                 'TrainingNo'            : training_no,
+                                 'TaskNo'                : task_no,
                                  'PressedKeys'           : pressed_keys,
                                  'PercentagePassed'      : percentage_passed,
                                  'ReactionTimes'         : reaction_times,
