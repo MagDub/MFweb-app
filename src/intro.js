@@ -39,7 +39,34 @@ class Consent extends Component {
       date: dateString,
       startTime: timeString,
       task_no: task_no,
-      training_no: training_no
+      training_no: training_no,
+
+      training_bg:["images/images_training/training_1_empty.png","images/images_training/training_2_empty.png","images/images_training/training_3_empty.png","images/images_training/training_4_empty.png"],
+      instruc_bg:["images/instructions/slide_empty_1arrow.png", "images/instructions/slide_empty_2arrows.png", "images/instructions/slide6.png", "images/instructions/slide7.png", "images/instructions/slide8.png", "images/instructions/slide9.png", "images/instructions/slide10.png", "images/instructions/slide11.png", "images/instructions/slide12.png", "images/instructions/slide13.png", "images/instructions/slide14.png", "images/instructions/slide15.png", "images/instructions/slide16.png", "images/instructions/slide17.png", "images/instructions/slide18.png"],
+      questions_bg:["images/instructions/slide_empty_0arrow.png"],
+      loading_bg: ["images/loading.jpg"],
+      image_bg_1:["images/images_set1/sun_1.png", "images/images_set1/sun_2.png", "images/images_set1/sun_3.png", "images/images_set1/sun_4.png", "images/images_set1/sun_5.png", "images/images_set1/sun_6.png", "images/images_set1/sun_7.png"],
+      image_bg_2:["images/images_set2/sun_1.png", "images/images_set2/sun_2.png", "images/images_set2/sun_3.png", "images/images_set2/sun_4.png", "images/images_set2/sun_5.png", "images/images_set2/sun_6.png", "images/images_set2/sun_7.png"],
+      image_bg_3:["images/images_set3/sun_1.png", "images/images_set3/sun_2.png", "images/images_set3/sun_3.png", "images/images_set3/sun_4.png", "images/images_set3/sun_5.png", "images/images_set3/sun_6.png", "images/images_set3/sun_7.png"],
+      image_bg_4:["images/images_set4/sun_1.png", "images/images_set4/sun_2.png", "images/images_set4/sun_3.png", "images/images_set4/sun_4.png", "images/images_set4/sun_5.png", "images/images_set4/sun_6.png", "images/images_set4/sun_7.png"],
+      image_bg_5:["images/images_set5/sun_1.png", "images/images_set5/sun_2.png", "images/images_set5/sun_3.png", "images/images_set5/sun_4.png", "images/images_set5/sun_5.png", "images/images_set5/sun_6.png", "images/images_set5/sun_7.png"],
+      image_bg_6:["images/images_set6/sun_1.png", "images/images_set6/sun_2.png", "images/images_set6/sun_3.png", "images/images_set6/sun_4.png", "images/images_set6/sun_5.png", "images/images_set6/sun_6.png", "images/images_set6/sun_7.png"],
+      image_bg_7:["images/images_set7/sun_1.png", "images/images_set7/sun_2.png", "images/images_set7/sun_3.png", "images/images_set7/sun_4.png", "images/images_set7/sun_5.png", "images/images_set7/sun_6.png", "images/images_set7/sun_7.png"],
+      image_bg_8:["images/images_set8/sun_1.png", "images/images_set8/sun_2.png", "images/images_set8/sun_3.png", "images/images_set8/sun_4.png", "images/images_set8/sun_5.png", "images/images_set8/sun_6.png", "images/images_set8/sun_7.png"],
+      juice_small_bg:["images/juice_small/juice1.png", "images/juice_small/juice2.png", "images/juice_small/juice3.png", "images/juice_small/juice4.png", "images/juice_small/juice5.png", "images/juice_small/juice6.png", "images/juice_small/juice7.png", "images/juice_small/juice8.png", "images/juice_small/juice9.png", "images/juice_small/juice10.png"],
+      juice_big_bg:["images/juice_big/juice1.png", "images/juice_big/juice2.png", "images/juice_big/juice3.png", "images/juice_big/juice4.png", "images/juice_big/juice5.png", "images/juice_big/juice6.png", "images/juice_big/juice7.png", "images/juice_big/juice8.png", "images/juice_big/juice9.png", "images/juice_big/juice10.png"],
+      block_start_bg:["images/block_images/startblock_1.jpg", "images/block_images/startblock_1.jpg", "images/block_images/startblock_2.jpg", "images/block_images/startblock_3.jpg", "images/block_images/startblock_4.jpg"],
+      block_finish_bg:["images/block_images/finishblock_1.jpg", "images/block_images/finishblock_1.jpg", "images/block_images/finishblock_2.jpg", "images/block_images/finishblock_3.jpg", "images/block_images/finishblock_4.jpg"],
+      apple_col1:["images/images_set1/apple_1.png","images/images_set1/apple_2.png","images/images_set1/apple_3.png"],
+      apple_col2:["images/images_set2/apple_1.png","images/images_set2/apple_2.png","images/images_set2/apple_3.png"],
+      apple_col3:["images/images_set3/apple_1.png","images/images_set3/apple_2.png","images/images_set3/apple_3.png"],
+      apple_col4:["images/images_set4/apple_1.png","images/images_set4/apple_2.png","images/images_set4/apple_3.png"],
+      apple_col5:["images/images_set5/apple_1.png","images/images_set5/apple_2.png","images/images_set5/apple_3.png"],
+      apple_col6:["images/images_set6/apple_1.png","images/images_set6/apple_2.png","images/images_set6/apple_3.png"],
+      apple_col7:["images/images_set7/apple_1.png","images/images_set7/apple_2.png","images/images_set7/apple_3.png"],
+      apple_col8:["images/images_set8/apple_1.png","images/images_set8/apple_2.png","images/images_set8/apple_3.png"],
+      training_apple_col:["images/images_training/apple_1.png","images/images_training/apple_2.png","images/images_training/apple_3.png","images/images_training/apple_4.png"],
+      
     };
 
     this.onCompleteComponent = this.onCompleteComponent.bind(this);
@@ -53,7 +80,89 @@ class Consent extends Component {
   }
 
   componentDidMount() {
+
     Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+
+    var training_bg = this.state.training_bg;
+    var instruc_bg = this.state.instruc_bg;
+    var questions_bg = this.state.questions_bg;
+    var loading_bg = this.state.loading_bg;
+    var image_bg_1 = this.state.image_bg_1;
+    var image_bg_2 = this.state.image_bg_2;
+    var image_bg_3 = this.state.image_bg_3;
+    var image_bg_4 = this.state.image_bg_4;
+    var image_bg_5 = this.state.image_bg_5;
+    var image_bg_6 = this.state.image_bg_6;
+    var image_bg_7 = this.state.image_bg_7;
+    var image_bg_8 = this.state.image_bg_8;
+    var juice_small_bg = this.state.juice_small_bg;
+    var juice_big_bg = this.state.juice_big_bg;
+    var block_start_bg = this.state.block_start_bg;
+    var block_finish_bg = this.state.block_finish_bg;
+    var apple_col1 = this.state.apple_col1;
+    var apple_col2 = this.state.apple_col2;
+    var apple_col3 = this.state.apple_col3;
+    var apple_col4 = this.state.apple_col4;
+    var apple_col5 = this.state.apple_col5;
+    var apple_col6 = this.state.apple_col6;
+    var apple_col7 = this.state.apple_col7;
+    var apple_col8 = this.state.apple_col8;
+    var training_apple_col = this.state.training_apple_col;
+
+    training_bg.forEach(image => { new Image().src = image })
+    instruc_bg.forEach(image => { new Image().src = image })
+    questions_bg.forEach(image => { new Image().src = image })
+    loading_bg.forEach(image => { new Image().src = image })
+    image_bg_1.forEach(image => { new Image().src = image })
+    image_bg_2.forEach(image => { new Image().src = image })
+    image_bg_3.forEach(image => { new Image().src = image })
+    image_bg_4.forEach(image => { new Image().src = image })
+    image_bg_5.forEach(image => { new Image().src = image })
+    image_bg_6.forEach(image => { new Image().src = image })
+    image_bg_7.forEach(image => { new Image().src = image })
+    image_bg_8.forEach(image => { new Image().src = image })
+    juice_small_bg.forEach(image => { new Image().src = image })
+    juice_big_bg.forEach(image => { new Image().src = image })
+    block_finish_bg.forEach(image => { new Image().src = image })
+    block_start_bg.forEach(image => { new Image().src = image })
+    apple_col1.forEach(image => { new Image().src = image })
+    apple_col2.forEach(image => { new Image().src = image })
+    apple_col3.forEach(image => { new Image().src = image })
+    apple_col4.forEach(image => { new Image().src = image })
+    apple_col5.forEach(image => { new Image().src = image })
+    apple_col6.forEach(image => { new Image().src = image })
+    apple_col7.forEach(image => { new Image().src = image })
+    apple_col8.forEach(image => { new Image().src = image })
+    training_apple_col.forEach(image => { new Image().src = image })
+
+    this.setState({
+      training_bg: training_bg,
+      instruc_bg: instruc_bg,
+      questions_bg: questions_bg,
+      loading_bg: loading_bg,
+      image_bg_1: image_bg_1,
+      image_bg_2: image_bg_2,
+      image_bg_3: image_bg_3,
+      image_bg_4: image_bg_4,
+      image_bg_5: image_bg_5,
+      image_bg_6: image_bg_6,
+      image_bg_7: image_bg_7,
+      image_bg_8: image_bg_8,
+      apple_col1: apple_col1,
+      apple_col2: apple_col2,
+      apple_col3: apple_col3,
+      apple_col4: apple_col4,
+      apple_col5: apple_col5,
+      apple_col6: apple_col6,
+      apple_col7: apple_col7,
+      apple_col8: apple_col8,
+      training_apple_col: training_apple_col,
+      juice_small_bg: juice_small_bg,
+      juice_big_bg: juice_big_bg,
+      block_finish_bg: block_finish_bg,
+      block_start_bg: block_start_bg,
+      mounted: 1,
+    });
   }
 
   render() {
