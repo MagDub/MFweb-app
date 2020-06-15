@@ -1,8 +1,9 @@
 
 .slide_text{
   position:relative;
-  margin-top: -690px;
-  margin-left: 90px;
+  top: -680px;
+  left: 100px;
+  margin-right: -100px;
   font-size: 21px;
   font-family: Arial;
 }
@@ -11,12 +12,4 @@
   position:absolute;
   margin-top: 0px;
   margin-left: 0px;
-}
-
-.slide_text_after_training{
-  position:absolute;
-  margin-top: 100px;
-  margin-left: 90px;
-  font-size: 21px;
-  font-family: Arial;
 }

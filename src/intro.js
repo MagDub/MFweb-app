@@ -23,6 +23,8 @@ class Consent extends Component {
     //console.log("params", params)
     const prolific_id = (params['PROLIFIC_PID']=== undefined ? 'undefined' : params['PROLIFIC_PID'])
     //console.log("prolific_id", prolific_id)
+    const task_no = Math.floor(Math.random() * 100) + 1; // returns a random integer from 1 to 100;
+    const training_no = Math.floor(Math.random() * 100) + 1; // returns a random integer from 1 to 100;
 
     var currentDate   = new Date();
     var date          = currentDate.getDate();
@@ -36,6 +38,8 @@ class Consent extends Component {
       ConsentCompleted: 0,
       date: dateString,
       startTime: timeString,
+      task_no: task_no,
+      training_no: training_no
     };
 
     this.onCompleteComponent = this.onCompleteComponent.bind(this);

@@ -90,7 +90,9 @@ class Game extends React.Component{
     var currentDate   = new Date();
     var BlockStartTime    = currentDate.toTimeString();
 
-    fetch(`${API_URL}/task/`+user_no_+'/'+block_no_)
+    var task_no = this.props.task_no;
+
+    fetch(`${API_URL}/task/`+task_no+'/'+block_no_)
     .then(handleResponse)
     .then((data) => {
 
@@ -139,6 +141,8 @@ class Game extends React.Component{
     let all_key_pressed = this.state.all_key_pressed
     let reaction_times = this.state.reaction_times
     var prolific_id = this.props.prolific_id;
+    var training_no = this.props.training_no;
+    var task_no = this.props.task_no;
 
     var subset_Horizon = this.state.block_info.Horizon.slice(0,trial_per_block);
     var subset_InitialSampleNb = this.state.block_info.InitialSampleNb.slice(0,trial_per_block);
@@ -152,6 +156,8 @@ class Game extends React.Component{
     let behaviour = {       'BlockNo'             : block_no_,
                             'UserStartTime'       : StartTime,
                             'ProlificID'          : prolific_id,
+                            'TaskNo'              : task_no,
+                            'TrainingNo'          : training_no,
                             'BlockStartTime'      : BlockStartTime,
                             'BlockFinishTime'     : BlockFinishTime,
                             'TreeColours'         : this.state.tree_col[ind_block],

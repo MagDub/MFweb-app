@@ -1,6 +1,7 @@
 import React from 'react';
 import './style/slides.css';
 import { API_URL } from './config';
+import Image from 'react-image-resizer';
 
 class Questions extends React.Component{
 
@@ -15,7 +16,7 @@ class Questions extends React.Component{
     var QuestionsStartTime    = currentDate.toTimeString();
 
     this.state = {
-      bg:["slide_no_arrow"],
+      bg:["images/instructions/slide_empty_0arrow.png"],
       question_no: 0,
       sum_passed: 0,
       pressed_keys: pressed_keys,
@@ -166,11 +167,8 @@ class Questions extends React.Component{
     if(this.state.question_no===0){
         if (this.state.currentImage===0){
           return (
-            <div className="slideshow-container">
-              <img src={this.state.images[this.state.currentImage]}
-              width={800}
-              alt='loading'
-              />
+            <div className="slide_im">
+                <Image src={this.state.images[this.state.currentImage]} height={800}/>
             </div>
           );}
 
@@ -183,10 +181,9 @@ class Questions extends React.Component{
     else{
       if (this.state.question_no<=this.props.questions_nb){
         return (
-          <div className={this.state.bg}>
-            <div className={this.state.bg}>
-              {this.display_question(this.state.question_no)}
-            </div>
+          <div className="slide_im">
+            <Image src={this.state.bg} height={800}/>
+            {this.display_question(this.state.question_no)}
           </div>
         );
       }
@@ -216,10 +213,16 @@ class Questions extends React.Component{
     var reaction_times = this.state.reaction_times;
 
     var prolific_id = this.props.prolific_id;
+    var training_no = this.props.training_no;
+    var task_no = this.props.task_no;
+
+
 
     let questions_behaviour = {  'SumPassed'             : SumPassed,
                                  'UserStartTime'         : UserStartTime,
                                  'ProlificID'            : prolific_id,
+                                 'TrainingNo'      : training_no,
+                                 'TaskNo'          : task_no,
                                  'PressedKeys'           : pressed_keys,
                                  'PercentagePassed'      : percentage_passed,
                                  'ReactionTimes'         : reaction_times,

@@ -8,7 +8,7 @@
   width: 55px;
   height: 55px;
   left: -337px;
-  margin-top: 302px;
+  margin-top: 326px;
   margin-left: 7px;
   float: left;
   Display: flex;
@@ -16,9 +16,18 @@
   Justify-Content: center;
 }
 
+.slide_im{
+  position:absolute;
+  margin-top: 0px;
+  margin-left: 0px;
+  z-index: -1;
+}
+
 .training_text{
-  margin-top: 135px;
-  margin-left: 385px;
+  position:relative;
+  left: 100px;
+  margin-top: -655px;
+  margin-left: 310px;
   font-size: 19px;
   font-family: Arial;
 }
@@ -32,8 +41,8 @@
   width: 55px;
   height: 55px;
   margin-top: -20px;
-  margin-left: 63px;
-  left: -175px;
+  margin-left: 34px;
+  left: -98px;
   float: left;
   Display: flex;
   Align-Items: center;
@@ -42,42 +51,6 @@
 
 .feedback{
   position:absolute;
-  left: -15px;
-  margin-top: -150px;
-}
-
-.training_1{
-  position:absolute;
-  background: url('../images_training/training_1_empty.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.training_2{
-  position:absolute;
-  background: url('../images_training/training_2_empty.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.training_3{
-  position:absolute;
-  background: url('../images_training/training_3_empty.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
-}
-
-.training_4{
-  position:absolute;
-  background: url('../images_training/training_4_empty.png');
-  background-repeat: no-repeat;
-  width: 1000px;
-  height: 1000px;
-  background-size:800px;
+  left: -400px;
+  margin-top: -120px;
 }

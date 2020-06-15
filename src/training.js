@@ -1,10 +1,11 @@
 import React from 'react';
-import './style/training.css';
 import AppleTraining from './appleTraining';
 import AppleSug from './appleSug';
 import Feedback from './feedback.js';
 import { API_URL } from './config';
 import { handleResponse } from './helpers'; // methode qui importe le json
+import Image from 'react-image-resizer';
+import './style/training.css';
 
 class Training extends React.Component{
 
@@ -62,11 +63,8 @@ class Training extends React.Component{
 
       if (this.state.currentImage===0){
         return (
-          <div className="slideshow-container">
-            <img src={this.state.images[this.state.currentImage]}
-            width={800}
-            alt='loading'
-            />
+          <div className="slide_im">
+              <Image src={this.state.images[this.state.currentImage]} height={800}/>
           </div>
         );}
 
@@ -81,24 +79,9 @@ class Training extends React.Component{
 
     if (this.state.trial<=this.props.num_training){
       return (
-        <div className={this.props.training_bg[col-1]}>
-            <div className="training_text">
-              <p>
-                Look at the  apples previously collected <br />
-                (on the wooden crate). Which apple is most <br />
-                likely to be picked next ? <br />
-                Remember: a tree always produces apples <br />
-                of similar sizes !
-              </p>
-              <p> &emsp; &emsp; &emsp; Press 1&emsp; &emsp; Press 2</p>
-              {this.disp_boxes(col)}
-              <div className="suggestions">
-                {this.disp_suggestions(col)}
-                {this.compute_fb()}
-                {this.disp_fb()}
-                {this.listenner()}
-              </div>
-            </div>
+        <div className="slide_im">
+          <Image src={this.props.training_bg[col-1]} height={800}/>
+            {this.bubble_text(col)}
         </div>
         );
       }
@@ -110,6 +93,27 @@ class Training extends React.Component{
         this.props.nextTransition(percentage_passed);
         return null
       }
+    }
+
+  bubble_text(col){
+    return (
+      <div className="training_text">
+        <p>
+          Look at the  apples previously collected <br />
+          (on the wooden crate). Which apple is most <br />
+          likely to be picked next ? <br />
+          Remember: a tree always produces apples <br />
+          of similar sizes !
+        </p>
+        <p> &emsp; &emsp; &emsp; &emsp; &emsp; Press 1&emsp; Press 2</p>
+        {this.disp_boxes(col)}
+        <div className="suggestions">
+          {this.disp_suggestions(col)}
+          {this.compute_fb()}
+          {this.disp_fb()}
+          {this.listenner()}
+        </div>
+      </div>);
     }
 
   renderApple(val, col){
@@ -190,9 +194,10 @@ class Training extends React.Component{
     var currentDate   = new Date();
     var TrainingStartTime    = currentDate.toTimeString();
 
+    var training_no = this.props.training_no;
     var reaction_times = this.state.reaction_times;
 
-    fetch(`${API_URL}/training/`+user_no_)
+    fetch(`${API_URL}/training/`+training_no)
     .then(handleResponse)
     .then((data) => {
 
@@ -229,10 +234,14 @@ class Training extends React.Component{
     var ChoicesCorrect = this.state.training_info.ChoicesCorrect.slice(0,NumTraining);
     var InitialSamplesSize = this.state.training_info.InitialSamplesSize.slice(0,NumTraining);
     var prolific_id = this.props.prolific_id;
+    var training_no = this.props.training_no;
+    var task_no = this.props.task_no;
 
     let training_behaviour = {  'SumPassed'           : SumPassed,
                                 'UserStartTime'       : StartTime,
                                 'ProlificID'          : prolific_id,
+                                'TrainingNo'          : training_no,
+                                'TaskNo'              : task_no,
                                 'TrainingStartTime'   : TrainingStartTime,
                                 'TrainingFinishTime'  : TrainingFinishTime,
                                 'ChoicesSize'         : ChoicesSize,

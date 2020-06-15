@@ -9,36 +9,20 @@ class Instructions extends React.Component{
     super(props);
 
     this.switchImage = this.switchImage.bind(this);
-    this.preload = this.preload.bind(this);
 
     this.state = {
       currentImage: 0,
       images: ["images/loading.jpg"],
-      instruc_:["images/instructions/slide_empty_1arrow.png", "images/instructions/slide_empty_2arrows.png", "images/instructions/slide6.png", "images/instructions/slide7.png", "images/instructions/slide8.png", "images/instructions/slide9.png", "images/instructions/slide10.png", "images/instructions/slide11.png", "images/instructions/slide12.png", "images/instructions/slide13.png", "images/instructions/slide14.png", "images/instructions/slide15.png", "images/instructions/slide16.png", "images/instructions/slide17.png", "images/instructions/slide18.png"],
-      images_slide: [],
       };
   }
 
   switchImage() {
     this.setState({
-      currentImage: 1
+      currentImage: 1,
     });
   }
 
-  preload() {
-
-    var images_slide = [];
-
-    for (var i = 0; i < 4; i++) {
-      images_slide[i] = new Image()
-      images_slide[i].src = this.state.instruc_[i]
-    }
-  }
-
   componentDidMount() {
-
-    var images = new Array()
-
 
     setTimeout(this.switchImage, 2000);
 
@@ -144,7 +128,7 @@ class Instructions extends React.Component{
 
       case 23:
         return (
-          <div className="slide_text_after_training">
+          <div className="slide_text">
             <p>
               Congratulations, you&#39;ve done well. <br />
               Let&#39;s start picking apples now ! <br />
@@ -154,7 +138,7 @@ class Instructions extends React.Component{
 
       case 24:
         return (
-          <div className="slide_text_after_training">
+          <div className="slide_text">
             <p>
               Mmmh... You can do better than that! <br /> <br />
               Let&#39;s try again !
@@ -178,7 +162,7 @@ class Instructions extends React.Component{
       else {
         return (
           <div className="slide_im">
-            <Image src={this.state.instruc_[0]} height={800}/>
+            <Image src={this.props.instruc_[0]} height={800}/>
             {this.bubble_text(this.props.slide)}
           </div>
         );
@@ -188,7 +172,7 @@ class Instructions extends React.Component{
     if(this.props.slide===0 || (this.props.slide>21 && this.props.slide<25)) {
       return (
         <div className="slide_im">
-          <Image src={this.state.instruc_[0]} height={800}/>
+          <Image src={this.props.instruc_[0]} height={800}/>
           {this.bubble_text(this.props.slide)}
         </div>
       );
@@ -197,7 +181,7 @@ class Instructions extends React.Component{
     if((this.props.slide>1 && this.props.slide<6) || (this.props.slide>18 && this.props.slide<22)) {
       return (
         <div className="slide_im">
-          <Image src={this.state.instruc_[1]} height={800}/>
+          <Image src={this.props.instruc_[1]} height={800}/>
             {this.bubble_text(this.props.slide)}
         </div>
       );
@@ -206,7 +190,7 @@ class Instructions extends React.Component{
     else {
       return (
         <div className="slide_im">
-          <Image src={this.state.instruc_[this.props.slide-4]} height={800}/>
+          <Image src={this.props.instruc_[this.props.slide-4]} height={800}/>
             {this.bubble_text(this.props.slide)}
         </div>
       );

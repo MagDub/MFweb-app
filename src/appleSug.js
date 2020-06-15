@@ -1,6 +1,6 @@
 import React from 'react';
 import TreeTraining from './treeTraining';
-
+import './style/training.css';
 
 class AppleSug extends React.Component{
 

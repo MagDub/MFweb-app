@@ -68,6 +68,8 @@ class Questionnaires extends Component {
     survey.setValue("QuestionnaireFinishTime", finishTime)
     survey.setValue("UserStartTime", this.state.user_info.startTime)
     survey.setValue("ProlificID", this.state.user_info.prolific_id)
+    survey.setValue("TrainingNo", this.state.user_info.training_no)
+    survey.setValue("TaskNo", this.state.user_info.task_no)
 
     var resultAsString = JSON.stringify(survey.data);
 

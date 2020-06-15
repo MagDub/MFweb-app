@@ -27,12 +27,13 @@ class Task extends React.Component{
       num_training:10,
       loading: 1,
       slide: 1,
-      transition:1,
+      transition: 1,
       fetched: 0,
       percentage_to_pass_questions: 1, // percentage to pass the training and questions
       percentage_to_pass_training: 0.8,
       InstructionsStartTime: InstructionsStartTime,
-      training_bg:["training_1","training_2","training_3","training_4"],
+      training_bg:["images/images_training/training_1_empty.png","images/images_training/training_2_empty.png","images/images_training/training_3_empty.png","images/images_training/training_4_empty.png"],
+      instruc_:["images/instructions/slide_empty_1arrow.png", "images/instructions/slide_empty_2arrows.png", "images/instructions/slide6.png", "images/instructions/slide7.png", "images/instructions/slide8.png", "images/instructions/slide9.png", "images/instructions/slide10.png", "images/instructions/slide11.png", "images/instructions/slide12.png", "images/instructions/slide13.png", "images/instructions/slide14.png", "images/instructions/slide15.png", "images/instructions/slide16.png", "images/instructions/slide17.png", "images/instructions/slide18.png"],
       };
 
     this.nextTransition = this.nextTransition.bind(this);
@@ -53,11 +54,14 @@ class Task extends React.Component{
   componentDidMount() {
 
     var training_bg = this.state.training_bg;
+    var instruc_ = this.state.instruc_;
 
     training_bg.forEach(image => { new Image().src = image })
+    instruc_.forEach(image => { new Image().src = image })
 
     this.setState({
       training_bg: training_bg,
+      instruc_: instruc_,
       mounted: 1,
     });
   }
@@ -120,30 +124,30 @@ class Task extends React.Component{
 
           case 1:
             //console.log("task: transition 1", "slide", this.state.slide)
-            return <Instructions slide={this.state.slide}/>
+            return <Instructions slide={this.state.slide} instruc_={this.state.instruc_}/>
 
           case 2:
             if (this.state.fetched===0){
               this.fetchUserInfo();
             }
             //console.log("task: transition 2 - questions")
-            return <Questions prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
+            return <Questions training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
 
           case 3:
             //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
-            return <Instructions slide={this.state.slide}/>
+            return <Instructions slide={this.state.slide} instruc_={this.state.instruc_}/>
 
           case 4:
             //console.log("task: transition 4 - training")
-            return <Training training_bg={this.state.training_bg} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
+            return <Training training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} training_bg={this.state.training_bg} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
           case 5:
             //console.log("task: transition 5 - instructions")
-            return <Instructions slide={this.state.slide}/>
+            return <Instructions slide={this.state.slide} instruc_={this.state.instruc_}/>
 
           case 6:
             //console.log("task: transition 6 - start game")
-            return <Game prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
+            return <Game training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
           case 7:
             //console.log("task: transition 7")
