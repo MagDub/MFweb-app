@@ -154,7 +154,7 @@ class Training extends React.Component{
     var trial_ind = this.state.trial-1;
 
     if (this.state.disp_fb===1){
-      return <Feedback chosen={this.state.chosen[trial_ind]} correct_ans={this.state.correct_ans[trial_ind]}/>
+      return <Feedback images_fb={this.props.images_fb} chosen={this.state.chosen[trial_ind]} correct_ans={this.state.correct_ans[trial_ind]}/>
     }
   }
 

@@ -27,7 +27,7 @@ class Task extends React.Component{
       num_training:10,
       loading: 1,
       slide: 1,
-      transition: 1,
+      transition: 0,
       mounted: 0,
       fetched: 0,
       percentage_to_pass_questions: 1, // percentage to pass the training and questions
@@ -99,13 +99,6 @@ class Task extends React.Component{
       switch(this.state.transition) {
 
           case 0:
-            if (this.state.mounted===0){
-              return (
-                <div className="slide_im">
-                    <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
-                </div>
-              );}
-            else if (this.state.mounted===1){
               return(
                 <div>
                   <div className="IntroConsentText">
@@ -123,7 +116,6 @@ class Task extends React.Component{
                   </div>
                 </div>
               );
-            }
 
           case 1:
             //console.log("task: transition 1", "slide", this.state.slide)
@@ -142,7 +134,7 @@ class Task extends React.Component{
 
           case 4:
             //console.log("task: transition 4 - training")
-            return <Training training_apple_col={this.state.user_info.training_apple_col} loading_bg={this.state.user_info.loading_bg} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} training_bg={this.state.user_info.training_bg} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
+            return <Training images_fb={this.state.user_info.images_fb} training_apple_col={this.state.user_info.training_apple_col} loading_bg={this.state.user_info.loading_bg} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} training_bg={this.state.user_info.training_bg} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
           case 5:
             //console.log("task: transition 5 - instructions")
