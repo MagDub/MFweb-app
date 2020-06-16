@@ -13,7 +13,7 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
 
-    var trial_per_block = 100;
+    var trial_per_block = 5 //100;
 
     /* fill in random colors .*/
     var BlockNb = 4;
@@ -47,7 +47,7 @@ class Game extends React.Component{
       all_key_pressed: all_key_pressed,
       reaction_times: reaction_times,
       trial_per_block: trial_per_block,
-}
+      }
 
     /* prevents page from going down when space bar is hit .*/
     window.addEventListener('keydown', function(e) {
@@ -59,13 +59,12 @@ class Game extends React.Component{
     this.fetchBlock.bind(this);
   }
 
-
   fetchBlock(user_no_,block_no_){
 
     var currentDate   = new Date();
     var BlockStartTime    = currentDate.toTimeString();
 
-    var task_no = this.props.task_no;
+    var task_no = this.props.user_info.task_no;
 
     fetch(`${API_URL}/task/`+task_no+'/'+block_no_)
     .then(handleResponse)
@@ -104,7 +103,7 @@ class Game extends React.Component{
     var currentDate   = new Date();
     var BlockFinishTime    = currentDate.toTimeString();
 
-    var StartTime= this.props.StartTime;
+    var StartTime= this.props.user_info.startTime;
 
     let BlockStartTime = this.state.BlockStartTime;
 
@@ -115,9 +114,9 @@ class Game extends React.Component{
     let chosen_apple_size = this.state.chosen_apple_size
     let all_key_pressed = this.state.all_key_pressed
     let reaction_times = this.state.reaction_times
-    var prolific_id = this.props.prolific_id;
-    var training_no = this.props.training_no;
-    var task_no = this.props.task_no;
+    var prolific_id = this.props.user_info.prolific_id;
+    var training_no = this.props.user_info.training_no;
+    var task_no = this.props.user_info.task_no;
 
     var subset_Horizon = this.state.block_info.Horizon.slice(0,trial_per_block);
     var subset_InitialSampleNb = this.state.block_info.InitialSampleNb.slice(0,trial_per_block);
@@ -166,8 +165,9 @@ class Game extends React.Component{
       var trialinblock_index = this.state.TrialInBlockNo-1;
 
       if (this.state.BlockNo>this.state.BlockNb) {
+        console.log("finished", "blockNo :", this.state.BlockNo)
         document.addEventListener("keyup", this._handleKeyDownSpace);
-        return <Block block_start_bg={this.props.block_start_bg} block_finish_bg={this.props.block_finish_bg} block_i={this.state.BlockNo} BlockNb={this.state.BlockNb}/>
+        return <Block block_start_bg={this.props.user_info.block_start_bg} block_finish_bg={this.props.user_info.block_finish_bg} block_i={this.state.BlockNo} BlockNb={this.state.BlockNb}/>
         }
 
       else if (this.state.start_block===1) {
@@ -180,7 +180,7 @@ class Game extends React.Component{
       else if (this.state.disp_new_block===1) {
         document.removeEventListener("keyup", this._handleKeyDownTree);
         document.addEventListener("keyup", this._handleKeyDownSpace);
-        return <Block block_start_bg={this.props.block_start_bg} block_finish_bg={this.props.block_finish_bg} block_i={this.state.block_info.BlockNo[trialinblock_index]} BlockNb={this.state.BlockNb}/>
+        return <Block block_start_bg={this.props.user_info.block_start_bg} block_finish_bg={this.props.user_info.block_finish_bg} block_i={this.state.block_info.BlockNo[trialinblock_index]} BlockNb={this.state.BlockNb}/>
       }
 
       else {
@@ -194,21 +194,21 @@ class Game extends React.Component{
 
                   switch(col) {
                       case 1:
-                        disp = this.props.image_bg_1; break;
+                        disp = this.props.user_info.image_bg_1; break;
                       case 2:
-                        disp = this.props.image_bg_2; break;
+                        disp = this.props.user_info.image_bg_2; break;
                       case 3:
-                        disp = this.props.image_bg_3; break;
+                        disp = this.props.user_info.image_bg_3; break;
                       case 4:
-                        disp = this.props.image_bg_4; break;
+                        disp = this.props.user_info.image_bg_4; break;
                       case 5:
-                        disp = this.props.image_bg_5; break;
+                        disp = this.props.user_info.image_bg_5; break;
                       case 6:
-                        disp = this.props.image_bg_6; break;
+                        disp = this.props.user_info.image_bg_6; break;
                       case 7:
-                        disp = this.props.image_bg_7; break;
+                        disp = this.props.user_info.image_bg_7; break;
                       case 8:
-                        disp = this.props.image_bg_8; break;
+                        disp = this.props.user_info.image_bg_8; break;
                       default:
                     }
 
@@ -238,7 +238,6 @@ class Game extends React.Component{
             default:
             }
         }
-
   }
 
   disp_juice(trialinblock_index) {
@@ -306,10 +305,10 @@ class Game extends React.Component{
 
 
     if (hor===1) {
-      image_juice = this.props.juice_small_bg[ind_mean_score];
+      image_juice = this.props.user_info.juice_small_bg[ind_mean_score];
     }
     else if (hor===6) {
-      image_juice = this.props.juice_small_bg[ind_mean_score];
+      image_juice = this.props.user_info.juice_small_bg[ind_mean_score];
     }
 
     return <Juice image_juice={image_juice}/>;
@@ -415,28 +414,28 @@ class Game extends React.Component{
 
           switch(col) {
               case 1:
-                disp_col = this.props.apple_col1;
+                disp_col = this.props.user_info.apple_col1;
                 break;
               case 2:
-                disp_col = this.props.apple_col2;
+                disp_col = this.props.user_info.apple_col2;
                 break;
               case 3:
-                disp_col = this.props.apple_col3;
+                disp_col = this.props.user_info.apple_col3;
                 break;
               case 4:
-                disp_col = this.props.apple_col4;
+                disp_col = this.props.user_info.apple_col4;
                 break;
               case 5:
-                disp_col = this.props.apple_col5;
+                disp_col = this.props.user_info.apple_col5;
                 break;
               case 6:
-                disp_col = this.props.apple_col6;
+                disp_col = this.props.user_info.apple_col6;
                 break;
               case 7:
-                disp_col = this.props.apple_col7;
+                disp_col = this.props.user_info.apple_col7;
                 break;
               case 8:
-                disp_col = this.props.apple_col8;
+                disp_col = this.props.user_info.apple_col8;
                 break;
               default:
             }

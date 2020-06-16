@@ -24,10 +24,10 @@ class Task extends React.Component{
     this.state = {
       UserNo:[], //default
       user_info: user_info,
-      num_training:10,
+      num_training:5,
       loading: 1,
       slide: 1,
-      transition: 0,
+      transition: 1,
       mounted: 0,
       fetched: 0,
       percentage_to_pass_questions: 1, // percentage to pass the training and questions
@@ -148,11 +148,11 @@ class Task extends React.Component{
             return <Instructions slide={this.state.slide} instruc_={this.state.user_info.instruc_bg}/>
 
           case 6:
-            //console.log("task: transition 6 - start game")
-            return <Game apple_col1={this.state.user_info.apple_col1} apple_col2={this.state.user_info.apple_col2} apple_col3={this.state.user_info.apple_col3} apple_col4={this.state.user_info.apple_col4} apple_col5={this.state.user_info.apple_col5} apple_col6={this.state.user_info.apple_col6} apple_col7={this.state.user_info.apple_col7} apple_col8={this.state.user_info.apple_col8} block_start_bg={this.state.user_info.block_start_bg} block_finish_bg={this.state.user_info.block_finish_bg} juice_small_bg={this.state.user_info.juice_small_bg} juice_big_bg={this.state.user_info.juice_big_bg} image_bg_1={this.state.user_info.image_bg_1} image_bg_2={this.state.user_info.image_bg_2} image_bg_3={this.state.user_info.image_bg_3} image_bg_4={this.state.user_info.image_bg_4} image_bg_5={this.state.user_info.image_bg_5} image_bg_6={this.state.user_info.image_bg_6} image_bg_7={this.state.user_info.image_bg_7} image_bg_8={this.state.user_info.image_bg_8} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
+            console.log("task: transition 6 - start game")
+            return <Game user_info={this.state.user_info} UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
           case 7:
-            //console.log("task: transition 7")
+            console.log("task: transition 7")
             this.props.history.push({
               pathname: `/Questionnaires`,
               state: {user_info: this.state.user_info, UserNo: this.state.UserNo}
@@ -197,8 +197,11 @@ class Task extends React.Component{
 
   nextTransition(percentage_passed) {
 
+    //console.log("nextTransition", "percentage_passed", percentage_passed)
+
     if ((this.state.transition===2 && percentage_passed>=this.state.percentage_to_pass_questions)
-          || (this.state.transition===4 && percentage_passed>=this.state.percentage_to_pass_training)){
+          || (this.state.transition===4 && percentage_passed>=this.state.percentage_to_pass_training)
+          || this.state.transition===6){
       this.setState({
         transition: this.state.transition+1,
       });
