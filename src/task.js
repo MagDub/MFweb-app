@@ -27,7 +27,7 @@ class Task extends React.Component{
       num_training:10,
       loading: 1,
       slide: 1,
-      transition: 1,
+      transition: 0, // starts at 0
       mounted: 0,
       fetched: 0,
       percentage_to_pass_questions: 1, // percentage to pass the training and questions
