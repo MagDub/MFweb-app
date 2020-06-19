@@ -13,7 +13,7 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
 
-    var trial_per_block = 100; //100;
+    var trial_per_block = 2; //100;
 
     /* fill in random colors .*/
     var BlockNb = 4;
@@ -184,6 +184,7 @@ class Game extends React.Component{
       }
 
       else {
+        this.listenner(trialinblock_index)
         switch(this.state.disp_juice) {
             case 0:
 
@@ -212,29 +213,17 @@ class Game extends React.Component{
                       default:
                     }
 
-                return (
-                    <div className="shift">
+                    return (
+                      <div className="place-middle">
+                        <div className="shift">
+                          <Farm apples_picked={this.state.SampleNo} disp={disp} hor={hor}/>
+                          {this.disp_current_apples(trialinblock_index)}
+                        </div>
+                      </div>
+                    );
 
-                        {this.listenner(trialinblock_index)}
-
-                        {/* background.*/}
-                        <Farm apples_picked={this.state.SampleNo} disp={disp} hor={hor}/>
-
-                        {/* display all boxes. Depends on trial and condition. */}
-                        {this.disp_current_apples(trialinblock_index)}
-
-                    </div>
-                  );
             case 1:
-              return (
-                  <div className="shift">
-
-                    {this.listenner(trialinblock_index)}
-
-                    {this.disp_juice(trialinblock_index)}
-
-                  </div>
-              );
+                return (this.disp_juice(trialinblock_index));
             default:
             }
         }
@@ -252,7 +241,6 @@ class Game extends React.Component{
     var chosen_apple_size;
     var all_key_pressed;
     var reaction_times;
-
 
     if(TrialNo%trial_per_block===0){
       this.sendBlock(this.props.UserNo, BlockNo);
@@ -308,10 +296,14 @@ class Game extends React.Component{
       image_juice = this.props.user_info.juice_small_bg[ind_mean_score];
     }
     else if (hor===6) {
-      image_juice = this.props.user_info.juice_small_bg[ind_mean_score];
+      image_juice = this.props.user_info.juice_big_bg[ind_mean_score];
     }
 
-    return <Juice image_juice={image_juice}/>;
+    return (
+      <div className="place-middle">
+        <Juice image_juice={image_juice}/>
+      </div>
+    );
 
    }
 

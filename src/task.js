@@ -9,6 +9,7 @@ import { API_URL } from './config';
 import { handleResponse } from './helpers'; // imports json
 import './style/task.css';
 import Image from 'react-image-resizer';
+import './style/intro.css';
 
 
 class Task extends React.Component{
@@ -24,7 +25,7 @@ class Task extends React.Component{
     this.state = {
       UserNo:[], //default
       user_info: user_info,
-      num_training:10,
+      num_training:2,
       loading: 1,
       slide: 1,
       transition: 0, // starts at 0
@@ -108,17 +109,19 @@ class Task extends React.Component{
           case 0:
               return(
                 <div>
-                  <div className="IntroConsentText">
-                    <p><span className="bold">STUDY PART 1/2</span></p>
-                      Thank you for joining our study. <br/>
-                      In the 1st part you will play a computer game and in the 2nd part you will
-                      be asked a few questions about yourself.<br/>
-                      If you are ready, press the button to be redirected to the game.
-                    <br/><br/>
-                    <div className="container">
-                        <div className="center">
-                          <Button variant="outline-success" size="lg" onClick={this.handleClick}> Let&#39;s start playing ! </Button>
-                        </div>
+                  <div className="place-middle">
+                    <div className="IntroConsentText">
+                      <p><span className="bold">STUDY PART 1/2</span></p>
+                        Thank you for joining our study. <br/>
+                        In the 1st part you will play a computer game and in the 2nd part you will
+                        be asked a few questions about yourself.<br/>
+                        If you are ready, press the button to be redirected to the game.
+                      <br/><br/>
+                      <div className="container">
+                          <div className="center">
+                            <Button variant="outline-success" size="lg" onClick={this.handleClick}> Let&#39;s start playing ! </Button>
+                          </div>
+                      </div>
                     </div>
                   </div>
                 </div>

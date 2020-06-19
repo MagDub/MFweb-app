@@ -37,7 +37,7 @@ class Instructions extends React.Component{
             <p>
               Hi my name is Maggie, welcome to our farm ! <br />
               The apple picking season just started. We are really glad that you are <br />
-              here to help. Press the right arrow on your keyboard to continue. <br />
+              here to help. Press the right arrow on your KEYBOARD to continue. <br />
             </p>
           </div>);
 
@@ -54,8 +54,8 @@ class Instructions extends React.Component{
         return (
           <div className="slide_text">
             <p>
-              Apples come in different shades and sizes. You needs to help us <br />
-              collect the BIGGEST ones before sunset.
+              Apples come in different shades and sizes. You need to help us <br />
+              pick the BIGGEST apples before sunset.
             </p>
           </div>);
 
@@ -73,9 +73,9 @@ class Instructions extends React.Component{
         return (
           <div className="slide_text">
             <p>
-              On each day you will collect apples from new trees. Some of the  <br />
+              On each day you will pick apples from new trees. Some of the  <br />
               trees are better than others. To help you, some apples were <br />
-              already picked up before you arrived.
+              already picked before you arrived.
             </p>
           </div>);
 
@@ -92,8 +92,8 @@ class Instructions extends React.Component{
           <div className="slide_text">
             <p>
               At the end of each day, you will see how much juice was made <br />
-              from the apples you collected. At the end of the game this juice <br />
-              will be converted to a money bonus.
+              from the apples you picked. At the end of the game this juice <br />
+              will be converted to a monetary bonus.
             </p>
           </div>);
 
@@ -101,8 +101,9 @@ class Instructions extends React.Component{
         return (
           <div className="slide_text">
             <p>
-              You will have to fill a small glass when you can collect 1 apple  <br />
-              and a large glass when you can collect 6 apples. <br />
+              The juice will be filled in a glass. There will be 2 types of glasses: <br />
+              a small glass, when 1 apple could be picked, and a large glass, when <br />
+              6 apples could be picked.
             </p>
           </div>);
 
@@ -129,9 +130,9 @@ class Instructions extends React.Component{
         return (
           <div className="slide_text">
             <p>
-              Congratulations, you&#39;ve done well. <br />
-              Let&#39;s start picking apples now ! <br />
-              Remember: the bigger the apples, the more juice...
+              Congratulations, you&#39;ve done well. Let&#39;s start picking apples now ! <br />
+              Keep in mind: it is not always possible to fill <br />
+              the glass entirely. Do the best you can.
             </p>
           </div>);
 
@@ -153,16 +154,20 @@ class Instructions extends React.Component{
     if(this.props.slide===1) {
       if (this.state.currentImage===0) {
         return (
-          <div className="slide_im">
-              <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
+          <div className="place-middle">
+            <div className="slide_im">
+                <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
+            </div>
           </div>
         );
       }
       else {
         return (
-          <div className="slide_im">
-            <Image src={this.props.instruc_[0]} height={800}/>
-            {this.bubble_text(this.props.slide)}
+          <div className="place-middle">
+            <div className="slide_im">
+              <Image src={this.props.instruc_[0]} height={800}/>
+              {this.bubble_text(this.props.slide)}
+            </div>
           </div>
         );
       }
@@ -170,27 +175,33 @@ class Instructions extends React.Component{
 
     if(this.props.slide===0 || (this.props.slide>21 && this.props.slide<25)) {
       return (
-        <div className="slide_im">
-          <Image src={this.props.instruc_[0]} height={800}/>
-          {this.bubble_text(this.props.slide)}
+        <div className="place-middle">
+          <div className="slide_im">
+            <Image src={this.props.instruc_[0]} height={800}/>
+            {this.bubble_text(this.props.slide)}
+          </div>
         </div>
       );
     }
 
     if((this.props.slide>1 && this.props.slide<6) || (this.props.slide>18 && this.props.slide<22)) {
       return (
-        <div className="slide_im">
-          <Image src={this.props.instruc_[1]} height={800}/>
-            {this.bubble_text(this.props.slide)}
+        <div className="place-middle">
+          <div className="slide_im">
+            <Image src={this.props.instruc_[1]} height={800}/>
+              {this.bubble_text(this.props.slide)}
+          </div>
         </div>
       );
     }
 
     else {
       return (
-        <div className="slide_im">
-          <Image src={this.props.instruc_[this.props.slide-4]} height={800}/>
-            {this.bubble_text(this.props.slide)}
+        <div className="place-middle">
+          <div className="slide_im">
+            <Image src={this.props.instruc_[this.props.slide-4]} height={800}/>
+              {this.bubble_text(this.props.slide)}
+          </div>
         </div>
       );
     }

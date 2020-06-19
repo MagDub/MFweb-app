@@ -72,11 +72,11 @@ class Questions extends React.Component{
             return (
               <div className="slide_text">
                 <p>
-                  The size of the glass of juice depends on: <br />
+                  The type of the glass (big glass or small glass) depends on: <br />
                   1 - The sizes of the apples you collected <br />
                   2 - The colours of the apple you collected <br />
                   3 - Nothing, it is random <br />
-                  4 - The number of apples you could pick <br />
+                  4 - The number of apples that could be picked <br />
                   [Press the correct key]
                 </p>
               </div>
@@ -88,7 +88,7 @@ class Questions extends React.Component{
                   <p>
                     At the end of the game, all your juice glasses will be: <br />
                     1 - Useless <br />
-                    2 - Converted to a money bonus<br />
+                    2 - Converted to a monetary bonus<br />
                     3 - Delivered to your door  <br />
                     4 - Drank by Maggie <br />
                     [Press the correct key]
@@ -165,8 +165,10 @@ class Questions extends React.Component{
     if(this.state.question_no===0){
         if (this.state.currentImage===0){
           return (
-            <div className="slide_im">
-                <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
+            <div className="place-middle">
+              <div className="slide_im">
+                  <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
+              </div>
             </div>
           );}
 
@@ -179,9 +181,11 @@ class Questions extends React.Component{
     else{
       if (this.state.question_no<=this.props.questions_nb){
         return (
-          <div className="slide_im">
-            <Image src={this.props.questions_bg} height={800}/>
-            {this.display_question(this.state.question_no)}
+          <div className="place-middle">
+            <div className="slide_im">
+              <Image src={this.props.questions_bg} height={800}/>
+              {this.display_question(this.state.question_no)}
+            </div>
           </div>
         );
       }

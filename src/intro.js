@@ -179,7 +179,7 @@ class Consent extends Component {
 
   render() {
 
-    var json = { title: "Form", pages: [
+    var json = { title: null, pages: [
 
       {questions: [
 
@@ -299,13 +299,15 @@ class Consent extends Component {
     if(this.state.ConsentCompleted===0){
       return(
       <div>
-        <div className="IntroConsentText">
-          <p><span className="bold">INFORMATION FOR THE PARTICIPANT</span></p>
-          Please read carefully. If you are happy to proceed please click the boxes on the 2nd page of the form to show that
-          you consent to this study proceeding. Please note that you cannot proceed to the study unless
-          you give your full consent.
-          <br/><br/>
-          <Survey.Survey json={json} showCompletedPage={false} onComplete={this.onCompleteComponent}/>
+        <div className="place-middle">
+          <div className="IntroConsentText">
+            <p><span className="bold">INFORMATION FOR THE PARTICIPANT</span></p>
+            Please read carefully. If you are happy to proceed please click the boxes on the 2nd page of the form to show that
+            you consent to this study proceeding. Please note that you cannot proceed to the study unless
+            you give your full consent.
+            <br/><br/>
+            <Survey.Survey json={json} showCompletedPage={false} onComplete={this.onCompleteComponent}/>
+          </div>
         </div>
       </div>
       );

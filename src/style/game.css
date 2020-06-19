@@ -2,7 +2,7 @@
 
 .appleTask{
   position:relative;
-  background: url('../background/square.png');
+  background: url('http://www.brainexplorer.net/MF/square.png');
   border-width: thin;
   border-color: black;
   border-style: solid;

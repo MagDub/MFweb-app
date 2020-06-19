@@ -62,8 +62,10 @@ class Training extends React.Component{
 
       if (this.state.currentImage===0){
         return (
-          <div className="slide_im">
-              <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
+          <div className="place-middle">
+            <div className="slide_im">
+                <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
+            </div>
           </div>
         );}
 
@@ -78,9 +80,11 @@ class Training extends React.Component{
 
     if (this.state.trial<=this.props.num_training){
       return (
-        <div className="slide_im">
-          <Image src={this.props.training_bg[col-1]} height={800}/>
-            {this.bubble_text(col)}
+        <div className="place-middle">
+          <div className="slide_im">
+            <Image src={this.props.training_bg[col-1]} height={800}/>
+              {this.bubble_text(col)}
+          </div>
         </div>
         );
       }
