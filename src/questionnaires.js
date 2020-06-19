@@ -114,15 +114,15 @@ class Questionnaires extends Component {
       // LSAS ,
       {questions: [
         {type: "matrixdropdown", name: "LSAS", horizontalScroll: true,
-        columnMinWidth:"130px", //isAllRowRequired: true,
+        columnMinWidth:"130px", isAllRowRequired: true,
         title: "Read each situation carefully and answer two questions about it; the first question asks how anxious or fearful you feel in the situation; the second question asks how often you avoid it. Please base your ratings on the way that situations affected you BEFORE the COVID-19 pandemic.",
           columns: [
-              { /* isRequired: true,*/ name: "fear", title: "Anxiety", choices:[
+              { isRequired: true, name: "fear", title: "Anxiety", choices:[
                                                 {"value": 0, "text": "None"},
                                                 {"value": 1, "text": "Mild"},
                                                 {"value": 2, "text": "Moderate"},
                                                 {"value": 3, "text": "Severe"}]},
-              { /* isRequired: true,*/ name: "avoidance", title: "Avoidance", choices:[
+              { isRequired: true, name: "avoidance", title: "Avoidance", choices:[
                                                 {"value": 0, "text": "Never"},
                                                 {"value": 1, "text": "Occasionally"},
                                                 {"value": 2, "text": "Often"},
@@ -164,7 +164,7 @@ class Questionnaires extends Component {
 
       // ASRS
       {questions: [
-            { type: "matrix", name: "ASRS", //isAllRowRequired: true,
+            { type: "matrix", name: "ASRS", isAllRowRequired: true,
             title: "Please indicate what best describes how you have felt and conducted yourself over the past 6 months. ",
                 columns: [
                     { value: 1, text: "Never" },
@@ -199,7 +199,7 @@ class Questionnaires extends Component {
 
       //BIS 11
       {questions: [
-            { type: "matrix", name: "BIS11", //isAllRowRequired: true,
+            { type: "matrix", name: "BIS11", isAllRowRequired: true,
               title: "People differ in the ways they act and think in different situations. This is a test to measure some of the ways in which you act and think. Do not spend too much time on any statement. Answer quickly and honestly.",
                 columns: [
                     { value: 1, text: "Rarely/Never" },
@@ -248,7 +248,7 @@ class Questionnaires extends Component {
 
       //OCI-R
       {questions: [
-              { type: "matrix", name: "OCIR", //isAllRowRequired: true,
+              { type: "matrix", name: "OCIR", isAllRowRequired: true,
                 title: "Indicated what best describes HOW MUCH each experience has DISTRESSED or BOTHERED you during the PAST MONTH.",
                   columns: [
                       { value: 0, text: "Not at all" },
@@ -283,7 +283,7 @@ class Questionnaires extends Component {
 
       // IU
       {questions: [
-            {   type: "matrix", name: "IUS", //isAllRowRequired: true,
+            {   type: "matrix", name: "IUS", isAllRowRequired: true,
                 title: "You will find below a series of statements which describe how people may react to the uncertainties of life. Please use the scale below to describe to what extent each item is characteristic of you.",
                 columns: [
                     { value: 1, text: "1 - Not at all" },
@@ -331,7 +331,7 @@ class Questionnaires extends Component {
 
       // SDS
       {questions: [
-            {   type: "matrix", name: "SDS", //isAllRowRequired: true,
+            {   type: "matrix", name: "SDS", isAllRowRequired: true,
                 title: "For each item below, please place a check the column which best describes how often you felt or behaved this way during the past several days",
                 columns: [
                     { value: 1, text: "A little of the time" },
@@ -368,7 +368,7 @@ class Questionnaires extends Component {
 
       // STAI-Y2
       {questions: [
-            {   type: "matrix", name: "STAI", //isAllRowRequired: true,
+            {   type: "matrix", name: "STAI", isAllRowRequired: true,
                 title: "Read each statement and then indicate how you generally feel. There is no right or wrong answer. Do not spend too much time on any one statement but give the answer which seems to describe how you generally feel.",
                 columns: [
                     { value: 1, text: "Almost Never" },
@@ -405,7 +405,7 @@ class Questionnaires extends Component {
 
       // IQ text
       {questions: [
-            { type: "radiogroup", name: "IQ_1", //isRequired: true,
+            { type: "radiogroup", name: "IQ_1", isRequired: true,
                 title: "What number is one fifth of one fourth of one ninth of 900?",
                 //colCount: 4,
                 choices: [
@@ -417,7 +417,7 @@ class Questionnaires extends Component {
                   {value:6, text:"7"}
                 ]},
 
-            { type: "radiogroup", name: "IQ_2", //isRequired: true,
+            { type: "radiogroup", name: "IQ_2", isRequired: true,
                 title: "Zach is taller than Matt and Richard is shorter than Zach. Which of the following statements would be the most accurate?",
                 choices: [
                   {value:1, text:"Richard is taller than Matt"},
@@ -426,7 +426,7 @@ class Questionnaires extends Component {
                   {value:4, text:"It's impossible to tell"}
                 ]},
 
-            { type: "radiogroup", name: "IQ_3", //isRequired: true,
+            { type: "radiogroup", name: "IQ_3", isRequired: true,
                 title: "Joshua is 12 years old and his sister is three times as old as he. When Joshua is 23 years old, how old will his sister be?",
                 choices: [
                   {value:1, text:"25"},
@@ -436,7 +436,7 @@ class Questionnaires extends Component {
                   {value:5, text:"53"}
                 ]},
 
-            { type: "radiogroup", name: "IQ_4", //isRequired: true,
+            { type: "radiogroup", name: "IQ_4", isRequired: true,
                 title: "If the day after tomorrow is two days before Thursday then what day is it today?",
                 choices: [
                   {value:1, text:"Friday"},
@@ -447,7 +447,7 @@ class Questionnaires extends Component {
                   {value:6, text:"Sunday"}
                 ]},
 
-            { type: "radiogroup", name: "IQ_5", //isRequired: true,
+            { type: "radiogroup", name: "IQ_5", isRequired: true,
                 title: "In the following alphanumeric series, what letter comes next? K N P S U ...?",
                 choices: [
                   {value:1, text:"S"},
@@ -458,7 +458,7 @@ class Questionnaires extends Component {
                   {value:6, text:"X"}
                 ]},
 
-            { type: "radiogroup", name: "IQ_6", //isRequired: true,
+            { type: "radiogroup", name: "IQ_6", isRequired: true,
                 title: "In the following alphanumeric series, what letter comes next? V Q M J H ...?",
                 choices: [
                   {value:1, text:"E"},
@@ -469,7 +469,7 @@ class Questionnaires extends Component {
                   {value:6, text:"J"}
                 ]},
 
-            { type: "radiogroup", name: "IQ_7", //isRequired: true,
+            { type: "radiogroup", name: "IQ_7", isRequired: true,
                 title: "In the following alphanumeric series, what letter comes next? I J L O S ...?",
                 choices: [
                   {value:1, text:"T"},
@@ -480,7 +480,7 @@ class Questionnaires extends Component {
                   {value:6, text:"Z"}
                 ]},
 
-            { type: "radiogroup", name: "IQ_8", //isRequired: true,
+            { type: "radiogroup", name: "IQ_8", isRequired: true,
                 title: "In the following alphanumeric series, what letter comes next? Q S N P L ...?",
                 choices: [
                   {value:1, text:"J"},
@@ -497,7 +497,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx45_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx45_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_1", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_1", isRequired: true,
               title: "Which figure fits into the missing slot?",
               choices: [
                 {value:1, text:"A"},
@@ -511,7 +511,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx46_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx46_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_2", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_2", isRequired: true,
               title: "Which figure fits into the missing slot?",
               choices: [
                 {value:1, text:"A"},
@@ -525,7 +525,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx47_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx47_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_3", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_3", isRequired: true,
               title: "Which figure fits into the missing slot?",
               choices: [
                 {value:1, text:"A"},
@@ -539,7 +539,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx55_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx55_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_4", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_4", isRequired: true,
               title: "Which figure fits into the missing slot?",
               choices: [
                 {value:1, text:"A"},
@@ -553,7 +553,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd3_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_5", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_5", isRequired: true,
               title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
               choices: [
                 {value:1, text:"A"},
@@ -569,7 +569,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd4_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_6", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_6", isRequired: true,
               title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
               choices: [
                 {value:1, text:"A"},
@@ -585,7 +585,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd6_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_7", //isRequired: true,
+            { type: "radiogroup", name: "IQimage_7", isRequired: true,
               title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
               choices: [
                 {value:1, text:"A"},
@@ -601,7 +601,7 @@ class Questionnaires extends Component {
             { type: "html",
               name: "info",
               html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd8_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_8",  //isRequired: true,
+            { type: "radiogroup", name: "IQimage_8", isRequired: true,
               title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
               choices: [
                 {value:1, text:"A"},

@@ -25,7 +25,7 @@ class Task extends React.Component{
     this.state = {
       UserNo:[], //default
       user_info: user_info,
-      num_training:2,
+      num_training:10, // should be 10
       loading: 1,
       slide: 1,
       transition: 0, // starts at 0

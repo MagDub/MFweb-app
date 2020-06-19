@@ -13,7 +13,7 @@ class Game extends React.Component{
   constructor(props) {
     super(props);
 
-    var trial_per_block = 2; //100;
+    var trial_per_block = 100;
 
     /* fill in random colors .*/
     var BlockNb = 4;
