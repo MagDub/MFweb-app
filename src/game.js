@@ -301,7 +301,7 @@ class Game extends React.Component{
 
     return (
       <div className="place-middle">
-        <Juice image_juice={image_juice}/>
+        <Juice image_juice={image_juice} mean_score={shift_mean_score} hor={hor}/>
       </div>
     );
 

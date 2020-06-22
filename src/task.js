@@ -28,7 +28,7 @@ class Task extends React.Component{
       num_training:10, // should be 10
       loading: 1,
       slide: 1,
-      transition: 0, // starts at 0
+      transition: 6, // starts at 0
       mounted: 0,
       fetched: 0,
       percentage_to_pass_questions: 1, // percentage to pass the training and questions
@@ -113,9 +113,9 @@ class Task extends React.Component{
                     <div className="IntroConsentText">
                       <p><span className="bold">STUDY PART 1/2</span></p>
                         Thank you for joining our study. <br/>
-                        In the 1st part you will play a computer game and in the 2nd part you will
-                        be asked a few questions about yourself.<br/>
-                        If you are ready, press the button to be redirected to the game.
+                        In the 1st part of the study you will play a computer game. <br/>
+                        In the 2nd part you will be asked a few questions about yourself.<br/>
+                        Press the button when you are ready.
                       <br/><br/>
                       <div className="container">
                           <div className="center">
