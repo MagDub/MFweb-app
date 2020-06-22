@@ -54,8 +54,9 @@ class Instructions extends React.Component{
         return (
           <div className="slide_text">
             <p>
-              Apples come in different shades and sizes. You need to help us <br />
-              pick the BIGGEST apples before sunset.
+              Apples come in different colours and sizes. The bigger the apple, the <br />
+              more juice it will give. You need to help us make as much juice as <br />
+              possible.
             </p>
           </div>);
 
@@ -73,9 +74,9 @@ class Instructions extends React.Component{
         return (
           <div className="slide_text">
             <p>
-              On each day you will pick apples from new trees. Some of the  <br />
-              trees are better than others. To help you, some apples were <br />
-              already picked before you arrived.
+              Some trees give bigger apples than others. However, the trees on each  <br />
+              day are NEW, meaning that they are independent from other days. To  <br />
+              help you, some apples were already picked before you arrived.
             </p>
           </div>);
 
@@ -131,8 +132,8 @@ class Instructions extends React.Component{
           <div className="slide_text">
             <p>
               Congratulations, you&#39;ve done well. Let&#39;s start picking apples now ! <br />
-              Keep in mind: it is not always possible to fill <br />
-              the glass entirely. Do the best you can.
+              Keep in mind: The bigger the apples, the more juice they <br />
+              will produce. Do the best you can !
             </p>
           </div>);
 
