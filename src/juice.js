@@ -186,8 +186,6 @@ class Juice extends React.Component{
 
   render(){
 
-    console.log("mean_score", this.props.mean_score)
-
     return (
         <div className="juice_im">
 

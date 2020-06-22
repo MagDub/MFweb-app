@@ -28,7 +28,7 @@ class Task extends React.Component{
       num_training:10, // should be 10
       loading: 1,
       slide: 1,
-      transition: 6, // starts at 0
+      transition: 0, // starts at 0
       mounted: 0,
       fetched: 0,
       percentage_to_pass_questions: 1, // percentage to pass the training and questions
@@ -151,11 +151,11 @@ class Task extends React.Component{
             return <Instructions slide={this.state.slide} instruc_={this.state.user_info.instruc_bg}/>
 
           case 6:
-            console.log("task: transition 6 - start game")
+            //console.log("task: transition 6 - start game")
             return <Game user_info={this.state.user_info} UserNo={this.state.UserNo} nextTransition={this.nextTransition}/>
 
           case 7:
-            console.log("task: transition 7")
+            //console.log("task: transition 7")
             this.props.history.push({
               pathname: `/Questionnaires`,
               state: {user_info: this.state.user_info, UserNo: this.state.UserNo}

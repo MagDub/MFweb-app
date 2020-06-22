@@ -7,6 +7,8 @@ import './style/game.css';
 import './style/juice.css';
 import { API_URL } from './config';
 import { handleResponse } from './helpers'; // imports json
+import { Button } from 'react-bootstrap';
+
 
 class Game extends React.Component{
 
@@ -47,6 +49,7 @@ class Game extends React.Component{
       all_key_pressed: all_key_pressed,
       reaction_times: reaction_times,
       trial_per_block: trial_per_block,
+      info_btn_counter: 0,
       }
 
     /* prevents page from going down when space bar is hit .*/
@@ -103,20 +106,8 @@ class Game extends React.Component{
     var currentDate   = new Date();
     var BlockFinishTime    = currentDate.toTimeString();
 
-    var StartTime= this.props.user_info.startTime;
-
-    let BlockStartTime = this.state.BlockStartTime;
-
     let trial_per_block = this.state.trial_per_block;
     let ind_block = block_no_-1;
-
-    let chosen_tree = this.state.chosen_tree
-    let chosen_apple_size = this.state.chosen_apple_size
-    let all_key_pressed = this.state.all_key_pressed
-    let reaction_times = this.state.reaction_times
-    var prolific_id = this.props.user_info.prolific_id;
-    var training_no = this.props.user_info.training_no;
-    var task_no = this.props.user_info.task_no;
 
     var subset_Horizon = this.state.block_info.Horizon.slice(0,trial_per_block);
     var subset_InitialSampleNb = this.state.block_info.InitialSampleNb.slice(0,trial_per_block);
@@ -128,17 +119,18 @@ class Game extends React.Component{
     var subset_TreePositions = this.state.block_info.TreePositions.slice(0,trial_per_block);
 
     let behaviour = {       'BlockNo'             : block_no_,
-                            'UserStartTime'       : StartTime,
-                            'ProlificID'          : prolific_id,
-                            'TaskNo'              : task_no,
-                            'TrainingNo'          : training_no,
-                            'BlockStartTime'      : BlockStartTime,
+                            'UserStartTime'       : this.props.user_info.startTime,
+                            'ProlificID'          : this.props.user_info.prolific_id,
+                            'TaskNo'              : this.props.user_info.task_no,
+                            'TrainingNo'          : this.props.user_info.training_no,
+                            'BlockStartTime'      : this.state.BlockStartTime,
                             'BlockFinishTime'     : BlockFinishTime,
                             'TreeColours'         : this.state.tree_col[ind_block],
-                            'ChosenTree'          : chosen_tree,
-                            'ChosenAppleSize'     : chosen_apple_size,
-                            'AllKeyPressed'       : all_key_pressed,
-                            'ReactionTimes'       : reaction_times,
+                            'InfoRequestNo'       : this.state.info_btn_counter,
+                            'ChosenTree'          : this.state.chosen_tree,
+                            'ChosenAppleSize'     : this.state.chosen_apple_size,
+                            'AllKeyPressed'       : this.state.all_key_pressed,
+                            'ReactionTimes'       : this.state.reaction_times,
                             'Horizon'             : subset_Horizon,
                             'ItemNo'              : subset_ItemNo,
                             'TrialNo'             : subset_TrialNo,
@@ -147,8 +139,6 @@ class Game extends React.Component{
                             'InitialSamplesTree'  : subset_InitialSamples_Tree,
                             'InitialSamplesSize'  : subset_InitialSamples_Size,
                             'TreePositions'       : subset_TreePositions}
-
-    //console.log("sendBlock", "behaviour", behaviour)
 
     fetch(`${API_URL}/behaviour/` + user_no_ + `/` + block_no_, {
        method: 'POST',
@@ -161,6 +151,8 @@ class Game extends React.Component{
   }
 
   render() {
+
+      console.log("this.state.info_btn_counter", this.state.info_btn_counter)
 
       var trialinblock_index = this.state.TrialInBlockNo-1;
 
@@ -218,6 +210,9 @@ class Game extends React.Component{
                         <div className="shift">
                           <Farm apples_picked={this.state.SampleNo} disp={disp} hor={hor}/>
                           {this.disp_current_apples(trialinblock_index)}
+                          <div className="btn_help">
+                            <Button variant="link" onClick={this.show_info}> Help </Button>
+                          </div>
                         </div>
                       </div>
                     );
@@ -227,6 +222,16 @@ class Game extends React.Component{
             default:
             }
         }
+  }
+
+  show_info = () => {
+
+    this.setState({
+      info_btn_counter: this.state.info_btn_counter+1,
+    });
+
+    alert("You need to produce as much juice as possible. The amount of juice is proportional to the sizes of apples you picked. Use the displayed information (apples on the wooden crate) to help you.")
+
   }
 
   disp_juice(trialinblock_index) {

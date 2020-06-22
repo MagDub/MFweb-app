@@ -16,3 +16,9 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.btn_help{
+  position: absolute;
+  margin-top: 800px;
+  margin-left: 780px;
+}
