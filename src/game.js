@@ -152,8 +152,6 @@ class Game extends React.Component{
 
   render() {
 
-      console.log("this.state.info_btn_counter", this.state.info_btn_counter)
-
       var trialinblock_index = this.state.TrialInBlockNo-1;
 
       if (this.state.BlockNo>this.state.BlockNb) {
