@@ -111,6 +111,7 @@ class Task extends React.Component{
                 <div>
                   <div className="place-middle">
                     <div className="IntroConsentText">
+                      <br/> <br/> <br/> <br/>
                       <p><span className="bold">STUDY PART 1/2</span></p>
                         Thank you for joining our study. <br/>
                         In the 1st part of the study you will play a computer game. <br/>

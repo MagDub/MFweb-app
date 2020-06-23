@@ -104,7 +104,7 @@ class Training extends React.Component{
         <p>
           Look at the  apples previously collected <br />
           (on the wooden crate). Which apple is most <br />
-          likely to be picked next ? <br />
+          likely to come from the same tree? <br />
           Remember: a tree always produces apples <br />
           of similar sizes !
         </p>

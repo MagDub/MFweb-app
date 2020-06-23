@@ -15,10 +15,11 @@
   max-width: 850px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: -90px;
 }
 
 .btn_help{
   position: absolute;
-  margin-top: 800px;
-  margin-left: 780px;
+  margin-top: 770px;
+  margin-left: 840px;
 }

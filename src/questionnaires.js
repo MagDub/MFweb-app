@@ -623,6 +623,7 @@ class Questionnaires extends Component {
         <div>
           <div className="place-middle">
             <div className="IntroConsentText">
+             <br/> <br/> <br/> <br/>
               <p><span className="bold">STUDY PART 2/2</span></p>
               Thank you for completing the game. Here is the 2nd part of the study in which we will ask you questions about reasoning and about yourself.
               Click the button when you are ready.
@@ -643,6 +644,7 @@ class Questionnaires extends Component {
         <div>
           <div className="place-middle">
             <div className="IntroConsentText">
+             <br/> <br/> <br/> <br/>
               <p><span className="bold">STUDY PART 2/2</span></p>
               Please take your time to answer.
               <br/><br/>

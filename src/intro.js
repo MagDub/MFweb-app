@@ -300,6 +300,7 @@ class Consent extends Component {
       <div>
         <div className="place-middle">
           <div className="IntroConsentText">
+           <br/> <br/> <br/> <br/>
             <p><span className="bold">INFORMATION FOR THE PARTICIPANT</span></p>
             Please read carefully. If you are happy to proceed please click the boxes on the 2nd page of the form to show that
             you consent to this study proceeding. Please note that you cannot proceed to the study unless
