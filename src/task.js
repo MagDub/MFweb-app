@@ -99,8 +99,10 @@ class Task extends React.Component{
 
       if (this.state.currentImage===0){
         return (
-          <div className="slide_im">
-              <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
+          <div className="place-middle">
+            <div className="slide_im">
+                <Image src={this.props.loading_bg[this.state.currentImage]} height={800}/>
+              </div>
           </div>
         );}
 
