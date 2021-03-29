@@ -19,6 +19,7 @@
     "react-showdown": "^2.0.3",
     "react-transition-group": "^1.2.1",
     "showdown": "^1.9.1",
+    "shuffle-array": "^1.0.1",
     "survey-react": "^1.7.8"
   },
   "scripts": {
