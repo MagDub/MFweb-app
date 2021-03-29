@@ -19,12 +19,17 @@ class Questionnaires extends Component {
     var user_info = this.props.location.state.user_info;
     var UserNo = this.props.location.state.UserNo;
 
+    var shuffle = require('shuffle-array'),
+    collection = [1,2,3,4,5,6,7,8,9,10,11,12];
+    const quest_i = shuffle(collection);
+
     this.state = {
       user_info: user_info,
       UserNo:UserNo,
       transition: 0,
       resultAsString: {},
       QuestionnaireStartTime: '',
+      quest_i: quest_i,
     };
 
     this.onCompleteComponent = this.onCompleteComponent.bind(this);
@@ -107,12 +112,57 @@ class Questionnaires extends Component {
     Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
   }
 
-  render() {
+  render_quest(quest_No) {
 
-    var json = { title: null, showProgressBar: "top", pages: [
+    let BIS11 = {questions: [
+          { type: "matrix", name: "BIS11", isAllRowRequired: true,
+            title: "People differ in the ways they act and think in different situations. This is a test to measure some of the ways in which you act and think. Do not spend too much time on any statement. Answer quickly and honestly.",
+              columns: [
+                  { value: 1, text: "Rarely/Never" },
+                  { value: 2, text: "Occasionally" },
+                  { value: 3, text: "Often" },
+                  { value: 4, text: "Almost Always/Always" }],
+              rows: [
+                  { value: "BIS11_1",    text: "I plan tasks carefully." },
+                  { value: "BIS11_2",    text: "I do things without thinking." },
+                  { value: "BIS11_3",    text: "I make-up my mind quickly." },
+                  { value: "BIS11_4",    text: "I am happy-go-lucky." },
+                  { value: "BIS11_5",    text: "I don’t “pay attention.”" },
+                  { value: "BIS11_6",    text: "I have “racing” thoughts." },
+                  { value: "BIS11_7",    text: "I plan trips well ahead of time." },
+                  { value: "BIS11_8",    text: "I am self controlled." },
+                  { value: "BIS11_9",    text: "I concentrate easily." },
+                  { value: "BIS11_10",   text: "I save regularly." },
 
-      // LSAS ,
-      {questions: [
+                  { value: "CHECK_1",    text: "Select 'Rarely/Never'." },
+
+                  { value: "BIS11_11",   text: "I “squirm” at plays or lectures." },
+                  { value: "BIS11_12",   text: "I am a careful thinker." },
+                  { value: "BIS11_13",   text: "I plan for job security." },
+                  { value: "BIS11_14",   text: "I say things without thinking." },
+                  { value: "BIS11_15",   text: "I like to think about complex problems." },
+                  { value: "BIS11_16",   text: "I change jobs." },
+                  { value: "BIS11_17",   text: "I act “on impulse.”" },
+                  { value: "BIS11_18",   text: "I get easily bored when solving though problems." },
+                  { value: "BIS11_19",   text: "I act on the spur of the moment." },
+                  { value: "BIS11_20",   text: "I am a steady thinker." },
+
+                  { value: "CHECK_3",    text: "Please choose the option 'Often'. " },
+
+                  { value: "BIS11_21",   text: "I change residences." },
+                  { value: "BIS11_22",   text: "I buy things on impulse." },
+                  { value: "BIS11_23",   text: "I can only think about one thing at a time." },
+                  { value: "BIS11_24",   text: "I change hobbies." },
+                  { value: "BIS11_25",   text: "I spend or charge more than I earn." },
+                  { value: "BIS11_26",   text: "I often have extraneous thoughts when thinking." },
+                  { value: "BIS11_27",   text: "I am more interested in the present than the future." },
+                  { value: "BIS11_28",   text: "I am restless at the theater or lectures." },
+                  { value: "BIS11_29",   text: "I like puzzles." },
+                  { value: "BIS11_30",   text: "I am future oriented." }
+                ]},
+      ]}
+
+    let LSAS = {questions: [
         {type: "matrixdropdown", name: "LSAS", horizontalScroll: true,
         columnMinWidth:"130px", isAllRowRequired: true,
         title: "Read each situation carefully and answer two questions about it; the first question asks how anxious or fearful you feel in the situation; the second question asks how often you avoid it. Please base your ratings on the way that situations affected you BEFORE the COVID-19 pandemic.",
@@ -160,461 +210,511 @@ class Questionnaires extends Component {
               { value: "LSAS_24",      text: "Resisting a high pressure salesperson" }
             ]
         }
-      ]},
+      ]}
 
-      // ASRS
-      {questions: [
-            { type: "matrix", name: "ASRS", isAllRowRequired: true,
-            title: "Please indicate what best describes how you have felt and conducted yourself over the past 6 months. ",
+    let ASRS = {questions: [
+          { type: "matrix", name: "ASRS", isAllRowRequired: true,
+          title: "Please indicate what best describes how you have felt and conducted yourself over the past 6 months. ",
+              columns: [
+                  { value: 1, text: "Never" },
+                  { value: 2, text: "Rarely" },
+                  { value: 3, text: "Sometimes" },
+                  { value: 4, text: "Often" },
+                  { value: 5, text: "Very Often" }],
+              rows: [
+                  { value: "ASRS_1",       text: "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?" },
+                  { value: "ASRS_2",       text: "How often do you have difficulty getting things in order when you have to do a task that requires organization?" },
+                  { value: "ASRS_3",       text: "How often do you have problems remembering appointments or obligations?" },
+                  { value: "ASRS_4",       text: "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?" },
+                  { value: "ASRS_5",       text: "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?" },
+                  { value: "ASRS_6",       text: "How often do you feel overly active and compelled to do things, like you were driven by a motor?" },
+                  { value: "ASRS_7",       text: "How often do you make careless mistakes when you have to work on a boring or difficult project?" },
+                  { value: "ASRS_8",       text: "How often do you have difficulty keeping your attention when you are doing boring or repetitive work?" },
+                  { value: "ASRS_9",       text: "How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?" },
+
+                  { value: "CHECK_4",      text: "Please press the option 'Often' to demonstrate your attention." },
+
+                  { value: "ASRS_10",      text: "How often do you misplace or have difficulty finding things at home or at work?" },
+                  { value: "ASRS_11",      text: "How often are you distracted by activity or noise around you?" },
+                  { value: "ASRS_12",      text: "How often do you leave your seat in meetings or other situations in which you are expected to remain seated?" },
+                  { value: "ASRS_13",      text: "How often do you feel restless or fidgety?" },
+                  { value: "ASRS_14",      text: "How often do you have difficulty unwinding and relaxing when you have time to yourself?" },
+                  { value: "ASRS_15",      text: "How often do you find yourself talking too much when you are in social situations?" },
+                  { value: "ASRS_16",      text: "When you’re in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish them themselves?" },
+                  { value: "ASRS_17",      text: "How often do you have difficulty waiting your turn in situations when turn taking is required?" },
+                  { value: "ASRS_18",      text: "How often do you interrupt others when they are busy?" }
+                ]},
+      ]}
+
+    let OCIR = {questions: [
+            { type: "matrix", name: "OCIR", isAllRowRequired: true,
+              title: "Indicated what best describes HOW MUCH each experience has DISTRESSED or BOTHERED you during the PAST MONTH.",
                 columns: [
-                    { value: 1, text: "Never" },
-                    { value: 2, text: "Rarely" },
-                    { value: 3, text: "Sometimes" },
-                    { value: 4, text: "Often" },
-                    { value: 5, text: "Very Often" }],
+                    { value: 0, text: "Not at all" },
+                    { value: 1, text: "A little" },
+                    { value: 2, text: "Moderately" },
+                    { value: 3, text: "A lot" },
+                    { value: 4, text: "Extremely" }],
                 rows: [
-                    { value: "ASRS_1",       text: "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?" },
-                    { value: "ASRS_2",       text: "How often do you have difficulty getting things in order when you have to do a task that requires organization?" },
-                    { value: "ASRS_3",       text: "How often do you have problems remembering appointments or obligations?" },
-                    { value: "ASRS_4",       text: "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?" },
-                    { value: "ASRS_5",       text: "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?" },
-                    { value: "ASRS_6",       text: "How often do you feel overly active and compelled to do things, like you were driven by a motor?" },
-                    { value: "ASRS_7",       text: "How often do you make careless mistakes when you have to work on a boring or difficult project?" },
-                    { value: "ASRS_8",       text: "How often do you have difficulty keeping your attention when you are doing boring or repetitive work?" },
-                    { value: "ASRS_9",       text: "How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?" },
+                    { value: "OCIR_1",    text: "I have saved up so many things that they get in the way." },
+                    { value: "OCIR_2",    text: "I check things more often than necessary." },
+                    { value: "OCIR_3",    text: "I get upset if objects are not arranged properly." },
+                    { value: "OCIR_4",    text: "I feel compelled to count while I am doing things." },
+                    { value: "OCIR_5",    text: "I find it difficult to touch an object when I know it has been touched by strangers or certain people." },
+                    { value: "OCIR_6",    text: "I find it difficult to control my own thoughts." },
+                    { value: "OCIR_7",    text: "I collect things I don’t need." },
+                    { value: "OCIR_8",    text: "I repeatedly check doors, windows, drawers, etc." },
+                    { value: "OCIR_9",    text: "I get upset if others change the way I have arranged things." },
 
-                    { value: "CHECK_4",      text: "Please press the option 'Often' to demonstrate your attention." },
+                    { value: "CHECK_3",   text: "Demonstrate your attention by selecting 'A lot'. " },
 
-                    { value: "ASRS_10",      text: "How often do you misplace or have difficulty finding things at home or at work?" },
-                    { value: "ASRS_11",      text: "How often are you distracted by activity or noise around you?" },
-                    { value: "ASRS_12",      text: "How often do you leave your seat in meetings or other situations in which you are expected to remain seated?" },
-                    { value: "ASRS_13",      text: "How often do you feel restless or fidgety?" },
-                    { value: "ASRS_14",      text: "How often do you have difficulty unwinding and relaxing when you have time to yourself?" },
-                    { value: "ASRS_15",      text: "How often do you find yourself talking too much when you are in social situations?" },
-                    { value: "ASRS_16",      text: "When you’re in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish them themselves?" },
-                    { value: "ASRS_17",      text: "How often do you have difficulty waiting your turn in situations when turn taking is required?" },
-                    { value: "ASRS_18",      text: "How often do you interrupt others when they are busy?" }
+                    { value: "OCIR_10",   text: "I feel I have to repeat certain numbers." },
+                    { value: "OCIR_11",   text: "I sometimes have to wash or clean myself simply because I feel contaminated." },
+                    { value: "OCIR_12",   text: "I am upset by unpleasant thoughts that come into my mind against my will." },
+                    { value: "OCIR_13",   text: "I avoid throwing things away because I am afraid I might need them later." },
+                    { value: "OCIR_14",   text: "I repeatedly check gas and water taps and light switches after turning them off." },
+                    { value: "OCIR_15",   text: "I need things to be arranged in a particular way." },
+                    { value: "OCIR_16",   text: "I feel that there are good and bad numbers." },
+                    { value: "OCIR_17",   text: "I wash my hands more often and longer than necessary." },
+                    { value: "OCIR_18",   text: "I frequently get nasty thoughts and have difficulty in getting rid of them." }
                   ]},
-        ]},
+        ]}
 
-      //BIS 11
-      {questions: [
-            { type: "matrix", name: "BIS11", isAllRowRequired: true,
-              title: "People differ in the ways they act and think in different situations. This is a test to measure some of the ways in which you act and think. Do not spend too much time on any statement. Answer quickly and honestly.",
-                columns: [
-                    { value: 1, text: "Rarely/Never" },
-                    { value: 2, text: "Occasionally" },
-                    { value: 3, text: "Often" },
-                    { value: 4, text: "Almost Always/Always" }],
-                rows: [
-                    { value: "BIS11_1",    text: "I plan tasks carefully." },
-                    { value: "BIS11_2",    text: "I do things without thinking." },
-                    { value: "BIS11_3",    text: "I make-up my mind quickly." },
-                    { value: "BIS11_4",    text: "I am happy-go-lucky." },
-                    { value: "BIS11_5",    text: "I don’t “pay attention.”" },
-                    { value: "BIS11_6",    text: "I have “racing” thoughts." },
-                    { value: "BIS11_7",    text: "I plan trips well ahead of time." },
-                    { value: "BIS11_8",    text: "I am self controlled." },
-                    { value: "BIS11_9",    text: "I concentrate easily." },
-                    { value: "BIS11_10",   text: "I save regularly." },
+    let IU = {questions: [
+          {   type: "matrix", name: "IUS", isAllRowRequired: true,
+              title: "You will find below a series of statements which describe how people may react to the uncertainties of life. Please use the scale below to describe to what extent each item is characteristic of you.",
+              columns: [
+                  { value: 1, text: "1 - Not at all" },
+                  { value: 2, text: "2" },
+                  { value: 3, text: "3 - Somewhat" },
+                  { value: 4, text: "4" },
+                  { value: 5, text: "5 - Entirely" }
+                ],
+              rows: [
+                  { value: "IUS_1",   text: "Uncertainty stops me from having a firm opinion." },
+                  { value: "IUS_2",   text: "Being uncertain means that a person is disorganized." },
+                  { value: "IUS_3",   text: "Uncertainty makes life intolerable." },
+                  { value: "IUS_4",   text: "It’s unfair not having any guarantees in life." },
+                  { value: "IUS_5",   text: "My mind can’t be relaxed if I don’t know what will happen tomorrow." },
+                  { value: "IUS_6",   text: "Uncertainty makes me uneasy, anxious, or stressed." },
+                  { value: "IUS_7",   text: "Unforeseen events upset me greatly." },
+                  { value: "IUS_8",   text: "It frustrates me not having all the information I need." },
+                  { value: "IUS_9",   text: "Uncertainty keeps me from living a full life." },
 
-                    { value: "CHECK_1",    text: "Select 'Rarely/Never'." },
+                  { value: "CHECK_4", text: "To demonstrate your attention please click on the option in the column '4'." },
 
-                    { value: "BIS11_11",   text: "I “squirm” at plays or lectures." },
-                    { value: "BIS11_12",   text: "I am a careful thinker." },
-                    { value: "BIS11_13",   text: "I plan for job security." },
-                    { value: "BIS11_14",   text: "I say things without thinking." },
-                    { value: "BIS11_15",   text: "I like to think about complex problems." },
-                    { value: "BIS11_16",   text: "I change jobs." },
-                    { value: "BIS11_17",   text: "I act “on impulse.”" },
-                    { value: "BIS11_18",   text: "I get easily bored when solving though problems." },
-                    { value: "BIS11_19",   text: "I act on the spur of the moment." },
-                    { value: "BIS11_20",   text: "I am a steady thinker." },
+                  { value: "IUS_10",  text: "One should always look ahead so as to avoid surprises." },
+                  { value: "IUS_11",  text: "A small unforeseen event can spoil everything, even with the best of planning." },
+                  { value: "IUS_12",  text: "When it’s time to act, uncertainty paralyses me." },
+                  { value: "IUS_13",  text: "Being uncertain means that I am not first rate." },
+                  { value: "IUS_14",  text: "When I am uncertain, I can’t go forward." },
+                  { value: "IUS_15",  text: "When I am uncertain I can’t function very well." },
+                  { value: "IUS_16",  text: "Unlike me, others always seem to know where they are going with their lives." },
+                  { value: "IUS_17",  text: "Uncertainty makes me vulnerable, unhappy, or sad." },
+                  { value: "IUS_18",  text: "I always want to know what the future has in store for me." },
 
-                    { value: "CHECK_3",    text: "Please choose the option 'Often'. " },
+                  { value: "CHECK_3", text: "Are you still here ? Select option 'Somewhat'" },
 
-                    { value: "BIS11_21",   text: "I change residences." },
-                    { value: "BIS11_22",   text: "I buy things on impulse." },
-                    { value: "BIS11_23",   text: "I can only think about one thing at a time." },
-                    { value: "BIS11_24",   text: "I change hobbies." },
-                    { value: "BIS11_25",   text: "I spend or charge more than I earn." },
-                    { value: "BIS11_26",   text: "I often have extraneous thoughts when thinking." },
-                    { value: "BIS11_27",   text: "I am more interested in the present than the future." },
-                    { value: "BIS11_28",   text: "I am restless at the theater or lectures." },
-                    { value: "BIS11_29",   text: "I like puzzles." },
-                    { value: "BIS11_30",   text: "I am future oriented." }
-                  ]},
-        ]},
-
-      //OCI-R
-      {questions: [
-              { type: "matrix", name: "OCIR", isAllRowRequired: true,
-                title: "Indicated what best describes HOW MUCH each experience has DISTRESSED or BOTHERED you during the PAST MONTH.",
-                  columns: [
-                      { value: 0, text: "Not at all" },
-                      { value: 1, text: "A little" },
-                      { value: 2, text: "Moderately" },
-                      { value: 3, text: "A lot" },
-                      { value: 4, text: "Extremely" }],
-                  rows: [
-                      { value: "OCIR_1",    text: "I have saved up so many things that they get in the way." },
-                      { value: "OCIR_2",    text: "I check things more often than necessary." },
-                      { value: "OCIR_3",    text: "I get upset if objects are not arranged properly." },
-                      { value: "OCIR_4",    text: "I feel compelled to count while I am doing things." },
-                      { value: "OCIR_5",    text: "I find it difficult to touch an object when I know it has been touched by strangers or certain people." },
-                      { value: "OCIR_6",    text: "I find it difficult to control my own thoughts." },
-                      { value: "OCIR_7",    text: "I collect things I don’t need." },
-                      { value: "OCIR_8",    text: "I repeatedly check doors, windows, drawers, etc." },
-                      { value: "OCIR_9",    text: "I get upset if others change the way I have arranged things." },
-
-                      { value: "CHECK_3",   text: "Demonstrate your attention by selecting 'A lot'. " },
-
-                      { value: "OCIR_10",   text: "I feel I have to repeat certain numbers." },
-                      { value: "OCIR_11",   text: "I sometimes have to wash or clean myself simply because I feel contaminated." },
-                      { value: "OCIR_12",   text: "I am upset by unpleasant thoughts that come into my mind against my will." },
-                      { value: "OCIR_13",   text: "I avoid throwing things away because I am afraid I might need them later." },
-                      { value: "OCIR_14",   text: "I repeatedly check gas and water taps and light switches after turning them off." },
-                      { value: "OCIR_15",   text: "I need things to be arranged in a particular way." },
-                      { value: "OCIR_16",   text: "I feel that there are good and bad numbers." },
-                      { value: "OCIR_17",   text: "I wash my hands more often and longer than necessary." },
-                      { value: "OCIR_18",   text: "I frequently get nasty thoughts and have difficulty in getting rid of them." }
-                    ]},
-          ]},
-
-      // IU
-      {questions: [
-            {   type: "matrix", name: "IUS", isAllRowRequired: true,
-                title: "You will find below a series of statements which describe how people may react to the uncertainties of life. Please use the scale below to describe to what extent each item is characteristic of you.",
-                columns: [
-                    { value: 1, text: "1 - Not at all" },
-                    { value: 2, text: "2" },
-                    { value: 3, text: "3 - Somewhat" },
-                    { value: 4, text: "4" },
-                    { value: 5, text: "5 - Entirely" }
-                  ],
-                rows: [
-                    { value: "IUS_1",   text: "Uncertainty stops me from having a firm opinion." },
-                    { value: "IUS_2",   text: "Being uncertain means that a person is disorganized." },
-                    { value: "IUS_3",   text: "Uncertainty makes life intolerable." },
-                    { value: "IUS_4",   text: "It’s unfair not having any guarantees in life." },
-                    { value: "IUS_5",   text: "My mind can’t be relaxed if I don’t know what will happen tomorrow." },
-                    { value: "IUS_6",   text: "Uncertainty makes me uneasy, anxious, or stressed." },
-                    { value: "IUS_7",   text: "Unforeseen events upset me greatly." },
-                    { value: "IUS_8",   text: "It frustrates me not having all the information I need." },
-                    { value: "IUS_9",   text: "Uncertainty keeps me from living a full life." },
-
-                    { value: "CHECK_4", text: "To demonstrate your attention please click on the option in the column '4'." },
-
-                    { value: "IUS_10",  text: "One should always look ahead so as to avoid surprises." },
-                    { value: "IUS_11",  text: "A small unforeseen event can spoil everything, even with the best of planning." },
-                    { value: "IUS_12",  text: "When it’s time to act, uncertainty paralyses me." },
-                    { value: "IUS_13",  text: "Being uncertain means that I am not first rate." },
-                    { value: "IUS_14",  text: "When I am uncertain, I can’t go forward." },
-                    { value: "IUS_15",  text: "When I am uncertain I can’t function very well." },
-                    { value: "IUS_16",  text: "Unlike me, others always seem to know where they are going with their lives." },
-                    { value: "IUS_17",  text: "Uncertainty makes me vulnerable, unhappy, or sad." },
-                    { value: "IUS_18",  text: "I always want to know what the future has in store for me." },
-
-                    { value: "CHECK_3", text: "Are you still here ? Select option 'Somewhat'" },
-
-                    { value: "IUS_19",  text: "I can’t stand being taken by surprise." },
-                    { value: "IUS_20",  text: "The smallest doubt can stop me from acting." },
-                    { value: "IUS_21",  text: "I should be able to organize everything in advance." },
-                    { value: "IUS_22",  text: "Being uncertain means that I lack confidence." },
-                    { value: "IUS_23",  text: "I think it’s unfair that other people seem sure about their future." },
-                    { value: "IUS_24",  text: "Uncertainty keeps me from sleeping soundly." },
-                    { value: "IUS_25",  text: "I must get away from all uncertain situations." },
-                    { value: "IUS_26",  text: "The ambiguities in life stress me." },
-                    { value: "IUS_27",  text: "I can’t stand being undecided about my future." }
-                  ]},
-        ]},
-
-      // SDS
-      {questions: [
-            {   type: "matrix", name: "SDS", isAllRowRequired: true,
-                title: "For each item below, please place a check the column which best describes how often you felt or behaved this way during the past several days",
-                columns: [
-                    { value: 1, text: "A little of the time" },
-                    { value: 2, text: "Some of the time" },
-                    { value: 3, text: "Good part of time" },
-                    { value: 4, text: "Most of the time" },
-                  ],
-                rows: [
-                    { value: "SDS_1",   text: "I feel down-hearted and blue." },
-                    { value: "SDS_2",   text: "Morning is when I feel the best." },
-                    { value: "SDS_3",   text: "I have crying spells or feel like it." },
-                    { value: "SDS_4",   text: "I have trouble sleeping at night." },
-                    { value: "SDS_5",   text: "I eat as much as I used to." },
-                    { value: "SDS_6",   text: "I still enjoy sex." },
-                    { value: "SDS_7",   text: "I notice that I am losing weight." },
-                    { value: "SDS_8",   text: "I have trouble with constipation." },
-                    { value: "SDS_9",   text: "My heart beats faster than usual." },
-                    { value: "SDS_10",  text: "I get tired for no reason." },
-
-                    { value: "CHECK_4", text: "I am still focused. Press 'Most of the time'." },
-
-                    { value: "SDS_11",  text: "My mind is as clear as it used to be." },
-                    { value: "SDS_12",  text: "I find it easy to do the things I used to." },
-                    { value: "SDS_13",  text: "I am restless and can’t keep still." },
-                    { value: "SDS_14",  text: "I feel hopeful about the future." },
-                    { value: "SDS_15",  text: "I am more irritable than usual." },
-                    { value: "SDS_16",  text: "I find it easy to make decisions." },
-                    { value: "SDS_17",  text: "I feel that I am useful and needed." },
-                    { value: "SDS_18",  text: "My life is pretty full." },
-                    { value: "SDS_19",  text: "I feel that others would be better off if I were dead." },
-                    { value: "SDS_20",  text: "I still enjoy the things I used to do." }
-                  ]},
-        ]},
-
-      // STAI-Y2
-      {questions: [
-            {   type: "matrix", name: "STAI", isAllRowRequired: true,
-                title: "Read each statement and then indicate how you generally feel. There is no right or wrong answer. Do not spend too much time on any one statement but give the answer which seems to describe how you generally feel.",
-                columns: [
-                    { value: 1, text: "Almost Never" },
-                    { value: 2, text: "Sometimes" },
-                    { value: 3, text: "Often" },
-                    { value: 4, text: "Almost Always" },
-                  ],
-                rows: [
-                    { value: "STAI_21",   text: "I feel pleasant" },
-                    { value: "STAI_22",   text: "I feel nervous and restless" },
-                    { value: "STAI_23",   text: "I feel satisfied with myself" },
-                    { value: "STAI_24",   text: "I wish I could be as happy as others seem to be" },
-                    { value: "STAI_25",   text: "I feel like a failure" },
-                    { value: "STAI_26",   text: "I feel rested" },
-                    { value: "STAI_27",   text: "I am calm, cool, and collected" },
-                    { value: "STAI_28",   text: "I feel that difficulties are piling up so that I cannot overcome them" },
-                    { value: "STAI_29",   text: "I worry too much over something that really doesn’t matter" },
-                    { value: "STAI_30",   text: "I am happy" },
-
-                    { value: "CHECK_3",   text: "I am not answering randomly. Select 'Often'." },
-
-                    { value: "STAI_31",  text: "I have disturbing thoughts" },
-                    { value: "STAI_32",  text: "I lack self confidence" },
-                    { value: "STAI_33",  text: "I feel secure" },
-                    { value: "STAI_34",  text: "I make decision easily" },
-                    { value: "STAI_35",  text: "I feel inadequate" },
-                    { value: "STAI_36",  text: "I am content" },
-                    { value: "STAI_37",  text: "Some unimportant thoughts runs through my mind and bothers me" },
-                    { value: "STAI_38",  text: "I take disappointments so keenly that I can’t put them out of my mind" },
-                    { value: "STAI_39",  text: "I am a steady person" },
-                    { value: "STAI_40",  text: "I get in a state of tension or turmoil as I think over my recent concerns and interests" }
-                  ]},
-        ]},
-
-      // IQ text
-      {questions: [
-            { type: "radiogroup", name: "IQ_1", isRequired: true,
-                title: "What number is one fifth of one fourth of one ninth of 900?",
-                //colCount: 4,
-                choices: [
-                  {value:1, text:"2"},
-                  {value:2, text:"3"},
-                  {value:3, text:"4"},
-                  {value:4, text:"5"},
-                  {value:5, text:"6"},
-                  {value:6, text:"7"}
+                  { value: "IUS_19",  text: "I can’t stand being taken by surprise." },
+                  { value: "IUS_20",  text: "The smallest doubt can stop me from acting." },
+                  { value: "IUS_21",  text: "I should be able to organize everything in advance." },
+                  { value: "IUS_22",  text: "Being uncertain means that I lack confidence." },
+                  { value: "IUS_23",  text: "I think it’s unfair that other people seem sure about their future." },
+                  { value: "IUS_24",  text: "Uncertainty keeps me from sleeping soundly." },
+                  { value: "IUS_25",  text: "I must get away from all uncertain situations." },
+                  { value: "IUS_26",  text: "The ambiguities in life stress me." },
+                  { value: "IUS_27",  text: "I can’t stand being undecided about my future." }
                 ]},
+      ]}
 
-            { type: "radiogroup", name: "IQ_2", isRequired: true,
-                title: "Zach is taller than Matt and Richard is shorter than Zach. Which of the following statements would be the most accurate?",
-                choices: [
-                  {value:1, text:"Richard is taller than Matt"},
-                  {value:2, text:"Richard is shorter than Matt"},
-                  {value:3, text:"Richard is as tall as Matt"},
-                  {value:4, text:"It's impossible to tell"}
+    let SDS = {questions: [
+          {   type: "matrix", name: "SDS", isAllRowRequired: true,
+              title: "For each item below, please place a check the column which best describes how often you felt or behaved this way during the past several days",
+              columns: [
+                  { value: 1, text: "A little of the time" },
+                  { value: 2, text: "Some of the time" },
+                  { value: 3, text: "Good part of time" },
+                  { value: 4, text: "Most of the time" },
+                ],
+              rows: [
+                  { value: "SDS_1",   text: "I feel down-hearted and blue." },
+                  { value: "SDS_2",   text: "Morning is when I feel the best." },
+                  { value: "SDS_3",   text: "I have crying spells or feel like it." },
+                  { value: "SDS_4",   text: "I have trouble sleeping at night." },
+                  { value: "SDS_5",   text: "I eat as much as I used to." },
+                  { value: "SDS_6",   text: "I still enjoy sex." },
+                  { value: "SDS_7",   text: "I notice that I am losing weight." },
+                  { value: "SDS_8",   text: "I have trouble with constipation." },
+                  { value: "SDS_9",   text: "My heart beats faster than usual." },
+                  { value: "SDS_10",  text: "I get tired for no reason." },
+
+                  { value: "CHECK_4", text: "I am still focused. Press 'Most of the time'." },
+
+                  { value: "SDS_11",  text: "My mind is as clear as it used to be." },
+                  { value: "SDS_12",  text: "I find it easy to do the things I used to." },
+                  { value: "SDS_13",  text: "I am restless and can’t keep still." },
+                  { value: "SDS_14",  text: "I feel hopeful about the future." },
+                  { value: "SDS_15",  text: "I am more irritable than usual." },
+                  { value: "SDS_16",  text: "I find it easy to make decisions." },
+                  { value: "SDS_17",  text: "I feel that I am useful and needed." },
+                  { value: "SDS_18",  text: "My life is pretty full." },
+                  { value: "SDS_19",  text: "I feel that others would be better off if I were dead." },
+                  { value: "SDS_20",  text: "I still enjoy the things I used to do." }
                 ]},
+      ]}
 
-            { type: "radiogroup", name: "IQ_3", isRequired: true,
-                title: "Joshua is 12 years old and his sister is three times as old as he. When Joshua is 23 years old, how old will his sister be?",
-                choices: [
-                  {value:1, text:"25"},
-                  {value:2, text:"39"},
-                  {value:3, text:"44"},
-                  {value:4, text:"47"},
-                  {value:5, text:"53"}
+    let STAIY2 = {questions: [
+          {   type: "matrix", name: "STAI", isAllRowRequired: true,
+              title: "Read each statement and then indicate how you generally feel. There is no right or wrong answer. Do not spend too much time on any one statement but give the answer which seems to describe how you generally feel.",
+              columns: [
+                  { value: 1, text: "Almost Never" },
+                  { value: 2, text: "Sometimes" },
+                  { value: 3, text: "Often" },
+                  { value: 4, text: "Almost Always" },
+                ],
+              rows: [
+                  { value: "STAI_21",   text: "I feel pleasant" },
+                  { value: "STAI_22",   text: "I feel nervous and restless" },
+                  { value: "STAI_23",   text: "I feel satisfied with myself" },
+                  { value: "STAI_24",   text: "I wish I could be as happy as others seem to be" },
+                  { value: "STAI_25",   text: "I feel like a failure" },
+                  { value: "STAI_26",   text: "I feel rested" },
+                  { value: "STAI_27",   text: "I am calm, cool, and collected" },
+                  { value: "STAI_28",   text: "I feel that difficulties are piling up so that I cannot overcome them" },
+                  { value: "STAI_29",   text: "I worry too much over something that really doesn’t matter" },
+                  { value: "STAI_30",   text: "I am happy" },
+
+                  { value: "CHECK_3",   text: "I am not answering randomly. Select 'Often'." },
+
+                  { value: "STAI_31",  text: "I have disturbing thoughts" },
+                  { value: "STAI_32",  text: "I lack self confidence" },
+                  { value: "STAI_33",  text: "I feel secure" },
+                  { value: "STAI_34",  text: "I make decision easily" },
+                  { value: "STAI_35",  text: "I feel inadequate" },
+                  { value: "STAI_36",  text: "I am content" },
+                  { value: "STAI_37",  text: "Some unimportant thoughts runs through my mind and bothers me" },
+                  { value: "STAI_38",  text: "I take disappointments so keenly that I can’t put them out of my mind" },
+                  { value: "STAI_39",  text: "I am a steady person" },
+                  { value: "STAI_40",  text: "I get in a state of tension or turmoil as I think over my recent concerns and interests" }
                 ]},
+      ]}
 
-            { type: "radiogroup", name: "IQ_4", isRequired: true,
-                title: "If the day after tomorrow is two days before Thursday then what day is it today?",
-                choices: [
-                  {value:1, text:"Friday"},
-                  {value:2, text:"Monday"},
-                  {value:3, text:"Wednesday"},
-                  {value:4, text:"Saturday"},
-                  {value:5, text:"Tuesday"},
-                  {value:6, text:"Sunday"}
+    let CFS = {questions: [
+          { type: "matrix", name: "CFS", isAllRowRequired: true,
+          title: "The following statements deal with your beliefs and feelings about your own behaviour. Indicate the number that best represents your agreement with each statement. ",
+              columns: [
+                  { value: 1, text: "Strongly Disagree" },
+                  { value: 2, text: "Disagree" },
+                  { value: 3, text: "Slightly Disagree" },
+                  { value: 4, text: "Slightly Agree" },
+                  { value: 5, text: "Agree" },
+                  { value: 6, text: "Strongly Agree" }],
+              rows: [
+                  { value: "CFS_1",       text: "I can communicate an idea in many different ways." },
+                  { value: "CFS_2",       text: "I avoid new and unusual situations." },
+                  { value: "CFS_3",       text: "I feel like I never get to make decisions." },
+                  { value: "CFS_4",       text: "I can find workable solutions to seemingly unsolvable problems." },
+                  { value: "CFS_5",       text: "I seldom have choices when deciding how to behave." },
+                  { value: "CFS_6",       text: "I am willing to work at creative solutions to problems." },
+
+                  { value: "CHECK_6",      text: "I am paying attention to this survey. Choose 'Strongly Agree'." },
+
+                  { value: "CFS_7",       text: "In any given situation, I am able to act appropriately." },
+                  { value: "CFS_8",       text: "My behaviour is a result of conscious decisions that I make." },
+                  { value: "CFS_9",       text: "I have many possible ways of behaving in any given situation." },
+                  { value: "CFS_10",      text: "I have difficulty using my knowledge on a given topic in real life situations." },
+                  { value: "CFS_11",      text: "I am willing to listen and consider alternatives for handling a problem." },
+                  { value: "CFS_12",      text: "I have the self-confidence necessary to try different ways of behaving." }
                 ]},
+          ]}
 
-            { type: "radiogroup", name: "IQ_5", isRequired: true,
-                title: "In the following alphanumeric series, what letter comes next? K N P S U ...?",
-                choices: [
-                  {value:1, text:"S"},
-                  {value:2, text:"T"},
-                  {value:3, text:"U"},
-                  {value:4, text:"V"},
-                  {value:5, text:"W"},
-                  {value:6, text:"X"}
+    let AQ10 = {questions: [
+          {   type: "matrix", name: "AQ10", isAllRowRequired: true,
+              title: "Please indicate the option which fit best.",
+              columns: [
+                  { value: 1, text: "Definitely Agree" },
+                  { value: 2, text: "Slightly Agree" },
+                  { value: 3, text: "Slightly Disagree" },
+                  { value: 4, text: "Definitely Disagree" },
+                ],
+              rows: [
+                  { value: "AQ10_1",   text: "I often notice small sounds when others do not" },
+                  { value: "AQ10_2",   text: "I usually concentrate more on the whole picture, rather than the small details" },
+                  { value: "AQ10_3",   text: "I find it easy to do more than one thing at once" },
+                  { value: "AQ10_4",   text: "If there is an interruption, I can switch back to what I was doing very quickly" },
+                  { value: "AQ10_5",   text: "I find it easy to 'read between the lines' when someone is talking to me" },
+
+                  { value: "CHECK_2",   text: "I am still focused. Press 'Slightly Agree'." },
+
+                  { value: "AQ10_6",  text: "I know how to tell if someone listenning to me is getting bored" },
+                  { value: "AQ10_7",  text: "When I'm reading a story I find it difficult to work out the characters' intentions" },
+                  { value: "AQ10_8",  text: "I like to collect information about categories of things (e.g. types of car, types of bird, types of train, types of plant etc)" },
+                  { value: "AQ10_9",  text: "I find it easy to work out what someone is thinking or feeling just by looking at their face" },
+                  { value: "AQ10_10",  text: "I find it difficult to work out people's intentions" }
                 ]},
+      ]}
 
-            { type: "radiogroup", name: "IQ_6", isRequired: true,
-                title: "In the following alphanumeric series, what letter comes next? V Q M J H ...?",
-                choices: [
-                  {value:1, text:"E"},
-                  {value:2, text:"F"},
-                  {value:3, text:"G"},
-                  {value:4, text:"H"},
-                  {value:5, text:"I"},
-                  {value:6, text:"J"}
-                ]},
-
-            { type: "radiogroup", name: "IQ_7", isRequired: true,
-                title: "In the following alphanumeric series, what letter comes next? I J L O S ...?",
-                choices: [
-                  {value:1, text:"T"},
-                  {value:2, text:"U"},
-                  {value:3, text:"V"},
-                  {value:4, text:"X"},
-                  {value:5, text:"Y"},
-                  {value:6, text:"Z"}
-                ]},
-
-            { type: "radiogroup", name: "IQ_8", isRequired: true,
-                title: "In the following alphanumeric series, what letter comes next? Q S N P L ...?",
-                choices: [
-                  {value:1, text:"J"},
-                  {value:2, text:"H"},
-                  {value:3, text:"I"},
-                  {value:4, text:"N"},
-                  {value:5, text:"M"},
-                  {value:6, text:"L"}
-                ]},
-        ]},
-
-      // IQ images
-      {questions: [
-            { type: "html",
-              name: "info",
-              html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx45_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx45_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_1", isRequired: true,
-              title: "Which figure fits into the missing slot?",
+    let IQTEXT = {questions: [
+          { type: "radiogroup", name: "IQ_1", isRequired: true,
+              title: "What number is one fifth of one fourth of one ninth of 900?",
+              //colCount: 4,
               choices: [
-                {value:1, text:"A"},
-                {value:2, text:"B"},
-                {value:3, text:"C"},
-                {value:4, text:"D"},
-                {value:5, text:"E"},
-                {value:6, text:"F"}
+                {value:1, text:"2"},
+                {value:2, text:"3"},
+                {value:3, text:"4"},
+                {value:4, text:"5"},
+                {value:5, text:"6"},
+                {value:6, text:"7"}
               ]},
 
-            { type: "html",
-              name: "info",
-              html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx46_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx46_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_2", isRequired: true,
-              title: "Which figure fits into the missing slot?",
+          { type: "radiogroup", name: "IQ_2", isRequired: true,
+              title: "Zach is taller than Matt and Richard is shorter than Zach. Which of the following statements would be the most accurate?",
               choices: [
-                {value:1, text:"A"},
-                {value:2, text:"B"},
-                {value:3, text:"C"},
-                {value:4, text:"D"},
-                {value:5, text:"E"},
-                {value:6, text:"F"}
+                {value:1, text:"Richard is taller than Matt"},
+                {value:2, text:"Richard is shorter than Matt"},
+                {value:3, text:"Richard is as tall as Matt"},
+                {value:4, text:"It's impossible to tell"}
               ]},
 
-            { type: "html",
-              name: "info",
-              html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx47_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx47_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_3", isRequired: true,
-              title: "Which figure fits into the missing slot?",
+          { type: "radiogroup", name: "IQ_3", isRequired: true,
+              title: "Joshua is 12 years old and his sister is three times as old as he. When Joshua is 23 years old, how old will his sister be?",
               choices: [
-                {value:1, text:"A"},
-                {value:2, text:"B"},
-                {value:3, text:"C"},
-                {value:4, text:"D"},
-                {value:5, text:"E"},
-                {value:6, text:"F"}
+                {value:1, text:"25"},
+                {value:2, text:"39"},
+                {value:3, text:"44"},
+                {value:4, text:"47"},
+                {value:5, text:"53"}
               ]},
 
-            { type: "html",
-              name: "info",
-              html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx55_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx55_a.png' width='460px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_4", isRequired: true,
-              title: "Which figure fits into the missing slot?",
+          { type: "radiogroup", name: "IQ_4", isRequired: true,
+              title: "If the day after tomorrow is two days before Thursday then what day is it today?",
               choices: [
-                {value:1, text:"A"},
-                {value:2, text:"B"},
-                {value:3, text:"C"},
-                {value:4, text:"D"},
-                {value:5, text:"E"},
-                {value:6, text:"F"}
+                {value:1, text:"Friday"},
+                {value:2, text:"Monday"},
+                {value:3, text:"Wednesday"},
+                {value:4, text:"Saturday"},
+                {value:5, text:"Tuesday"},
+                {value:6, text:"Sunday"}
               ]},
 
-            { type: "html",
-              name: "info",
-              html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd3_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_5", isRequired: true,
-              title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+          { type: "radiogroup", name: "IQ_5", isRequired: true,
+              title: "In the following alphanumeric series, what letter comes next? K N P S U ...?",
               choices: [
-                {value:1, text:"A"},
-                {value:2, text:"B"},
-                {value:3, text:"C"},
-                {value:4, text:"D"},
-                {value:5, text:"E"},
-                {value:6, text:"F"},
-                {value:7, text:"G"},
-                {value:8, text:"H"}
+                {value:1, text:"S"},
+                {value:2, text:"T"},
+                {value:3, text:"U"},
+                {value:4, text:"V"},
+                {value:5, text:"W"},
+                {value:6, text:"X"}
               ]},
 
-            { type: "html",
-              name: "info",
-              html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd4_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_6", isRequired: true,
-              title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+          { type: "radiogroup", name: "IQ_6", isRequired: true,
+              title: "In the following alphanumeric series, what letter comes next? V Q M J H ...?",
               choices: [
-                {value:1, text:"A"},
-                {value:2, text:"B"},
-                {value:3, text:"C"},
-                {value:4, text:"D"},
-                {value:5, text:"E"},
-                {value:6, text:"F"},
-                {value:7, text:"G"},
-                {value:8, text:"H"}
+                {value:1, text:"E"},
+                {value:2, text:"F"},
+                {value:3, text:"G"},
+                {value:4, text:"H"},
+                {value:5, text:"I"},
+                {value:6, text:"J"}
               ]},
 
-            { type: "html",
-              name: "info",
-              html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd6_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_7", isRequired: true,
-              title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+          { type: "radiogroup", name: "IQ_7", isRequired: true,
+              title: "In the following alphanumeric series, what letter comes next? I J L O S ...?",
               choices: [
-                {value:1, text:"A"},
-                {value:2, text:"B"},
-                {value:3, text:"C"},
-                {value:4, text:"D"},
-                {value:5, text:"E"},
-                {value:6, text:"F"},
-                {value:7, text:"G"},
-                {value:8, text:"H"}
+                {value:1, text:"T"},
+                {value:2, text:"U"},
+                {value:3, text:"V"},
+                {value:4, text:"X"},
+                {value:5, text:"Y"},
+                {value:6, text:"Z"}
               ]},
 
-            { type: "html",
-              name: "info",
-              html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd8_q.png' width='550px'/></body></table>"},
-            { type: "radiogroup", name: "IQimage_8", isRequired: true,
-              title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+          { type: "radiogroup", name: "IQ_8", isRequired: true,
+              title: "In the following alphanumeric series, what letter comes next? Q S N P L ...?",
               choices: [
-                {value:1, text:"A"},
-                {value:2, text:"B"},
-                {value:3, text:"C"},
-                {value:4, text:"D"},
-                {value:5, text:"E"},
-                {value:6, text:"F"},
-                {value:7, text:"G"},
-                {value:8, text:"H"}
+                {value:1, text:"J"},
+                {value:2, text:"H"},
+                {value:3, text:"I"},
+                {value:4, text:"N"},
+                {value:5, text:"M"},
+                {value:6, text:"L"}
               ]},
+      ]}
 
+    let IQIMAGES = {questions: [
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx45_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx45_a.png' width='460px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_1", isRequired: true,
+            title: "Which figure fits into the missing slot?",
+            choices: [
+              {value:1, text:"A"},
+              {value:2, text:"B"},
+              {value:3, text:"C"},
+              {value:4, text:"D"},
+              {value:5, text:"E"},
+              {value:6, text:"F"}
             ]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx46_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx46_a.png' width='460px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_2", isRequired: true,
+            title: "Which figure fits into the missing slot?",
+            choices: [
+              {value:1, text:"A"},
+              {value:2, text:"B"},
+              {value:3, text:"C"},
+              {value:4, text:"D"},
+              {value:5, text:"E"},
+              {value:6, text:"F"}
+            ]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx47_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx47_a.png' width='460px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_3", isRequired: true,
+            title: "Which figure fits into the missing slot?",
+            choices: [
+              {value:1, text:"A"},
+              {value:2, text:"B"},
+              {value:3, text:"C"},
+              {value:4, text:"D"},
+              {value:5, text:"E"},
+              {value:6, text:"F"}
+            ]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/mx55_q.png' width='230px'/></br></br></br> </td><img src='http://www.brainexplorer.net/MF/quest/mx55_a.png' width='460px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_4", isRequired: true,
+            title: "Which figure fits into the missing slot?",
+            choices: [
+              {value:1, text:"A"},
+              {value:2, text:"B"},
+              {value:3, text:"C"},
+              {value:4, text:"D"},
+              {value:5, text:"E"},
+              {value:6, text:"F"}
+            ]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd3_q.png' width='550px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_5", isRequired: true,
+            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            choices: [
+              {value:1, text:"A"},
+              {value:2, text:"B"},
+              {value:3, text:"C"},
+              {value:4, text:"D"},
+              {value:5, text:"E"},
+              {value:6, text:"F"},
+              {value:7, text:"G"},
+              {value:8, text:"H"}
+            ]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd4_q.png' width='550px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_6", isRequired: true,
+            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            choices: [
+              {value:1, text:"A"},
+              {value:2, text:"B"},
+              {value:3, text:"C"},
+              {value:4, text:"D"},
+              {value:5, text:"E"},
+              {value:6, text:"F"},
+              {value:7, text:"G"},
+              {value:8, text:"H"}
+            ]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd6_q.png' width='550px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_7", isRequired: true,
+            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            choices: [
+              {value:1, text:"A"},
+              {value:2, text:"B"},
+              {value:3, text:"C"},
+              {value:4, text:"D"},
+              {value:5, text:"E"},
+              {value:6, text:"F"},
+              {value:7, text:"G"},
+              {value:8, text:"H"}
+            ]},
+
+          { type: "html",
+            name: "info",
+            html: "<table><body></br></br></br></br><img src='http://www.brainexplorer.net/MF/quest/rsd8_q.png' width='550px'/></body></table>"},
+          { type: "radiogroup", name: "IQimage_8", isRequired: true,
+            title: "All the cubes above have a different image on each side. Select the choice that represents a rotation of the cube labeled X.",
+            choices: [
+              {value:1, text:"A"},
+              {value:2, text:"B"},
+              {value:3, text:"C"},
+              {value:4, text:"D"},
+              {value:5, text:"E"},
+              {value:6, text:"F"},
+              {value:7, text:"G"},
+              {value:8, text:"H"}
+            ]},
+
+          ]}
+
+    let MEDIC = {questions: [
+          {   type: "matrix", name: "MEDIC", isAllRowRequired: true,
+              title: "Medication",
+              columns: [
+                  { value: 1, text: "Yes" },
+                  { value: 2, text: "No" },
+                  { value: 3, text: "Prefer not to say" },
+                ],
+              rows: [
+                  { value: "MEDIC_1",   text: "Are you currently taking any prescribed psychoactive medication (i.e. medication influencing brain functioning)?" },
+                  { value: "MEDIC_2",   text: "Are you currently taking any prescribed medication to increase attention/concentration on a regular basis?" },
+                ]},
+      ]}
+
+    switch(quest_No) {
+
+      case 1: return BIS11
+      case 2: return LSAS
+      case 3: return ASRS
+      case 4: return OCIR
+      case 5: return IU
+      case 6: return SDS
+      case 7: return STAIY2
+      case 8: return CFS
+      case 9: return AQ10
+      case 10: return IQTEXT
+      case 11: return IQIMAGES
+      case 12: return MEDIC
+
+      default:
+  }
+
+  }
+
+  render() {
+
+    var json = {title: null, showProgressBar: "top", pages: [
+
+      this.render_quest(this.state.quest_i[0]),
+      this.render_quest(this.state.quest_i[1]),
+      this.render_quest(this.state.quest_i[2]),
+      this.render_quest(this.state.quest_i[3]),
+      this.render_quest(this.state.quest_i[4]),
+      this.render_quest(this.state.quest_i[5]),
+      this.render_quest(this.state.quest_i[6]),
+      this.render_quest(this.state.quest_i[7]),
+      this.render_quest(this.state.quest_i[8]),
+      this.render_quest(this.state.quest_i[9]),
+      this.render_quest(this.state.quest_i[10]),
+      this.render_quest(this.state.quest_i[11]),
 
     ]};
 
@@ -642,7 +742,7 @@ class Questionnaires extends Component {
     else if(this.state.transition===1){
       return(
         <div>
-          <div className="place-middle">
+          <div className="place-middle-quest">
             <div className="IntroConsentText">
              <br/> <br/> <br/> <br/>
               <p><span className="bold">STUDY PART 2/2</span></p>

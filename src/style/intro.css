@@ -18,6 +18,13 @@
   margin-top: -90px;
 }
 
+.place-middle-quest{
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -90px;
+}
+
 .btn_help{
   position: absolute;
   margin-top: 770px;
