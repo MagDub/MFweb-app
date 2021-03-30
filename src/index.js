@@ -8,7 +8,6 @@ import Intro from './intro';
 import Questionnaires from './questionnaires';
 import End from './end';
 
-
 const RefreshRoute = ({ component: Component, isDataAvailable, ...rest }) => (
   <Route
     {...rest}
