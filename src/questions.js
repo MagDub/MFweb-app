@@ -218,13 +218,14 @@ class Questions extends React.Component{
     var training_no = this.props.training_no;
     var task_no = this.props.task_no;
 
+    var date_ = this.props.user_info.date;
 
     let questions_behaviour = {  'SumPassed'             : SumPassed,
-                                 'Date'                  : this.props.user_info.date,
                                  'UserStartTime'         : UserStartTime,
                                  'ProlificID'            : prolific_id,
                                  'TrainingNo'            : training_no,
                                  'TaskNo'                : task_no,
+                                 'Date'                  : date_,
                                  'PressedKeys'           : pressed_keys,
                                  'PercentagePassed'      : percentage_passed,
                                  'ReactionTimes'         : reaction_times,
