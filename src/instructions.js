@@ -2,7 +2,6 @@ import React from 'react';
 import './style/slides.css';
 import Image from 'react-image-resizer';
 
-
 class Instructions extends React.Component{
 
   constructor(props) {
