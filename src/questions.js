@@ -220,6 +220,7 @@ class Questions extends React.Component{
 
 
     let questions_behaviour = {  'SumPassed'             : SumPassed,
+                                 'Date'                  : this.props.user_info.date,
                                  'UserStartTime'         : UserStartTime,
                                  'ProlificID'            : prolific_id,
                                  'TrainingNo'            : training_no,

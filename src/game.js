@@ -119,6 +119,7 @@ class Game extends React.Component{
     var subset_TreePositions = this.state.block_info.TreePositions.slice(0,trial_per_block);
 
     let behaviour = {       'BlockNo'             : block_no_,
+                            'Date'                : this.props.user_info.date,
                             'UserStartTime'       : this.props.user_info.startTime,
                             'ProlificID'          : this.props.user_info.prolific_id,
                             'TaskNo'              : this.props.user_info.task_no,

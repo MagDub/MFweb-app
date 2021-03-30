@@ -241,6 +241,7 @@ class Training extends React.Component{
     var task_no = this.props.task_no;
 
     let training_behaviour = {  'SumPassed'           : SumPassed,
+                                'Date'                : this.props.user_info.date,
                                 'UserStartTime'       : StartTime,
                                 'ProlificID'          : prolific_id,
                                 'TrainingNo'          : training_no,
