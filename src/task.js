@@ -139,7 +139,7 @@ class Task extends React.Component{
               this.fetchUserInfo();
             }
             //console.log("task: transition 2 - questions")
-            return <Questions loading_bg={this.state.user_info.loading_bg} questions_bg={this.state.user_info.questions_bg} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
+            return <Questions user_info={this.state.user_info} loading_bg={this.state.user_info.loading_bg} questions_bg={this.state.user_info.questions_bg} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} questions_nb={5} nextTransition={this.nextTransition} InstructionsStartTime={this.state.InstructionsStartTime}/>
 
           case 3:
             //console.log("task: transition 3 - after questions instructions", "slide", this.state.slide)
@@ -147,7 +147,7 @@ class Task extends React.Component{
 
           case 4:
             //console.log("task: transition 4 - training")
-            return <Training images_fb={this.state.user_info.images_fb} training_apple_col={this.state.user_info.training_apple_col} loading_bg={this.state.user_info.loading_bg} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} training_bg={this.state.user_info.training_bg} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
+            return <Training user_info={this.state.user_info} images_fb={this.state.user_info.images_fb} training_apple_col={this.state.user_info.training_apple_col} loading_bg={this.state.user_info.loading_bg} training_no={this.state.user_info.training_no} task_no={this.state.user_info.task_no} training_bg={this.state.user_info.training_bg} prolific_id={this.state.user_info.prolific_id} StartTime={this.state.user_info.startTime} UserNo={this.state.UserNo} num_training={this.state.num_training} nextTransition={this.nextTransition}/>
 
           case 5:
             //console.log("task: transition 5 - instructions")
