@@ -68,6 +68,7 @@ class Questionnaires extends Component {
     user_info.QuestionnairesCompleted = 1;
 
     survey.setValue(RT_valueName, seconds);
+    survey.setValue("Shuffle", this.state.quest_i)
     survey.setValue("Date", this.state.user_info.date)
     survey.setValue("QuestionnaireStartTime", this.state.QuestionnaireStartTime)
     survey.setValue("QuestionnaireFinishTime", finishTime)
